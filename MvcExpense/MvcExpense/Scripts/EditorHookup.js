@@ -2,7 +2,7 @@
 /// <reference path="jquery-ui.js" />
 
 $(document).ready(function () {
-    $(".date").datepicker({
+    $(".datepicker").datepicker({
         dateFormat: "dd M yy D", // todo make system parameter
         onSelect: function (dateText, inst) {
             var displayElementId = $(this).attr("id");
