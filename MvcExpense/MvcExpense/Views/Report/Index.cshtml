@@ -1,0 +1,61 @@
+﻿@*model IEnumerable<MvcExpense.Models.OrdinaryExpense>*@
+@model MvcExpense.ViewModels.ReportViewModel
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+<table>
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Sequence
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Consumer
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Remarks
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrdinaryExpenses) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sequence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consumer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+    </tr>
+}
+
+</table>

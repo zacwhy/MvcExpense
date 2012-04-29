@@ -1,0 +1,92 @@
+﻿@model MvcExpense.ViewModels.OrdinaryExpenseEditModel
+@*@model MvcExpense.Models.OrdinaryExpense*@
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@ViewBag.Title @ViewBag.Id</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>OrdinaryExpense</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sequence)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sequence)
+            @Html.ValidationMessageFor(model => model.Sequence)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConsumerId, "Consumer")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ConsumerId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ConsumerId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId, "Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor( model => model.PaymentMethodId, "Payment Method" )
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList( "PaymentMethodId", String.Empty )
+            @Html.ValidationMessageFor( model => model.PaymentMethodId )
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remarks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remarks)
+            @Html.ValidationMessageFor(model => model.Remarks)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

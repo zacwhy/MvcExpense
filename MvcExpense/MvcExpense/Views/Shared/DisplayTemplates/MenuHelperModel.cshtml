@@ -1,0 +1,26 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+<ul id="css3menu1" class="topmenu">
+    @foreach ( var node in Model.Nodes )
+    {
+        string cssClass = "topmenu";
+        if ( node == Model.First() )
+        {
+            cssClass = "topfirst";
+        }
+        else if ( node == Model.Last() )
+        {
+            cssClass = "toplast";
+        }
+        
+        <li class="@cssClass">
+            @Html.DisplayFor( m => node ) 
+            @if ( node.Children.Any() )
+            {
+                @Html.DisplayFor( m => node.Children )
+            }
+        </li>
+    }
+</ul>
