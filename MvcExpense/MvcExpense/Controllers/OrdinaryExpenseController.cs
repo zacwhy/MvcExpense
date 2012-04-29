@@ -17,9 +17,6 @@ namespace MvcExpense.Controllers
     {
         private zExpenseEntities db = new zExpenseEntities();
 
-        //
-        // GET: /OrdinaryExpense/
-
         public ViewResult Index( int? year, int? month )
         {
             if ( !year.HasValue )
@@ -55,18 +52,12 @@ namespace MvcExpense.Controllers
             return View( ordinaryExpenses );
         }
 
-        //
-        // GET: /OrdinaryExpense/Details/5
-
         [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseViewModel ) )]
         public ViewResult Details(long id)
         {
             OrdinaryExpense ordinaryexpense = db.OrdinaryExpenses.Find(id);
             return View(ordinaryexpense);
         }
-
-        //
-        // GET: /OrdinaryExpense/Create
 
         public ActionResult Create()
         {
@@ -86,31 +77,10 @@ namespace MvcExpense.Controllers
             //ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", 1 );
             ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name" );
             var ordinaryExpenseViewModel = new OrdinaryExpenseViewModel();
-            ordinaryExpenseViewModel.Date = GetMostRecentDate();
+            ordinaryExpenseViewModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
             ordinaryExpenseViewModel.SelectedConsumerIds = new long[] { 1 };
             return View( ordinaryExpenseViewModel );
         }
-
-        DateTime GetMostRecentDate()
-        {
-            IQueryable<DateTime> query =
-                from x in db.OrdinaryExpenses
-                where x.Id == db.OrdinaryExpenses.Max( y => y.Id )
-                select x.Date;
-            DateTime mostRecentDate = query.Single();
-            return mostRecentDate;
-        }
-
-        // todo shift out
-        int NewSequence( DateTime date )
-        {
-            IQueryable<OrdinaryExpense> ordinaryExpenses = db.OrdinaryExpenses.Where( x => x.Date == date );
-            int maxSequence = ordinaryExpenses.Max( x => (int?) x.Sequence ) ?? 0;
-            return maxSequence + 1;
-        }
-
-        //
-        // POST: /OrdinaryExpense/Create
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
@@ -125,21 +95,13 @@ namespace MvcExpense.Controllers
         {
             if ( ModelState.IsValid )
             {
-                //int additionalConsumerCount = GetAdditionalConsumerCount( ordinaryExpenseViewModel );
-                //if ( additionalConsumerCount > 0 )
-                //{
-                //    int totalConsumerCount = additionalConsumerCount + 1;
-                //    double pricePerAdditonalConsumer = EnhancedMath.RoundDown( ordinaryExpenseViewModel.Price / totalConsumerCount, 2 );
-                //    double priceForPrimaryConsumer = ordinaryExpenseViewModel.Price - pricePerAdditonalConsumer * additionalConsumerCount;
-                //}
-
                 if ( ordinaryExpenseViewModel.SelectedConsumerIds.Count() == 1 )
                 {
                     ordinaryExpenseViewModel.ConsumerId = ordinaryExpenseViewModel.SelectedConsumerIds.Single();
                 }
 
                 OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseViewModel, OrdinaryExpense>( ordinaryExpenseViewModel );
-                ordinaryExpense.Sequence = NewSequence( ordinaryExpense.Date );
+                ordinaryExpense.Sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
                 db.OrdinaryExpenses.Add( ordinaryExpense );
 
                 try
@@ -169,9 +131,6 @@ namespace MvcExpense.Controllers
             ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", ordinaryExpenseViewModel.ConsumerId );
             return View( ordinaryExpenseViewModel );
         }
-        
-        //
-        // GET: /OrdinaryExpense/Edit/5
 
         [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]
         [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseEditModel ) )]
@@ -184,9 +143,6 @@ namespace MvcExpense.Controllers
             ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name", ordinaryexpense.PaymentMethodId );
             return View( ordinaryexpense );
         }
-
-        //
-        // POST: /OrdinaryExpense/Edit/5
 
         [HttpPost]
         public ActionResult Edit(OrdinaryExpense ordinaryexpense)
@@ -201,18 +157,12 @@ namespace MvcExpense.Controllers
             ViewBag.ConsumerId = new SelectList(db.Consumers, "Id", "Name", ordinaryexpense.ConsumerId);
             return View(ordinaryexpense);
         }
-
-        //
-        // GET: /OrdinaryExpense/Delete/5
  
         public ActionResult Delete(long id)
         {
             OrdinaryExpense ordinaryexpense = db.OrdinaryExpenses.Find(id);
             return View(ordinaryexpense);
         }
-
-        //
-        // POST: /OrdinaryExpense/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
