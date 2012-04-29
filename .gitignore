@@ -1,5 +1,6 @@
 
-/MvcExpense/MvcExpense/obj/
-/MvcExpense/MvcExpense.Tests/obj/
 /MvcExpense/MvcExpense/bin/MvcExpense.pdb
 /MvcExpense/MvcExpense/bin/MvcExpense.dll
+/MvcExpense/MvcExpense/obj/
+/MvcExpense/MvcExpense.Tests/obj/
+/MvcExpense/MvcExpense.Tests/bin/
