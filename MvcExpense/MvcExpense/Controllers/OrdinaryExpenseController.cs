@@ -83,15 +83,20 @@ namespace MvcExpense.Controllers
         }
 
         [HttpPost]
-        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
-        public ActionResult CreateAndNew( OrdinaryExpenseViewModel ordinaryExpenseViewModel )
+        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )] 
+        public ActionResult Create( OrdinaryExpenseViewModel ordinaryExpenseViewModel ) //OrdinaryExpense ordinaryexpense
         {
-            throw new NotImplementedException();
+            return CreateAndRedirect( ordinaryExpenseViewModel, "Index" );
         }
 
         [HttpPost]
-        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )] 
-        public ActionResult Create( OrdinaryExpenseViewModel ordinaryExpenseViewModel ) //OrdinaryExpense ordinaryexpense
+        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
+        public ActionResult CreateAndNew( OrdinaryExpenseViewModel ordinaryExpenseViewModel )
+        {
+            return CreateAndRedirect( ordinaryExpenseViewModel, "Create" );
+        }
+
+        private ActionResult CreateAndRedirect( OrdinaryExpenseViewModel ordinaryExpenseViewModel, string actionNameToRedirectTo )
         {
             if ( ModelState.IsValid )
             {
@@ -120,7 +125,7 @@ namespace MvcExpense.Controllers
                     throw;
                 }
 
-                return RedirectToAction( "Index" );
+                return RedirectToAction( actionNameToRedirectTo );
             }
 
             var leafCategories = db.Categories.Where( x => x.Children.Count == 0 );
