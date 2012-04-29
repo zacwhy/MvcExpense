@@ -92,6 +92,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\EnhancedMath.cs" />
+    <Compile Include="HelperClasses\ExpenseEntitiesCache.cs" />
     <Compile Include="HelperClasses\ExpenseEntitiesHelper.cs" />
     <Compile Include="HelperModels\CategoryBreakdownRecord.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -147,6 +148,7 @@
     <Content Include="Content\Menu\mainbk.png" />
     <Content Include="Content\Menu\icon\administrator.png" />
     <Content Include="Content\Menu\style.css" />
+    <Content Include="Content\Menu\style1.css" />
     <Content Include="Content\Site2.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

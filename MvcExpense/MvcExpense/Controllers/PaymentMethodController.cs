@@ -48,6 +48,7 @@ namespace MvcExpense.Controllers
             {
                 db.PaymentMethods.Add(paymentmethod);
                 db.SaveChanges();
+                ExpenseEntitiesCache.RefreshPaymentMethods( db );
                 return RedirectToAction("Index");  
             }
 
@@ -73,6 +74,7 @@ namespace MvcExpense.Controllers
             {
                 db.Entry(paymentmethod).State = EntityState.Modified;
                 db.SaveChanges();
+                ExpenseEntitiesCache.RefreshPaymentMethods( db );
                 return RedirectToAction("Index");
             }
             return View(paymentmethod);
@@ -96,6 +98,7 @@ namespace MvcExpense.Controllers
             PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
             db.PaymentMethods.Remove(paymentmethod);
             db.SaveChanges();
+            ExpenseEntitiesCache.RefreshPaymentMethods( db );
             return RedirectToAction("Index");
         }
 

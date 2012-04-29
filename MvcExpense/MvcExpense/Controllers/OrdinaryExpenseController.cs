@@ -42,7 +42,7 @@ namespace MvcExpense.Controllers
                     select x;
             }
 
-            var ordinaryExpensesQuery = ordinaryExpensesQuery1//db.OrdinaryExpenses.Where( x => x.Date >= beginOfCurrentMonth )
+            var ordinaryExpensesQuery = ordinaryExpensesQuery1
                 .OrderByDescending( x => new { x.Date, x.Sequence } )
                 .Include( o => o.Category )
                 .Include( o => o.Consumer );
@@ -61,51 +61,51 @@ namespace MvcExpense.Controllers
 
         public ActionResult Create()
         {
-            IList<Category> categories = db.Categories.ToList();
+            IList<Category> categories = ExpenseEntitiesCache.GetCategories(db);
             var leafCategories =
                 from x in categories
-                where x.Children.Count == 0
-                orderby x.Parent != null ? x.Parent.Name : string.Empty, x.Name
                 select new
                 {
                     x.Id,
                     x.Name,
-                    Display = x.Parent != null ? string.Format( "{0} - {1}", x.Name, x.Parent.Name ) : x.Name
+                    Display = x.Name
                 };
 
             ViewBag.CategoryId = new SelectList( leafCategories, "Id", "Display" );
             //ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", 1 );
-            ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name" );
-            var ordinaryExpenseViewModel = new OrdinaryExpenseViewModel();
-            ordinaryExpenseViewModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
-            ordinaryExpenseViewModel.SelectedConsumerIds = new long[] { 1 };
-            return View( ordinaryExpenseViewModel );
+            ViewBag.PaymentMethodId = new SelectList( ExpenseEntitiesCache.GetPaymentMethods( db ), "Id", "Name" );
+
+            var model = new OrdinaryExpenseViewModel();
+            model.ConsumerList = ExpenseEntitiesCache.GetConsumers( db );
+            model.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
+            model.SelectedConsumerIds = new long[] { 1 };
+            return View( model );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )] 
-        public ActionResult Create( OrdinaryExpenseViewModel ordinaryExpenseViewModel ) //OrdinaryExpense ordinaryexpense
+        public ActionResult Create( OrdinaryExpenseViewModel model )
         {
-            return CreateAndRedirect( ordinaryExpenseViewModel, "Index" );
+            return CreateAndRedirect( model, "Index" );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
-        public ActionResult CreateAndNew( OrdinaryExpenseViewModel ordinaryExpenseViewModel )
+        public ActionResult CreateAndNew( OrdinaryExpenseViewModel model )
         {
-            return CreateAndRedirect( ordinaryExpenseViewModel, "Create" );
+            return CreateAndRedirect( model, "Create" );
         }
 
-        private ActionResult CreateAndRedirect( OrdinaryExpenseViewModel ordinaryExpenseViewModel, string actionNameToRedirectTo )
+        private ActionResult CreateAndRedirect( OrdinaryExpenseViewModel model, string actionNameToRedirectTo )
         {
             if ( ModelState.IsValid )
             {
-                if ( ordinaryExpenseViewModel.SelectedConsumerIds.Count() == 1 )
+                if ( model.SelectedConsumerIds.Count() == 1 )
                 {
-                    ordinaryExpenseViewModel.ConsumerId = ordinaryExpenseViewModel.SelectedConsumerIds.Single();
+                    model.ConsumerId = model.SelectedConsumerIds.Single();
                 }
 
-                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseViewModel, OrdinaryExpense>( ordinaryExpenseViewModel );
+                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseViewModel, OrdinaryExpense>( model );
                 ordinaryExpense.Sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
                 db.OrdinaryExpenses.Add( ordinaryExpense );
 
@@ -133,8 +133,8 @@ namespace MvcExpense.Controllers
             ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name" );
 
             //    ViewBag.CategoryId = new SelectList( db.Categories, "Id", "Name", ordinaryExpenseViewModel.CategoryId );
-            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", ordinaryExpenseViewModel.ConsumerId );
-            return View( ordinaryExpenseViewModel );
+            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", model.ConsumerId );
+            return View( model );
         }
 
         [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]

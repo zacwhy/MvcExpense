@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using MvcExpense.Models;
+using System.Collections;
 
 namespace MvcExpense.ViewModels
 {
@@ -36,11 +37,13 @@ namespace MvcExpense.ViewModels
             }
         }
 
+        public IEnumerable ConsumerList { get; set; }
+
         private MultiSelectList GetConsumers( long[] selectedValues )
         {
-            var db = new zExpenseEntities();
-            List<Consumer> consumers = db.Consumers.ToList();
-            var multiSelectList = new MultiSelectList( consumers, "Id", "Name", selectedValues );
+            //var db = new zExpenseEntities();
+            //List<Consumer> consumers = db.Consumers.ToList();
+            var multiSelectList = new MultiSelectList( ConsumerList, "Id", "Name", selectedValues );
             return multiSelectList;
         }
 

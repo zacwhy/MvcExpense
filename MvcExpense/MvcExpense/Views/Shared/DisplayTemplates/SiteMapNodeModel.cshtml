@@ -18,6 +18,7 @@ else if ( Model.SourceMetadata["HtmlHelper"].ToString() == "MvcSiteMapProvider.W
 {
     string url = Model.IsClickable ? Model.Url : "#";
     bool hasImage = !string.IsNullOrEmpty( Model.ImageUrl );
+    
     <a href="@url">
         @if ( hasImage )
         {
