@@ -97,6 +97,7 @@ namespace MvcExpense
             Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseEditModel>();
 
             Mapper.CreateMap<OrdinaryExpenseViewModel, OrdinaryExpense>();
+            Mapper.CreateMap<OrdinaryExpenseEditModel, OrdinaryExpense>();
         }
     }
 }

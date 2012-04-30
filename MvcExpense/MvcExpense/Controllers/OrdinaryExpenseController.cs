@@ -61,51 +61,53 @@ namespace MvcExpense.Controllers
 
         public ActionResult Create()
         {
-            IList<Category> categories = ExpenseEntitiesCache.GetCategories(db);
-            var leafCategories =
-                from x in categories
-                select new
-                {
-                    x.Id,
-                    x.Name,
-                    Display = x.Name
-                };
+            //IList<Category> categories = ExpenseEntitiesCache.GetCategories( db );
+            //var leafCategories =
+            //    from x in categories
+            //    select new
+            //    {
+            //        x.Id,
+            //        x.Name,
+            //        Display = x.Name
+            //    };
 
-            ViewBag.CategoryId = new SelectList( leafCategories, "Id", "Display" );
+            //ViewBag.CategoryId = new SelectList( leafCategories, "Id", "Display" );
             //ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", 1 );
-            ViewBag.PaymentMethodId = new SelectList( ExpenseEntitiesCache.GetPaymentMethods( db ), "Id", "Name" );
+            //ViewBag.PaymentMethodId = new SelectList( ExpenseEntitiesCache.GetPaymentMethods( db ), "Id", "Name" );
 
-            var model = new OrdinaryExpenseViewModel();
-            model.ConsumerList = ExpenseEntitiesCache.GetConsumers( db );
-            model.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
-            model.SelectedConsumerIds = new long[] { 1 };
-            return View( model );
+            var editModel = new OrdinaryExpenseEditModel();
+            editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
+            editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
+            editModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
+            editModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
+            editModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
+            return View( editModel );
         }
 
         [HttpPost]
-        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )] 
-        public ActionResult Create( OrdinaryExpenseViewModel model )
+        [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )]
+        public ActionResult Create( OrdinaryExpenseEditModel editModel )
         {
-            return CreateAndRedirect( model, "Index" );
+            return CreateAndRedirect( editModel, "Index" );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
-        public ActionResult CreateAndNew( OrdinaryExpenseViewModel model )
+        public ActionResult CreateAndNew( OrdinaryExpenseEditModel editModel )
         {
-            return CreateAndRedirect( model, "Create" );
+            return CreateAndRedirect( editModel, "Create" );
         }
 
-        private ActionResult CreateAndRedirect( OrdinaryExpenseViewModel model, string actionNameToRedirectTo )
+        private ActionResult CreateAndRedirect( OrdinaryExpenseEditModel editModel, string actionNameToRedirectTo )
         {
             if ( ModelState.IsValid )
             {
-                if ( model.SelectedConsumerIds.Count() == 1 )
+                if ( editModel.SelectedConsumerIds.Count() == 1 )
                 {
-                    model.ConsumerId = model.SelectedConsumerIds.Single();
+                    editModel.ConsumerId = editModel.SelectedConsumerIds.Single();
                 }
 
-                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseViewModel, OrdinaryExpense>( model );
+                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseEditModel, OrdinaryExpense>( editModel );
                 ordinaryExpense.Sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
                 db.OrdinaryExpenses.Add( ordinaryExpense );
 
@@ -133,8 +135,8 @@ namespace MvcExpense.Controllers
             ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name" );
 
             //    ViewBag.CategoryId = new SelectList( db.Categories, "Id", "Name", ordinaryExpenseViewModel.CategoryId );
-            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", model.ConsumerId );
-            return View( model );
+            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", editModel.ConsumerId );
+            return View( editModel );
         }
 
         [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]

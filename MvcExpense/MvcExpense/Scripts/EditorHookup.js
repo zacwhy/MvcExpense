@@ -12,6 +12,4 @@ $(document).ready(function () {
             $("#" + valueElementId).val(dateString);
         }
     });
-
-    //$('.date').datepicker({ dateFormat: "dd M yy D" });
 });

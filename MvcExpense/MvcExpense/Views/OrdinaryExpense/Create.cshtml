@@ -1,4 +1,5 @@
-﻿@model MvcExpense.ViewModels.OrdinaryExpenseViewModel
+﻿@model MvcExpense.ViewModels.OrdinaryExpenseEditModel
+@using MvcExpense.Common
 
 @{
     ViewBag.Title = "Create";
@@ -34,7 +35,7 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor( model => model.Date )
-            <input type="button" value="Today" />
+            <input type="button" value="Today" accesskey="t" tabindex="1001" onclick="alert('today');" />
             @Html.ValidationMessageFor( model => model.Date )
         </div>
 
@@ -52,35 +53,35 @@
         <div class="editor-field">
             @Html.EditorFor( model => model.Description )
             @Html.ValidationMessageFor( model => model.Description )
-            past entries suggestion
         </div>
 
         <div class="editor-label">
             @Html.LabelFor( model => model.CategoryId, "Category" )
         </div>
         <div class="editor-field">
-            @Html.DropDownList( "CategoryId", String.Empty )
+            @Html.DropDownGroupListFor( model => model.CategoryId, Model.CategoriesGroupedSelectList, SystemParameters.DropDownListNullDisplay )
+
+            @Html.DropDownListFor( model => model.CategoryId, Model.CategoriesSelectList, SystemParameters.DropDownListNullDisplay )
+            @*@Html.DropDownList( "CategoryId", String.Empty )*@
             @Html.ValidationMessageFor( model => model.CategoryId )
-            show tree structure, auto-populate based on description
         </div>
                 
         <div class="editor-label">
             @Html.LabelFor( model => model.PaymentMethodId, "Payment Method" )
         </div>
         <div class="editor-field">
-            @Html.DropDownList( "PaymentMethodId", String.Empty )
+            @Html.DropDownListFor( model => model.PaymentMethodId, Model.PaymentMethodsSelectList, SystemParameters.DropDownListNullDisplay )
+            @*@Html.DropDownList( "PaymentMethodId", String.Empty )*@
             @Html.ValidationMessageFor( model => model.PaymentMethodId )
-            auto-populate based on category selected
         </div>
 
         <div class="editor-label">
             @Html.LabelFor( model => model.ConsumerId, "Consumer(s)" )
         </div>
         <div class="editor-field">
-            @*@Html.DropDownList("ConsumerId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ConsumerId)*@
-
-            @Html.ListBoxFor( x => x.SelectedConsumerIds, Model.Consumers, new { size = Model.Consumers.Count() } )
+            @*@Html.DropDownList("ConsumerId", String.Empty)*@
+            @Html.ListBoxFor( x => x.SelectedConsumerIds, Model.ConsumersMultiSelectList, new { size = Model.ConsumersMultiSelectList.Count() } )
+            @Html.ValidationMessageFor(model => model.ConsumerId)
         </div>
 
         <div class="editor-label">
@@ -99,10 +100,12 @@
 }
 
     <ol>
-        <li>cache drop down list items</li>
-        <li>Category dropdown</li>
+        <li>Category dropdown - show tree structure or optgroup</li>
+        <li>* for required field</li>
         <li>price entry control, calculator that accepts */+- symbols</li>
         <li>autocomplete for description, past entries suggestion</li>
+        <li>auto-populate payment method based on category selected</li>
+        <li>auto-populate category based on description</li>
         <li>Date field - hidden value field</li>
     </ol>
 
