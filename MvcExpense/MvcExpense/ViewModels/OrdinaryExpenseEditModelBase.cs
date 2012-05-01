@@ -33,7 +33,7 @@ namespace MvcExpense.ViewModels
         {
             get
             {
-                return OrdinaryExpenseModelHelper.GetCategoriesGroupSelectList( Categories );
+                return GetCategoriesGroupSelectList( Categories );
             }
         }
 
@@ -45,6 +45,35 @@ namespace MvcExpense.ViewModels
                 var selectList = new SelectList( orderedItems, "Id", "Name" );
                 return selectList;
             }
+        }
+
+        private static IList<SelectListGroupItem> GetCategoriesGroupSelectList( IList<Category> categories )
+        {
+            IEnumerable<IGrouping<string, Category>> leavesQuery =
+                    from x in categories
+                    where x.Children.Count == 0
+                    group x by x.Parent.Name into grouping
+                    select grouping;
+
+            var list = new List<SelectListGroupItem>();
+
+            foreach ( IGrouping<string, Category> group in leavesQuery )
+            {
+                var selectListGroupItem = new SelectListGroupItem { Name = group.Key };
+                selectListGroupItem.Items = new List<SelectListItem>();
+
+                foreach ( Category category in group )
+                {
+                    var selectListItem = new SelectListItem();
+                    selectListItem.Text = category.Name;
+                    selectListItem.Value = category.Id.ToString();
+                    selectListGroupItem.Items.Add( selectListItem );
+                }
+
+                list.Add( selectListGroupItem );
+            }
+
+            return list;
         }
 
     }
