@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Web.Routing;
 
-namespace System.Web.Mvc.Html
+namespace System.Web.Mvc
 {
     public static class GroupSelectExtensions
     {

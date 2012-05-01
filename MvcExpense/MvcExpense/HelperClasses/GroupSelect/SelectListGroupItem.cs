@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace System.Web.Mvc.Html
+namespace System.Web.Mvc
 {
     public class SelectListGroupItem
     {

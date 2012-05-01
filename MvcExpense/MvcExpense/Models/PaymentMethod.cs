@@ -21,6 +21,7 @@ namespace MvcExpense.Models
     
         public long Id { get; set; }
         public string Name { get; set; }
+        public int Sequence { get; set; }
     
         public virtual ICollection<OrdinaryExpense> OrdinaryExpenses { get; set; }
     }

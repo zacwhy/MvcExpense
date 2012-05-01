@@ -46,6 +46,7 @@
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrdinaryExpenses">
           <Key>
@@ -67,6 +68,7 @@
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SpecialExpenses">
           <Key>
@@ -189,6 +191,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="SpecialExpenses" Relationship="zExpenseModel.FK_SpecialExpenses_Consumers" FromRole="Consumers" ToRole="SpecialExpenses" />
           <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_Consumers" FromRole="Consumer" ToRole="OrdinaryExpens" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
         </EntityType>
         <EntityType Name="SpecialExpense">
           <Key>
@@ -274,6 +277,7 @@
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods" FromRole="PaymentMethod" ToRole="OrdinaryExpense" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
         </EntityType>
         <Association Name="FK_OrdinaryExpenses_PaymentMethods">
           <End Type="zExpenseModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
@@ -299,6 +303,7 @@
             <ScalarProperty Name="ParentId" ColumnName="ParentId" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Consumers"><EntityTypeMapping TypeName="zExpenseModel.Consumer"><MappingFragment StoreEntitySet="Consumers">
+            <ScalarProperty Name="Sequence" ColumnName="Sequence" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -328,6 +333,7 @@
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="zExpenseModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
