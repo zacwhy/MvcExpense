@@ -62,6 +62,7 @@ namespace MvcExpense.Controllers
         public ActionResult Create()
         {
             var createModel = new OrdinaryExpenseCreateModel();
+            createModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
             PopulateCreateModel( createModel, db );
             createModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
             return View( createModel );
@@ -135,29 +136,27 @@ namespace MvcExpense.Controllers
         }
 
         [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]
-        [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseEditModel ) )]
         public ActionResult Edit( long id )
         {
-            ViewBag.Id = id;
-            OrdinaryExpense ordinaryexpense = db.OrdinaryExpenses.Find( id );
-            ViewBag.CategoryId = new SelectList( db.Categories, "Id", "Name", ordinaryexpense.CategoryId );
-            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", ordinaryexpense.ConsumerId );
-            ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name", ordinaryexpense.PaymentMethodId );
-            return View( ordinaryexpense );
+            OrdinaryExpense ordinaryExpense = db.OrdinaryExpenses.Find( id );
+            OrdinaryExpenseEditModel editModel = Mapper.Map<OrdinaryExpense, OrdinaryExpenseEditModel>( ordinaryExpense );
+            PopulateEditModel( editModel, db );
+            return View( editModel );
         }
 
         [HttpPost]
-        public ActionResult Edit(OrdinaryExpense ordinaryexpense)
+        public ActionResult Edit( OrdinaryExpenseEditModel editModel )
         {
-            if (ModelState.IsValid)
+            if ( ModelState.IsValid )
             {
-                db.Entry(ordinaryexpense).State = EntityState.Modified;
+                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseEditModel, OrdinaryExpense>( editModel );
+                db.Entry( ordinaryExpense ).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction( "Index" );
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", ordinaryexpense.CategoryId);
-            ViewBag.ConsumerId = new SelectList(db.Consumers, "Id", "Name", ordinaryexpense.ConsumerId);
-            return View(ordinaryexpense);
+
+            PopulateEditModel( editModel, db );
+            return View( editModel );
         }
  
         public ActionResult Delete(long id)
@@ -186,7 +185,13 @@ namespace MvcExpense.Controllers
             createModel.Categories = ExpenseEntitiesCache.GetCategories( db );
             createModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
             createModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
-            createModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
+        }
+
+        private void PopulateEditModel( OrdinaryExpenseEditModel editModel, zExpenseEntities db )
+        {
+            editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
+            editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
+            editModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
         }
 
     }

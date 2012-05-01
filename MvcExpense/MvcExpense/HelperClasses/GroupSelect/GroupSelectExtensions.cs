@@ -13,14 +13,15 @@ namespace System.Web.Mvc.Html
             string optionLabel )
         {
             string name = ExpressionHelper.GetExpressionText( expression );
-            return GetMvcHtmlString( htmlHelper, name, selectList, optionLabel, null, null );
+            object selectedValue = htmlHelper.ViewData.Eval( name );
+            return GetMvcHtmlString( htmlHelper, name, selectList, optionLabel, selectedValue, null );
         }
 
         private static MvcHtmlString GetMvcHtmlString( this HtmlHelper htmlHelper,
             string name,
             IEnumerable<SelectListGroupItem> selectList,
             string optionLabel,
-            string selectedValue,
+            object selectedValue,
             object htmlAttributes )
         {
             string htmlString = GetHtmlString( htmlHelper, name, selectList, optionLabel, selectedValue, htmlAttributes );
@@ -31,7 +32,7 @@ namespace System.Web.Mvc.Html
             string name,
             IEnumerable<SelectListGroupItem> selectList,
             string optionLabel,
-            string selectedValue,
+            object selectedValue,
             object htmlAttributes )
         {
             if ( selectList == null && htmlHelper.ViewData != null )
@@ -74,7 +75,7 @@ namespace System.Web.Mvc.Html
                     var optionTag = new TagBuilder( "option" );
                     optionTag.Attributes.Add( "value", htmlHelper.Encode( item.Value ) );
 
-                    if ( selectedValue != null && item.Value == selectedValue )
+                    if ( selectedValue != null && item.Value == selectedValue.ToString() )
                     {
                         optionTag.Attributes.Add( "selected", "selected" );
                     }
