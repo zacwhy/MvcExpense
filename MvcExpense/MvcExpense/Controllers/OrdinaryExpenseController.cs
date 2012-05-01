@@ -59,13 +59,18 @@ namespace MvcExpense.Controllers
             return View(ordinaryexpense);
         }
 
-        public ActionResult Create()
+        void PopulateEditModel( OrdinaryExpenseEditModel editModel, zExpenseEntities db )
         {
-            var editModel = new OrdinaryExpenseEditModel();
             editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
             editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
             editModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
             editModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
+        }
+
+        public ActionResult Create()
+        {
+            var editModel = new OrdinaryExpenseEditModel();
+            PopulateEditModel( editModel, db );
             editModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
             return View( editModel );
         }
@@ -88,14 +93,32 @@ namespace MvcExpense.Controllers
         {
             if ( ModelState.IsValid )
             {
-                if ( editModel.SelectedConsumerIds.Count() == 1 )
-                {
-                    editModel.ConsumerId = editModel.SelectedConsumerIds.Single();
-                }
-
                 OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseEditModel, OrdinaryExpense>( editModel );
-                ordinaryExpense.Sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
-                db.OrdinaryExpenses.Add( ordinaryExpense );
+                int sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
+
+                int consumerCount = editModel.SelectedConsumerIds.Count();
+
+                if ( consumerCount == 1 )
+                {
+                    ordinaryExpense.Sequence = sequence;
+                    ordinaryExpense.ConsumerId = editModel.SelectedConsumerIds.Single();
+                    db.OrdinaryExpenses.Add( ordinaryExpense );
+                }
+                else if ( consumerCount > 1 )
+                {
+                    double averagePrice = EnhancedMath.RoundDown( editModel.Price / consumerCount, 2 );
+                    double primaryConsumerPrice = editModel.Price - averagePrice * ( consumerCount - 1 );
+
+                    int i = 0;
+                    foreach ( long consumerId in editModel.SelectedConsumerIds )
+                    {
+                        ordinaryExpense.Sequence = sequence + i;
+                        ordinaryExpense.ConsumerId = consumerId;
+                        ordinaryExpense.Price = i == 0 ? primaryConsumerPrice : averagePrice;
+                        db.OrdinaryExpenses.Add( ordinaryExpense );
+                        i++;
+                    }
+                }
 
                 try
                 {
@@ -116,12 +139,7 @@ namespace MvcExpense.Controllers
                 return RedirectToAction( actionNameToRedirectTo );
             }
 
-            var leafCategories = db.Categories.Where( x => x.Children.Count == 0 );
-            ViewBag.CategoryId = new SelectList( leafCategories, "Id", "Name" );
-            ViewBag.PaymentMethodId = new SelectList( db.PaymentMethods, "Id", "Name" );
-
-            //    ViewBag.CategoryId = new SelectList( db.Categories, "Id", "Name", ordinaryExpenseViewModel.CategoryId );
-            ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", editModel.ConsumerId );
+            PopulateEditModel( editModel, db );
             return View( editModel );
         }
 
