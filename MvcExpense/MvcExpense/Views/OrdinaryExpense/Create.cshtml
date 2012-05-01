@@ -1,4 +1,4 @@
-﻿@model MvcExpense.ViewModels.OrdinaryExpenseEditModel
+﻿@model MvcExpense.ViewModels.OrdinaryExpenseCreateModel
 @using MvcExpense.Common
 
 @{
@@ -73,11 +73,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor( model => model.ConsumerId, "Consumer(s)" )
+            @Html.LabelFor( model => model.SelectedConsumerIds, "Consumer(s)" )
         </div>
         <div class="editor-field">
             @Html.ListBoxFor( x => x.SelectedConsumerIds, Model.ConsumersMultiSelectList, new { size = Model.ConsumersMultiSelectList.Count() } )
-            @Html.ValidationMessageFor(model => model.ConsumerId)
+            @Html.ValidationMessageFor( model => model.SelectedConsumerIds )
         </div>
 
         <div class="editor-label">
@@ -95,39 +95,15 @@
     </fieldset>
 }
 
-    <ol>
-        <li>Category dropdown - show tree structure or optgroup</li>
-        <li>* for required field</li>
-        <li>price entry control, calculator that accepts */+- symbols</li>
-        <li>autocomplete for description, past entries suggestion</li>
-        <li>auto-populate payment method based on category selected</li>
-        <li>auto-populate category based on description</li>
-        <li>Date field - hidden value field</li>
-    </ol>
-
-    <fieldset>
-        <legend>Prototype</legend>
-        <div>
-            <select>
-                <optgroup label="Food">
-                    <option>Breakfast</option>
-                    <option>Lunch</option>
-                    <option>Dinner</option>
-                </optgroup>
-                <optgroup label="Transport">
-                    <option>Bus</option>
-                    <option>Train</option>
-                    <option>Taxi</option>
-                </optgroup>
-                <optgroup label="Car">
-                    <option>Petrol</option>
-                    <option>Parking</option>
-                    <option>ERP</option>
-                </optgroup>
-                <option>Treat</option>
-            </select>
-        </div>
-    </fieldset>
+<ol>
+    <li>* for required field</li>
+    <li>price entry control, calculator that accepts */+- symbols</li>
+    <li>autocomplete for description, past entries suggestion</li>
+    <li>auto-populate payment method based on category selected</li>
+    <li>auto-populate category based on description</li>
+    <li>Category dropdown sequence</li>
+    <li>Date field - hidden value field</li>
+</ol>
 
 <div>
     @Html.ActionLink( "Back to List", "Index" )

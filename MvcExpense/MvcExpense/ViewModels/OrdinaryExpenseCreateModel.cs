@@ -9,14 +9,12 @@ using MvcExpense.Models;
 
 namespace MvcExpense.ViewModels
 {
-    public class OrdinaryExpenseEditModel
+    public class OrdinaryExpenseCreateModel
     {
         public long Id { get; set; }
 
         [DataType( DataType.Date )]
         public DateTime Date { get; set; }
-
-        public int Sequence { get; set; }
 
         public double Price { get; set; }
 
@@ -25,7 +23,7 @@ namespace MvcExpense.ViewModels
 
         public string Remarks { get; set; }
 
-        public long ConsumerId { get; set; }
+        //public long ConsumerId { get; set; }
 
         [Required]
         public long CategoryId { get; set; }
@@ -42,19 +40,15 @@ namespace MvcExpense.ViewModels
 
         public long[] SelectedConsumerIds { get; set; }
 
-        //public SelectList CategoriesSelectList
-        //{
-        //    get
-        //    {
-        //        var selectList = new SelectList( Categories, "Id", "Name"/*, SelectedCategoryId*/ );
-        //        return selectList;
-        //    }
-        //}
-
         public IList<SelectListGroupItem> CategoriesGroupSelectList
         {
             get
             {
+                //foreach ( Category category in Categories )
+                //{
+                //    Category parent = category.Parent;
+                //}
+
                 IEnumerable<IGrouping<string, Category>> leavesQuery =
                     from x in Categories
                     where x.Children.Count == 0
@@ -87,7 +81,7 @@ namespace MvcExpense.ViewModels
         {
             get
             {
-                var selectList = new SelectList( PaymentMethods, "Id", "Name"/*, SelectedCategoryId*/ );
+                var selectList = new SelectList( PaymentMethods, "Id", "Name" );
                 return selectList;
             }
         }

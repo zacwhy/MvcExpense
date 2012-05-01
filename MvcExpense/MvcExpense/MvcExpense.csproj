@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HelperModels\GiveAndTakeRecord.cs" />
+    <Compile Include="ViewModels\OrdinaryExpenseCreateModel.cs" />
     <Compile Include="ViewModels\ReportCategoryBreakdown3ViewModel.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseEditModel.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseViewModel.cs" />

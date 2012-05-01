@@ -59,58 +59,49 @@ namespace MvcExpense.Controllers
             return View(ordinaryexpense);
         }
 
-        void PopulateEditModel( OrdinaryExpenseEditModel editModel, zExpenseEntities db )
-        {
-            editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
-            editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
-            editModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
-            editModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
-        }
-
         public ActionResult Create()
         {
-            var editModel = new OrdinaryExpenseEditModel();
-            PopulateEditModel( editModel, db );
-            editModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
-            return View( editModel );
+            var createModel = new OrdinaryExpenseCreateModel();
+            PopulateCreateModel( createModel, db );
+            createModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
+            return View( createModel );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )]
-        public ActionResult Create( OrdinaryExpenseEditModel editModel )
+        public ActionResult Create( OrdinaryExpenseCreateModel createModel )
         {
-            return CreateAndRedirect( editModel, "Index" );
+            return CreateAndRedirect( createModel, "Index" );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
-        public ActionResult CreateAndNew( OrdinaryExpenseEditModel editModel )
+        public ActionResult CreateAndNew( OrdinaryExpenseCreateModel createModel )
         {
-            return CreateAndRedirect( editModel, "Create" );
+            return CreateAndRedirect( createModel, "Create" );
         }
 
-        private ActionResult CreateAndRedirect( OrdinaryExpenseEditModel editModel, string actionNameToRedirectTo )
+        private ActionResult CreateAndRedirect( OrdinaryExpenseCreateModel createModel, string actionNameToRedirectTo )
         {
             if ( ModelState.IsValid )
             {
-                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseEditModel, OrdinaryExpense>( editModel );
+                OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseCreateModel, OrdinaryExpense>( createModel );
                 int sequence = ExpenseEntitiesHelper.NewSequence( db, ordinaryExpense.Date );
-
-                int consumerCount = editModel.SelectedConsumerIds.Count();
+                int consumerCount = createModel.SelectedConsumerIds.Count();
 
                 if ( consumerCount == 1 )
                 {
                     ordinaryExpense.Sequence = sequence;
-                    ordinaryExpense.ConsumerId = editModel.SelectedConsumerIds.Single();
+                    ordinaryExpense.ConsumerId = createModel.SelectedConsumerIds.Single();
                     db.OrdinaryExpenses.Add( ordinaryExpense );
                 }
                 else if ( consumerCount > 1 )
                 {
-                    double averagePrice = EnhancedMath.RoundDown( editModel.Price / consumerCount, 2 );
-                    double primaryConsumerPrice = editModel.Price - averagePrice * ( consumerCount - 1 );
-
+                    double averagePrice = EnhancedMath.RoundDown( createModel.Price / consumerCount, 2 );
+                    double primaryConsumerPrice = createModel.Price - averagePrice * ( consumerCount - 1 );
                     int i = 0;
-                    foreach ( long consumerId in editModel.SelectedConsumerIds )
+
+                    foreach ( long consumerId in createModel.SelectedConsumerIds )
                     {
                         ordinaryExpense.Sequence = sequence + i;
                         ordinaryExpense.ConsumerId = consumerId;
@@ -139,8 +130,8 @@ namespace MvcExpense.Controllers
                 return RedirectToAction( actionNameToRedirectTo );
             }
 
-            PopulateEditModel( editModel, db );
-            return View( editModel );
+            PopulateCreateModel( createModel, db );
+            return View( createModel );
         }
 
         [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]
@@ -189,5 +180,14 @@ namespace MvcExpense.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        private void PopulateCreateModel( OrdinaryExpenseCreateModel createModel, zExpenseEntities db )
+        {
+            createModel.Categories = ExpenseEntitiesCache.GetCategories( db );
+            createModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
+            createModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
+            createModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
+        }
+
     }
 }

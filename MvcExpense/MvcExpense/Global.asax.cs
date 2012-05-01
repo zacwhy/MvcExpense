@@ -94,9 +94,11 @@ namespace MvcExpense
             RegisterRoutes( RouteTable.Routes );
 
             Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseViewModel>();
+            Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseCreateModel>();
             Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseEditModel>();
 
             Mapper.CreateMap<OrdinaryExpenseViewModel, OrdinaryExpense>();
+            Mapper.CreateMap<OrdinaryExpenseCreateModel, OrdinaryExpense>();
             Mapper.CreateMap<OrdinaryExpenseEditModel, OrdinaryExpense>();
         }
     }
