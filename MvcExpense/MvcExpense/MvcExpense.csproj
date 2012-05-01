@@ -94,8 +94,8 @@
     <Compile Include="HelperClasses\EnhancedMath.cs" />
     <Compile Include="HelperClasses\ExpenseEntitiesCache.cs" />
     <Compile Include="HelperClasses\ExpenseEntitiesHelper.cs" />
-    <Compile Include="HelperClasses\GroupedSelectList\GroupedSelectListItem.cs" />
-    <Compile Include="HelperClasses\GroupedSelectList\HtmlHelpers.cs" />
+    <Compile Include="HelperClasses\GroupSelect\GroupSelectExtensions.cs" />
+    <Compile Include="HelperClasses\GroupSelect\SelectListGroupItem.cs" />
     <Compile Include="HelperModels\CategoryBreakdownRecord.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs">

@@ -61,20 +61,6 @@ namespace MvcExpense.Controllers
 
         public ActionResult Create()
         {
-            //IList<Category> categories = ExpenseEntitiesCache.GetCategories( db );
-            //var leafCategories =
-            //    from x in categories
-            //    select new
-            //    {
-            //        x.Id,
-            //        x.Name,
-            //        Display = x.Name
-            //    };
-
-            //ViewBag.CategoryId = new SelectList( leafCategories, "Id", "Display" );
-            //ViewBag.ConsumerId = new SelectList( db.Consumers, "Id", "Name", 1 );
-            //ViewBag.PaymentMethodId = new SelectList( ExpenseEntitiesCache.GetPaymentMethods( db ), "Id", "Name" );
-
             var editModel = new OrdinaryExpenseEditModel();
             editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
             editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );

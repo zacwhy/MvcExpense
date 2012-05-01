@@ -1,8 +1,10 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Collections;
-using System.Web.Mvc;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using MvcExpense.Models;
 
 namespace MvcExpense.ViewModels
@@ -30,39 +32,54 @@ namespace MvcExpense.ViewModels
 
         public long? PaymentMethodId { get; set; }
 
+        //
+        // Display
+        //
+
         public IList<Category> Categories { get; set; }
         public IList<PaymentMethod> PaymentMethods { get; set; }
         public IList<Consumer> Consumers { get; set; }
 
         public long[] SelectedConsumerIds { get; set; }
 
-        public SelectList CategoriesSelectList
-        {
-            get
-            {
-                var selectList = new SelectList( Categories, "Id", "Name"/*, SelectedCategoryId*/ );
-                return selectList;
-            }
-        }
+        //public SelectList CategoriesSelectList
+        //{
+        //    get
+        //    {
+        //        var selectList = new SelectList( Categories, "Id", "Name"/*, SelectedCategoryId*/ );
+        //        return selectList;
+        //    }
+        //}
 
-        public IEnumerable<GroupedSelectListItem> CategoriesGroupedSelectList
+        public IList<SelectListGroupItem> CategoriesGroupSelectList
         {
             get
             {
-                yield return new GroupedSelectListItem { GroupKey = "1", GroupName = "Food", Text = "Breakfast", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "1", GroupName = null, Text = "Lunch", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "1", GroupName = null, Text = "Dinner", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "1", GroupName = null, Text = "Other Meal", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "2", GroupName = "Public Transport", Text = "Bus (Work)", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "2", GroupName = "Transport2", Text = "Train (Work)", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "2", GroupName = "Public Transport", Text = "Bus", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "2", GroupName = "Transport2", Text = "Train", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "2", GroupName = "Transport", Text = "Taxi", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "3", GroupName = "Car", Text = "Petrol", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "3", GroupName = "Car", Text = "Parking", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "3", GroupName = "Car", Text = "Road", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "4", GroupName = "All", Text = "Treat", Value = "a1" };
-                yield return new GroupedSelectListItem { GroupKey = "4", GroupName = "All", Text = "Other", Value = "a1" };
+                IEnumerable<IGrouping<string, Category>> leavesQuery =
+                    from x in Categories
+                    where x.Children.Count == 0
+                    group x by x.Parent.Name into grouping
+                    select grouping;
+
+                var list = new List<SelectListGroupItem>();
+
+                foreach ( IGrouping<string, Category> group in leavesQuery )
+                {
+                    var selectListGroupItem = new SelectListGroupItem { Name = group.Key };
+                    selectListGroupItem.Items= new List<SelectListItem>();
+
+                    foreach ( Category category in group )
+                    {
+                        var selectListItem = new SelectListItem();
+                        selectListItem.Text = category.Name;
+                        selectListItem.Value = category.Id.ToString();
+                        selectListGroupItem.Items.Add( selectListItem );
+                    }
+
+                    list.Add( selectListGroupItem );
+                }
+
+                return list;
             }
         }
 
