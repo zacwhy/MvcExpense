@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
+using AutoMapper;
 using MvcExpense.Models;
 using MvcExpense.ViewModels;
-using AutoMapper;
 
 namespace MvcExpense.Controllers
 { 
@@ -82,25 +80,19 @@ namespace MvcExpense.Controllers
                 int targetSequence = editModel.PreviousItemSequence + 1;
                 PaymentMethod paymentMethod = Mapper.Map<PaymentMethodEditModel, PaymentMethod>( editModel );
 
-                string sql;
-
-                if ( targetSequence != originalSequence )
-                {
-                    sql = "update PaymentMethods set Sequence = (select max(Sequence) from PaymentMethods) + 1 where Id = @p0";
-                    db.Database.ExecuteSqlCommand( sql, editModel.Id );
-                }
+                var sql = new StringBuilder( "update PaymentMethods set Sequence = (select max(Sequence) from PaymentMethods) + 1 where Id = @p0;" );
 
                 if ( targetSequence < originalSequence ) // shift forward
                 {
-                    sql = "update PaymentMethods set Sequence = Sequence + 1 where Sequence >= @p0 and Sequence < @p1";
-                    db.Database.ExecuteSqlCommand( sql, targetSequence, originalSequence );
+                    sql.Append( "update PaymentMethods set Sequence = Sequence + 1 where Sequence >= @p1 and Sequence < @p2;" );
+                    db.Database.ExecuteSqlCommand( sql.ToString(), editModel.Id, targetSequence, originalSequence );
                 }
                 else if ( targetSequence > originalSequence ) // shift backward
                 {
                     targetSequence--;
 
-                    sql = "update PaymentMethods set Sequence = Sequence - 1 where Sequence > @p0 and Sequence <= @p1";
-                    db.Database.ExecuteSqlCommand( sql, originalSequence, targetSequence );
+                    sql.Append( "update PaymentMethods set Sequence = Sequence - 1 where Sequence > @p1 and Sequence <= @p2;" );
+                    db.Database.ExecuteSqlCommand( sql.ToString(), editModel.Id, originalSequence, targetSequence );
                 }
 
                 if ( targetSequence != originalSequence )
