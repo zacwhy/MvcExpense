@@ -93,13 +93,22 @@ namespace MvcExpense
             RegisterGlobalFilters( GlobalFilters.Filters );
             RegisterRoutes( RouteTable.Routes );
 
-            Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseViewModel>();
-            Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseCreateModel>();
-            Mapper.CreateMap<OrdinaryExpense, OrdinaryExpenseEditModel>();
-
-            Mapper.CreateMap<OrdinaryExpenseViewModel, OrdinaryExpense>();
-            Mapper.CreateMap<OrdinaryExpenseCreateModel, OrdinaryExpense>();
-            Mapper.CreateMap<OrdinaryExpenseEditModel, OrdinaryExpense>();
+            CreateMaps();
         }
+
+        private void CreateMaps()
+        {
+            CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseViewModel>();
+            CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseCreateModel>();
+            CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseEditModel>();
+            CreateDuplexMap<PaymentMethod, PaymentMethodEditModel>();
+        }
+
+        private static void CreateDuplexMap<TSource, TDestination>()
+        {
+            Mapper.CreateMap<TSource, TDestination>();
+            Mapper.CreateMap<TDestination, TSource>();
+        }
+
     }
 }

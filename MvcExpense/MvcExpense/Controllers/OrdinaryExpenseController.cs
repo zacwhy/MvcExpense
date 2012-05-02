@@ -63,8 +63,8 @@ namespace MvcExpense.Controllers
         {
             var createModel = new OrdinaryExpenseCreateModel();
             createModel.Date = ExpenseEntitiesHelper.GetMostRecentDate( db );
-            PopulateCreateModel( createModel, db );
             createModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
+            PopulateCreateModel( createModel );
             return View( createModel );
         }
 
@@ -131,7 +131,7 @@ namespace MvcExpense.Controllers
                 return RedirectToAction( actionNameToRedirectTo );
             }
 
-            PopulateCreateModel( createModel, db );
+            PopulateCreateModel( createModel );
             return View( createModel );
         }
 
@@ -140,7 +140,7 @@ namespace MvcExpense.Controllers
         {
             OrdinaryExpense ordinaryExpense = db.OrdinaryExpenses.Find( id );
             OrdinaryExpenseEditModel editModel = Mapper.Map<OrdinaryExpense, OrdinaryExpenseEditModel>( ordinaryExpense );
-            PopulateEditModel( editModel, db );
+            PopulateEditModel( editModel );
             return View( editModel );
         }
 
@@ -155,7 +155,7 @@ namespace MvcExpense.Controllers
                 return RedirectToAction( "Index" );
             }
 
-            PopulateEditModel( editModel, db );
+            PopulateEditModel( editModel );
             return View( editModel );
         }
  
@@ -180,14 +180,14 @@ namespace MvcExpense.Controllers
             base.Dispose(disposing);
         }
 
-        private void PopulateCreateModel( OrdinaryExpenseCreateModel createModel, zExpenseEntities db )
+        private void PopulateCreateModel( OrdinaryExpenseCreateModel createModel )
         {
             createModel.Categories = ExpenseEntitiesCache.GetCategories( db );
             createModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );
             createModel.Consumers = ExpenseEntitiesCache.GetConsumers( db );
         }
 
-        private void PopulateEditModel( OrdinaryExpenseEditModel editModel, zExpenseEntities db )
+        private void PopulateEditModel( OrdinaryExpenseEditModel editModel )
         {
             editModel.Categories = ExpenseEntitiesCache.GetCategories( db );
             editModel.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( db );

@@ -1,4 +1,4 @@
-﻿@model MvcExpense.Models.PaymentMethod
+﻿@model MvcExpense.ViewModels.PaymentMethodEditModel
 
 @{
     ViewBag.Title = "Edit";
@@ -15,6 +15,7 @@
         <legend>PaymentMethod</legend>
 
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Sequence)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -22,6 +23,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor( model => model.PreviousItemSequence, "After" )
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor( model => model.PreviousItemSequence, Model.SequenceSelectList )
+            @Html.ValidationMessageFor( model => model.PreviousItemSequence )
         </div>
 
         <p>

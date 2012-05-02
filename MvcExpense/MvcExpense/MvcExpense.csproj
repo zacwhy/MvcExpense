@@ -132,6 +132,7 @@
     <Compile Include="HelperModels\GiveAndTakeRecord.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseCreateModel.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseEditModelBase.cs" />
+    <Compile Include="ViewModels\PaymentMethodEditModel.cs" />
     <Compile Include="ViewModels\ReportCategoryBreakdown3ViewModel.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseEditModel.cs" />
     <Compile Include="ViewModels\OrdinaryExpenseViewModel.cs" />
