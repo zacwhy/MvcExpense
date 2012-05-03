@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 using System.Web.Mvc;
 using AutoMapper;
 using MvcExpense.Models;
@@ -72,7 +73,7 @@ namespace MvcExpense.Controllers
         // POST: /PaymentMethod/Edit/5
 
         [HttpPost]
-        public ActionResult Edit( PaymentMethodEditModel editModel )//PaymentMethod paymentmethod)
+        public ActionResult Edit( PaymentMethodEditModel editModel )
         {
             if ( ModelState.IsValid )
             {
@@ -80,28 +81,43 @@ namespace MvcExpense.Controllers
                 int targetSequence = editModel.PreviousItemSequence + 1;
                 PaymentMethod paymentMethod = Mapper.Map<PaymentMethodEditModel, PaymentMethod>( editModel );
 
-                var sql = new StringBuilder( "update PaymentMethods set Sequence = (select max(Sequence) from PaymentMethods) + 1 where Id = @p0;" );
-
-                if ( targetSequence < originalSequence ) // shift forward
+                using ( var transaction = new TransactionScope() )
                 {
-                    sql.Append( "update PaymentMethods set Sequence = Sequence + 1 where Sequence >= @p1 and Sequence < @p2;" );
-                    db.Database.ExecuteSqlCommand( sql.ToString(), editModel.Id, targetSequence, originalSequence );
-                }
-                else if ( targetSequence > originalSequence ) // shift backward
-                {
-                    targetSequence--;
+                    if ( targetSequence != originalSequence )
+                    {
+                        if ( targetSequence > originalSequence ) // shift backward
+                        {
+                            targetSequence--;
+                        }
 
-                    sql.Append( "update PaymentMethods set Sequence = Sequence - 1 where Sequence > @p1 and Sequence <= @p2;" );
-                    db.Database.ExecuteSqlCommand( sql.ToString(), editModel.Id, originalSequence, targetSequence );
+                        var sql = new StringBuilder();
+
+                        // temporarily move target item to last
+                        sql.Append( "update PaymentMethods set Sequence = (select max(Sequence) from PaymentMethods) + 1 where Id = @p0;" );
+
+                        // close gap at original position
+                        sql.Append( "update PaymentMethods set Sequence = Sequence - 1 where Sequence > @p1;" );
+
+                        // open gap at target position
+                        sql.Append( "update PaymentMethods set Sequence = Sequence + 1 where Sequence >= @p2;" );
+
+                        db.Database.ExecuteSqlCommand( sql.ToString(), editModel.Id, originalSequence, targetSequence );
+
+                        paymentMethod.Sequence = targetSequence;
+                    }
+
+                    db.Entry( paymentMethod ).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    transaction.Complete();
+                    //success = true;
                 }
 
-                if ( targetSequence != originalSequence )
-                {
-                    paymentMethod.Sequence = targetSequence;
-                }
-
-                db.Entry( paymentMethod ).State = EntityState.Modified;
-                db.SaveChanges();
+                //if ( success )
+                //{
+                //    // Reset the context since the operation succeeded.
+                //    context.AcceptAllChanges();
+                //}
 
                 RefreshCachedPaymentMethods();
                 return RedirectToAction( "Index" );
