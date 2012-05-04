@@ -11,7 +11,7 @@ namespace MvcExpense.Common
     /// tugberk
     /// http://stackoverflow.com/questions/855526/removing-extra-whitespace-from-generated-html-in-mvc
     /// </summary>
-    public class RemoveWhitespacesAttribute : ActionFilterAttribute
+    public class WhitespaceFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuted( ActionExecutedContext filterContext )
         {
@@ -22,17 +22,17 @@ namespace MvcExpense.Common
             //{
             if ( response.ContentType == "text/html" && response.Filter != null )
             {
-                response.Filter = new HelperClass( response.Filter );
+                response.Filter = new WhitespaceFilterStream( response.Filter );
             }
             //}
         }
 
-        private class HelperClass : Stream
+        private class WhitespaceFilterStream : Stream
         {
             private Stream Base;
             //private StringBuilder s = new StringBuilder();
 
-            public HelperClass( Stream ResponseStream )
+            public WhitespaceFilterStream( Stream ResponseStream )
             {
                 if ( ResponseStream == null )
                 {

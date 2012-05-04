@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
+using MvcExpense.Common;
 using MvcExpense.Models;
 using MvcExpense.ViewModels;
 
@@ -43,6 +44,7 @@ namespace MvcExpense
         public static void RegisterGlobalFilters( GlobalFilterCollection filters )
         {
             filters.Add( new HandleErrorAttribute() );
+            filters.Add( new WhitespaceFilterAttribute() );
         }
 
         public static void RegisterRoutes( RouteCollection routes )
