@@ -82,6 +82,7 @@
     <Compile Include="Common\AutoMapAttribute.cs" />
     <Compile Include="Common\AutoMapFilter.cs" />
     <Compile Include="Common\BaseActionFilter.cs" />
+    <Compile Include="Common\RemoveWhitespacesAttribute.cs" />
     <Compile Include="Common\SystemParameters.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />

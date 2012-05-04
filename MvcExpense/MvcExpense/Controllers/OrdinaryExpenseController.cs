@@ -12,7 +12,8 @@ using MvcExpense.ViewModels;
 using MvcSiteMapProvider;
 
 namespace MvcExpense.Controllers
-{ 
+{
+    [RemoveWhitespaces]
     public class OrdinaryExpenseController : Controller
     {
         private zExpenseEntities db = new zExpenseEntities();

@@ -17,9 +17,10 @@ namespace MvcExpense.Common
 
         public override void OnActionExecuted( ActionExecutedContext filterContext )
         {
-            var model = filterContext.Controller.ViewData.Model;
+            object model = filterContext.Controller.ViewData.Model;
             object viewModel = Mapper.Map( model, _sourceType, _destType );
             filterContext.Controller.ViewData.Model = viewModel;
         }
+
     }
 }
