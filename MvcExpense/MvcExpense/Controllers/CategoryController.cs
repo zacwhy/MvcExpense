@@ -22,6 +22,15 @@ namespace MvcExpense.Controllers
             return View(categories.ToList());
         }
 
+        public ViewResult Tree()
+        {
+            List<Category> categories = db.Categories.ToList();
+
+            Category root = categories.Where( x => x.lft == 1 ).Single();
+
+            return View( categories );
+        }
+
         //
         // GET: /Category/Details/5
 

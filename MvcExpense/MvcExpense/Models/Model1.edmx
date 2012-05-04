@@ -39,6 +39,8 @@
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="ParentId" Type="bigint" />
+          <Property Name="lft" Type="bigint" Nullable="false" />
+          <Property Name="rgt" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Consumers">
           <Key>
@@ -182,6 +184,8 @@
           <NavigationProperty Name="Children" Relationship="zExpenseModel.FK_Categories_Categories" FromRole="Categories" ToRole="Categories1" />
           <NavigationProperty Name="Parent" Relationship="zExpenseModel.FK_Categories_Categories" FromRole="Categories1" ToRole="Categories" />
           <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_Categories" FromRole="Category" ToRole="OrdinaryExpens" />
+          <Property Type="Int64" Name="lft" Nullable="false" />
+          <Property Type="Int64" Name="rgt" Nullable="false" />
         </EntityType>
         <EntityType Name="Consumer">
           <Key>
@@ -298,7 +302,9 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="zExpenseModelStoreContainer" CdmEntityContainer="zExpenseEntities">
           <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="zExpenseModel.Category"><MappingFragment StoreEntitySet="Categories">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="rgt" ColumnName="rgt" />
+                <ScalarProperty Name="lft" ColumnName="lft" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="ParentId" ColumnName="ParentId" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -365,10 +371,10 @@
         <EntityTypeShape EntityType="zExpenseModel.Consumer" Width="1.5" PointX="0.625" PointY="3.25" Height="1.7879850260416657" IsExpanded="true" />
         <EntityTypeShape EntityType="zExpenseModel.SpecialExpense" Width="1.5" PointX="2.75" PointY="4.125" Height="2.3648893229166656" IsExpanded="true" />
         <AssociationConnector Association="zExpenseModel.FK_Categories_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.2819230769230767" PointY="2.7975878906250005" />
-          <ConnectorPoint PointX="5.2819230769230767" PointY="3.0475878906250005" />
-          <ConnectorPoint PointX="5.7284615384615378" PointY="3.0475878906250005" />
-          <ConnectorPoint PointX="5.7284615384615378" PointY="2.7975878906250005" />
+          <ConnectorPoint PointX="5.2819230769230767" PointY="3.1821907552083331" />
+          <ConnectorPoint PointX="5.2819230769230767" PointY="3.4321907552083326" />
+          <ConnectorPoint PointX="5.7284615384615378" PointY="3.4321907552083326" />
+          <ConnectorPoint PointX="5.7284615384615378" PointY="3.1821907552083331" />
         </AssociationConnector>
         <AssociationConnector Association="zExpenseModel.FK_SpecialExpenses_Consumers" ManuallyRouted="false">
           <ConnectorPoint PointX="2.125" PointY="4.5814925130208328" />
@@ -383,10 +389,10 @@
           <ConnectorPoint PointX="2.125" PointY="3.6006982421875" />
           <ConnectorPoint PointX="2.75" PointY="3.6006982421875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="zExpenseModel.PaymentMethod" Width="1.5" PointX="4.75" PointY="3.25" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="zExpenseModel.PaymentMethod" Width="1.5" PointX="4.75" PointY="3.625" Height="1.7879850260416665" />
         <AssociationConnector Association="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods" >
-          <ConnectorPoint PointX="4.75" PointY="3.6006982421875" />
-          <ConnectorPoint PointX="4.25" PointY="3.6006982421875" />
+          <ConnectorPoint PointX="4.75" PointY="3.7881982421875" />
+          <ConnectorPoint PointX="4.25" PointY="3.7881982421875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

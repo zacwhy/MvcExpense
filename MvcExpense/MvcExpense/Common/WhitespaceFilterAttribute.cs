@@ -51,6 +51,8 @@ namespace MvcExpense.Common
                 var reg = new Regex( @"(?<=\s)\s+(?![^<>]*</pre>)" );
                 html = reg.Replace( html, string.Empty );
 
+                html = Regex.Replace( html, @"\r\n?|\n", string.Empty );
+
                 buffer = Encoding.UTF8.GetBytes( html );
                 this.Base.Write( buffer, 0, buffer.Length );
             }
