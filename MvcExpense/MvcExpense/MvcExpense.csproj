@@ -47,6 +47,12 @@
     <Reference Include="EntityFramework.Extended">
       <HintPath>..\packages\EntityFramework.Extended.1.0.0.20\lib\net40\EntityFramework.Extended.dll</HintPath>
     </Reference>
+    <Reference Include="Ext.Net">
+      <HintPath>..\packages\Ext.NET.2.0.0-beta\lib\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net.Utilities">
+      <HintPath>..\packages\Ext.NET.Utilities.2.0.0\lib\Ext.Net.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\packages\MvcSiteMapProvider.3.2.1.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
@@ -76,6 +82,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Transformer.NET">
+      <HintPath>..\packages\Transformer.NET.2.0.0\lib\Transformer.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AssetsHelper.cs" />
@@ -146,6 +155,13 @@
     <Compile Include="ViewModels\TestEditorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
+    <Content Include="App_Readme\Ext.NET.LICENSE.txt" />
+    <Content Include="App_Readme\Ext.NET.README.txt" />
+    <Content Include="App_Readme\Ext.NET.Utilities.LICENSE.txt" />
+    <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
+    <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
+    <Content Include="App_Readme\Transformer.NET.README.txt" />
     <Content Include="Content\icons\currency_dollar_yellow.ico" />
     <Content Include="Content\icons\emblem_money.ico" />
     <Content Include="Content\Menu\arrowsub.png" />
