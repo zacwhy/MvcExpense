@@ -1,51 +1,30 @@
-﻿@model IEnumerable<MvcExpense.Models.Category>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Parent
-        </th>
-        <th>
-            Left
-        </th>
-        <th>
-            Right
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <title>Tree</title>
+</head>
+<body>
+    @Html.X().ResourceManager()
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Parent.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lft)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rgt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+    @(Html.X().TreePanel()
+        .Width( 300 )
+        .Height( 450 )
+        .UseArrows( true )
+        .Animate( true )
+        .CustomConfig( customConfig =>
+        {
+            customConfig.Add( new ConfigItem( "viewConfig", "{ plugins : { ptype: 'treeviewdragdrop' } }", ParameterMode.Raw ) );
+        } )
+        //.AddListener( "ItemMove", "moveNode" )
+        .Root( root =>
+        {
+            root.Add( new Node() { NodeID = "root", Text = "Root", Qtip = "Root Tip" } );
+        } )
+    )
+</body>
+</html>

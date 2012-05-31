@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web.Mvc;
 using AutoMapper;
 using MvcExpense.Common;
+using MvcExpense.DAL;
 using MvcExpense.Models;
 using MvcExpense.ViewModels;
 using MvcSiteMapProvider;
@@ -15,47 +16,30 @@ namespace MvcExpense.Controllers
 {
     public class OrdinaryExpenseController : Controller
     {
-        private zExpenseEntities db = new zExpenseEntities();
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        private zExpenseEntities db = new zExpenseEntities(); // todo remove
 
-        public ViewResult Index( int? year, int? month )
+        public ViewResult Index( int? year, int? month, int? day )
         {
-            if ( !year.HasValue )
-            {
-                year = DateTime.Now.Year;
-            }
+            DateRange dateRange = DateRange.CreateDateRange( year, month, day, DateTime.Now );
+            Expression<Func<OrdinaryExpense, bool>> filter = x => x.Date >= dateRange.StartDate && x.Date < dateRange.EndDate;
+            Func<IQueryable<OrdinaryExpense>, IOrderedQueryable<OrdinaryExpense>> orderBy = o => o.OrderByDescending( x => new { x.Date, x.Sequence } );
+            string includeProperties = "Category,Consumer,PaymentMethod";
+            //query = query.Include( o => o.PaymentMethod ).Include( o => o.Consumer );
+            IEnumerable<OrdinaryExpense> enumerable = unitOfWork.OrdinaryExpenseRepository.Get( filter: filter, orderBy: orderBy, includeProperties: includeProperties );
+            List<OrdinaryExpense> list = enumerable.ToList();
 
-            if ( !month.HasValue )
-            {
-                month = DateTime.Now.Month;
-            }
+            ViewBag.StartDate = dateRange.StartDate;
+            ViewBag.EndDate = dateRange.EndDate.AddDays( -1 );
 
-            DateTime beginOfCurrentMonth = new DateTime( year.Value, month.Value, 1 );
-
-            var ordinaryExpensesQuery1 = db.OrdinaryExpenses.Where( x => x.Date >= beginOfCurrentMonth );
-
-            // if there are no records in current month, display records from most recent date
-            if ( ordinaryExpensesQuery1.Count() == 0 )
-            {
-                ordinaryExpensesQuery1 =
-                    from x in db.OrdinaryExpenses
-                    where x.Date == db.OrdinaryExpenses.Max( y => y.Date )
-                    select x;
-            }
-
-            var ordinaryExpensesQuery = ordinaryExpensesQuery1
-                .OrderByDescending( x => new { x.Date, x.Sequence } )
-                .Include( o => o.Category )
-                .Include( o => o.Consumer );
-
-            IList<OrdinaryExpense> ordinaryExpenses = ordinaryExpensesQuery.ToList();
-
-            return View( ordinaryExpenses );
+            return View( list );
         }
 
         [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseViewModel ) )]
         public ViewResult Details(long id)
         {
-            OrdinaryExpense ordinaryexpense = db.OrdinaryExpenses.Find(id);
+            OrdinaryExpense ordinaryexpense = unitOfWork.OrdinaryExpenseRepository.GetById( id );
+            //OrdinaryExpense ordinaryexpense = db.OrdinaryExpenses.Find(id);
             return View(ordinaryexpense);
         }
 
@@ -102,12 +86,26 @@ namespace MvcExpense.Controllers
                     double primaryConsumerPrice = createModel.Price - averagePrice * ( consumerCount - 1 );
                     int i = 0;
 
+                    Category treat = ExpenseEntitiesCache.GetCategories( db ).Where( x => x.Name == "Treat" ).Single();
+
                     foreach ( long consumerId in createModel.SelectedConsumerIds )
                     {
-                        ordinaryExpense.Sequence = sequence + i;
-                        ordinaryExpense.ConsumerId = consumerId;
-                        ordinaryExpense.Price = i == 0 ? primaryConsumerPrice : averagePrice;
-                        db.OrdinaryExpenses.Add( ordinaryExpense );
+                        OrdinaryExpense clone = ordinaryExpense.CloneOrdinaryExpense();
+                        clone.Sequence = sequence + i;
+                        clone.ConsumerId = consumerId;
+
+                        bool isPrimaryConsumer = ( i == 0 );
+                        if ( isPrimaryConsumer )
+                        {
+                            clone.Price = primaryConsumerPrice;
+                        }
+                        else
+                        {
+                            clone.CategoryId = treat.Id;
+                            clone.Price = averagePrice;
+                        }
+
+                        db.OrdinaryExpenses.Add( clone );
                         i++;
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
@@ -55,37 +56,25 @@ namespace MvcExpense
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = DefaultController, action = DefaultAction, id = UrlParameter.Optional } // Parameter defaults
-            );
-
-            //routes.MapRoute(
-            //    "Default", // Route name
-            //    "{controller}/{action}/{id}", // URL with parameters
-            //    new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            //);
+                //new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+           );
 
             routes.MapRoute(
-                "OrdinaryExpense-ByMonth",
-                "OrdinaryExpense/{action}/{year}/{month}",
+                "Ordinary Expense Index",
+                "OrdinaryExpense/Index/Range/{year}/{month}/{day}",
                 new
                 {
                     controller = "OrdinaryExpense",
                     action = "Index",
-                    //year = UrlParameter.Optional,
-                    month = UrlParameter.Optional
-                }// Parameter defaults
-            );
-
-            routes.MapRoute(
-                "OrdinaryExpense-ByYear",
-                "OrdinaryExpense/{action}/{year}",
+                    year = UrlParameter.Optional,
+                    month = UrlParameter.Optional,
+                    day = UrlParameter.Optional
+                }/*,
                 new
                 {
-                    controller = "OrdinaryExpense",
-                    action = "Index",
-                    year = UrlParameter.Optional
-                }// Parameter defaults
+                    year = @"\d{4}"
+                }*/
             );
-
         }
 
         protected void Application_Start()
@@ -96,6 +85,16 @@ namespace MvcExpense
             RegisterRoutes( RouteTable.Routes );
 
             CreateMaps();
+        }
+
+        protected void Application_AuthenticateRequest( object sender, System.EventArgs e )
+        {
+            string url = HttpContext.Current.Request.FilePath;
+
+            if ( url.EndsWith( "ext.axd" ) )
+            {
+                HttpContext.Current.SkipAuthorization = true;
+            }
         }
 
         private void CreateMaps()

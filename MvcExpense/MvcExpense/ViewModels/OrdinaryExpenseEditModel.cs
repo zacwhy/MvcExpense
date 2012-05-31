@@ -4,7 +4,7 @@ using MvcExpense.Models;
 
 namespace MvcExpense.ViewModels
 {
-    public class OrdinaryExpenseEditModel : OrdinaryExpenseEditModelBase
+    public class OrdinaryExpenseEditModel : OrdinaryExpenseCreateEditModelBase
     {
         public int Sequence { get; set; }
 

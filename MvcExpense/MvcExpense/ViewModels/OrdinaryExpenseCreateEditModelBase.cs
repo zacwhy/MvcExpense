@@ -7,7 +7,7 @@ using MvcExpense.Models;
 
 namespace MvcExpense.ViewModels
 {
-    public class OrdinaryExpenseEditModelBase
+    public class OrdinaryExpenseCreateEditModelBase
     {
         public long Id { get; set; }
 

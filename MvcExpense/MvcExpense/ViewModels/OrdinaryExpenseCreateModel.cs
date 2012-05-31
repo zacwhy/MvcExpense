@@ -4,7 +4,7 @@ using MvcExpense.Models;
 
 namespace MvcExpense.ViewModels
 {
-    public class OrdinaryExpenseCreateModel : OrdinaryExpenseEditModelBase
+    public class OrdinaryExpenseCreateModel : OrdinaryExpenseCreateEditModelBase
     {
         public long[] SelectedConsumerIds { get; set; }
 
