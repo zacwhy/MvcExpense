@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="026fe56a-6a4e-4314-8d0e-372d261c325c" name="KIMLZY2@IN40400042-0 2012-05-31 18:35:25" runUser="KKHAD\KIMLZY2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="741b0fc6-88c5-47ff-9f30-07ba06fac066">
+    <Deployment runDeploymentRoot="KIMLZY2_IN40400042-0 2012-05-31 18_35_25">
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense\bin\MvcExpense.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-05-31T18:35:25.3910787+08:00" queuing="2012-05-31T18:35:38.6370787+08:00" start="2012-05-31T18:35:39.5030787+08:00" finish="2012-05-31T18:35:40.7810787+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestCreateDateRange" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="761dfcab-e528-7303-81bd-2ca1f685f3dc">
+      <Execution id="5bf1f7f2-c001-40d8-9625-b1b17a40388c" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRange" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="761dfcab-e528-7303-81bd-2ca1f685f3dc" executionId="5bf1f7f2-c001-40d8-9625-b1b17a40388c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="5bf1f7f2-c001-40d8-9625-b1b17a40388c" testId="761dfcab-e528-7303-81bd-2ca1f685f3dc" testName="TestCreateDateRange" computerName="IN40400042-0" duration="00:00:00.1109521" startTime="2012-05-31T18:35:39.8170787+08:00" endTime="2012-05-31T18:35:40.7150787+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bf1f7f2-c001-40d8-9625-b1b17a40388c">
+    </UnitTestResult>
+  </Results>
+</TestRun>

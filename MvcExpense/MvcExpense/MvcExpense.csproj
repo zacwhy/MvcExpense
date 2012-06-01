@@ -90,32 +90,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AssetsHelper.cs" />
-    <Compile Include="Common\AutoMapAttribute.cs" />
-    <Compile Include="Common\AutoMapFilter.cs" />
-    <Compile Include="Common\BaseActionFilter.cs" />
-    <Compile Include="Common\DateRange.cs" />
-    <Compile Include="Common\WhitespaceFilterAttribute.cs" />
-    <Compile Include="Common\SystemParameters.cs" />
+    <Compile Include="DAL\IMvcExpenseUnitOfWork.cs" />
+    <Compile Include="DAL\OrdinaryExpenseRepository.cs" />
+    <Compile Include="DAL\MvcExpenseUnitOfWork.cs" />
+    <Compile Include="MvcExpenseHelper\SystemParameters.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ConsumerController.cs" />
-    <Compile Include="Common\MultiButtonAttribute.cs" />
     <Compile Include="Controllers\PaymentMethodController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryExpenseController.cs" />
     <Compile Include="Controllers\TestEditorController.cs" />
-    <Compile Include="DAL\GenericRepository.cs" />
-    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HelperClasses\EnhancedMath.cs" />
-    <Compile Include="HelperClasses\ExpenseEntitiesCache.cs" />
-    <Compile Include="HelperClasses\ExpenseEntitiesHelper.cs" />
-    <Compile Include="HelperClasses\GroupSelect\GroupSelectExtensions.cs" />
-    <Compile Include="HelperClasses\GroupSelect\SelectListGroupItem.cs" />
+    <Compile Include="MvcExpenseHelper\ExpenseEntitiesCache.cs" />
+    <Compile Include="Services\OrdinaryExpenseService.cs" />
     <Compile Include="HelperModels\CategoryBreakdownRecord.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs">
@@ -169,6 +160,7 @@
     <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
     <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET.README.txt" />
+    <Content Include="Content\Flash.css" />
     <Content Include="Content\icons\currency_dollar_yellow.ico" />
     <Content Include="Content\icons\emblem_money.ico" />
     <Content Include="Content\Menu\arrowsub.png" />
@@ -328,6 +320,48 @@
     <Content Include="Views\TestEditor\Create.cshtml" />
     <Content Include="Views\Category\Tree2.cshtml" />
     <Content Include="Views\Category\Tree.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zac.DateRange\Zac.DateRange.csproj">
+      <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
+      <Name>Zac.DateRange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">
+      <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
+      <Name>Zac.DesignPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.EnhancedMath\Zac.EnhancedMath.csproj">
+      <Project>{BEFF9125-6995-4326-BAF1-DA225FD41DE8}</Project>
+      <Name>Zac.EnhancedMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj">
+      <Project>{CBF838CB-92E4-432E-B1B8-6A969011FD82}</Project>
+      <Name>Zac.MvcAssetsHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj">
+      <Project>{23F51B9E-46DE-4E3C-B3FC-E36D87A53A10}</Project>
+      <Name>Zac.MvcAutoMapAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcBaseActionFilter\Zac.MvcBaseActionFilter.csproj">
+      <Project>{A8FB4C9B-C085-4F45-8AA6-5DF3F8FC54FE}</Project>
+      <Name>Zac.MvcBaseActionFilter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
+      <Project>{E62DB75F-F7A2-4D0D-A824-737096180578}</Project>
+      <Name>Zac.MvcFlashMessage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj">
+      <Project>{FE62D070-5DDC-4D07-8029-A4CEBA057674}</Project>
+      <Name>Zac.MvcGroupSelectHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj">
+      <Project>{66A0999F-8497-4722-9EC2-3822472AF0BE}</Project>
+      <Name>Zac.MvcMultiButtonAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj">
+      <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
+      <Name>Zac.MvcWhitespaceFilterAttribute</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

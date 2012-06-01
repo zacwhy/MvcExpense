@@ -1,0 +1,10 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\bin\Debug\Zac.MvcBaseActionFilter.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\bin\Debug\Zac.MvcBaseActionFilter.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\Zac.MvcBaseActionFilter.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\Zac.MvcBaseActionFilter.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcBaseActionFilter\bin\Debug\Zac.MvcBaseActionFilter.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcBaseActionFilter\bin\Debug\Zac.MvcBaseActionFilter.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcBaseActionFilter\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcBaseActionFilter\obj\Debug\Zac.MvcBaseActionFilter.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcBaseActionFilter\obj\Debug\Zac.MvcBaseActionFilter.pdb

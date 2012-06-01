@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
-using MvcExpense.Common;
 using MvcExpense.Models;
 using MvcExpense.ViewModels;
+using Zac.MvcWhitespaceFilterAttribute;
 
 namespace MvcExpense
 {

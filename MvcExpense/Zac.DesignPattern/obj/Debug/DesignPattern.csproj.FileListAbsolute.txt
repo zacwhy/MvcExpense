@@ -1,0 +1,7 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\bin\Debug\DesignPattern.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\bin\Debug\DesignPattern.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\obj\Debug\DesignPattern.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\obj\Debug\DesignPattern.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\bin\Debug\EntityFramework.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\DesignPattern\bin\Debug\EntityFramework.xml

@@ -1,0 +1,1 @@
+﻿http://kazimanzurrashid.com/posts/adding-rails-like-flash-message-in-asp-dot-net-mvc

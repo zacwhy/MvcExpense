@@ -1,0 +1,1 @@
+﻿http://lostechies.com/jimmybogard/2009/06/30/how-we-do-mvc-view-models/

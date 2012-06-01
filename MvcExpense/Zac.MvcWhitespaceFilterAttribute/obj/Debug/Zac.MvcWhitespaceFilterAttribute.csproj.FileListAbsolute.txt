@@ -1,0 +1,10 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\bin\Debug\Zac.MvcWhitespaceFilterAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\bin\Debug\Zac.MvcWhitespaceFilterAttribute.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\Zac.MvcWhitespaceFilterAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\Zac.MvcWhitespaceFilterAttribute.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcWhitespaceFilterAttribute\bin\Debug\Zac.MvcWhitespaceFilterAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcWhitespaceFilterAttribute\bin\Debug\Zac.MvcWhitespaceFilterAttribute.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcWhitespaceFilterAttribute\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcWhitespaceFilterAttribute\obj\Debug\Zac.MvcWhitespaceFilterAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcWhitespaceFilterAttribute\obj\Debug\Zac.MvcWhitespaceFilterAttribute.pdb

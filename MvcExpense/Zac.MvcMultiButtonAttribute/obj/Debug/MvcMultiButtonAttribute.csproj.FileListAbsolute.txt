@@ -1,0 +1,5 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcMultiButtonAttribute\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcMultiButtonAttribute\bin\Debug\MvcMultiButtonAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcMultiButtonAttribute\bin\Debug\MvcMultiButtonAttribute.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcMultiButtonAttribute\obj\Debug\MvcMultiButtonAttribute.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcMultiButtonAttribute\obj\Debug\MvcMultiButtonAttribute.pdb

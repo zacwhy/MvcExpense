@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="51d10097-7879-412c-84fd-7ccb0d759599" name="KIMLZY2@IN40400042-0 2012-05-31 18:50:42" runUser="KKHAD\KIMLZY2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="73126a45-ad70-40bc-bf4b-26e0ba0e6812">
+    <Deployment runDeploymentRoot="KIMLZY2_IN40400042-0 2012-05-31 18_50_42">
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense\bin\MvcExpense.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-05-31T18:50:42.5044957+08:00" queuing="2012-05-31T18:50:43.4295882+08:00" start="2012-05-31T18:50:43.4515904+08:00" finish="2012-05-31T18:50:44.1466599+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestCreateDateRangeWithMonthDay" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="f05442bb-1c81-e40a-1104-6d8b97ad5464">
+      <Execution id="95ca2477-c205-4222-ac4b-332f778b81d5" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRangeWithMonthDay" />
+    </UnitTest>
+    <UnitTest name="TestCreateDateRange" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="761dfcab-e528-7303-81bd-2ca1f685f3dc">
+      <Execution id="4a46e300-4be4-46c8-881e-9e6be179fd61" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRange" />
+    </UnitTest>
+    <UnitTest name="TestCreateDateRangeWithYear" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="e551eecc-a616-980c-8cbe-e219726e6237">
+      <Execution id="01697871-9575-47a3-ac93-51650347af6f" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRangeWithYear" />
+    </UnitTest>
+    <UnitTest name="TestCreateDateRangeWithYearMonth" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="7273be56-64d0-6514-7f58-c6d4a20c76ca">
+      <Execution id="47692dcf-760c-4ccd-8612-d43c8c700e81" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRangeWithYearMonth" />
+    </UnitTest>
+    <UnitTest name="TestCreateDateRangeWithYearMonthDay" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="10b726d5-82e6-aa0e-9f82-1a36dea97f6f">
+      <Execution id="03d04e7d-109f-4222-9738-076d413c6e24" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRangeWithYearMonthDay" />
+    </UnitTest>
+    <UnitTest name="TestCreateDateRangeWithYearDay" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="1fa74abe-018b-7d97-ef87-f45cb42dfca3">
+      <Execution id="f08c1eda-900d-4f3a-9b53-b05c81853b4b" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.HelperClasses.DateRangeTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestCreateDateRangeWithYearDay" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="10b726d5-82e6-aa0e-9f82-1a36dea97f6f" executionId="03d04e7d-109f-4222-9738-076d413c6e24" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1fa74abe-018b-7d97-ef87-f45cb42dfca3" executionId="f08c1eda-900d-4f3a-9b53-b05c81853b4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7273be56-64d0-6514-7f58-c6d4a20c76ca" executionId="47692dcf-760c-4ccd-8612-d43c8c700e81" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="761dfcab-e528-7303-81bd-2ca1f685f3dc" executionId="4a46e300-4be4-46c8-881e-9e6be179fd61" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e551eecc-a616-980c-8cbe-e219726e6237" executionId="01697871-9575-47a3-ac93-51650347af6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f05442bb-1c81-e40a-1104-6d8b97ad5464" executionId="95ca2477-c205-4222-ac4b-332f778b81d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="03d04e7d-109f-4222-9738-076d413c6e24" testId="10b726d5-82e6-aa0e-9f82-1a36dea97f6f" testName="TestCreateDateRangeWithYearMonthDay" computerName="IN40400042-0" duration="00:00:00.0384147" startTime="2012-05-31T18:50:43.4795932+08:00" endTime="2012-05-31T18:50:44.0026455+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="03d04e7d-109f-4222-9738-076d413c6e24">
+    </UnitTestResult>
+    <UnitTestResult executionId="f08c1eda-900d-4f3a-9b53-b05c81853b4b" testId="1fa74abe-018b-7d97-ef87-f45cb42dfca3" testName="TestCreateDateRangeWithYearDay" computerName="IN40400042-0" duration="00:00:00.0007202" startTime="2012-05-31T18:50:44.0096462+08:00" endTime="2012-05-31T18:50:44.0176470+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f08c1eda-900d-4f3a-9b53-b05c81853b4b">
+    </UnitTestResult>
+    <UnitTestResult executionId="47692dcf-760c-4ccd-8612-d43c8c700e81" testId="7273be56-64d0-6514-7f58-c6d4a20c76ca" testName="TestCreateDateRangeWithYearMonth" computerName="IN40400042-0" duration="00:00:00.0006879" startTime="2012-05-31T18:50:44.0236476+08:00" endTime="2012-05-31T18:50:44.0306483+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="47692dcf-760c-4ccd-8612-d43c8c700e81">
+    </UnitTestResult>
+    <UnitTestResult executionId="4a46e300-4be4-46c8-881e-9e6be179fd61" testId="761dfcab-e528-7303-81bd-2ca1f685f3dc" testName="TestCreateDateRange" computerName="IN40400042-0" duration="00:00:00.0007464" startTime="2012-05-31T18:50:44.0376490+08:00" endTime="2012-05-31T18:50:44.0446497+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4a46e300-4be4-46c8-881e-9e6be179fd61">
+    </UnitTestResult>
+    <UnitTestResult executionId="01697871-9575-47a3-ac93-51650347af6f" testId="e551eecc-a616-980c-8cbe-e219726e6237" testName="TestCreateDateRangeWithYear" computerName="IN40400042-0" duration="00:00:00.0006601" startTime="2012-05-31T18:50:44.0516504+08:00" endTime="2012-05-31T18:50:44.0616514+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01697871-9575-47a3-ac93-51650347af6f">
+    </UnitTestResult>
+    <UnitTestResult executionId="95ca2477-c205-4222-ac4b-332f778b81d5" testId="f05442bb-1c81-e40a-1104-6d8b97ad5464" testName="TestCreateDateRangeWithMonthDay" computerName="IN40400042-0" duration="00:00:00.0006852" startTime="2012-05-31T18:50:44.0676520+08:00" endTime="2012-05-31T18:50:44.1066559+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95ca2477-c205-4222-ac4b-332f778b81d5">
+    </UnitTestResult>
+  </Results>
+</TestRun>

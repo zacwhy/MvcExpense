@@ -147,7 +147,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="zExpenseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="zExpenseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MvcExpenseDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="zExpenseModel.Category" />
           <EntitySet Name="Consumers" EntityType="zExpenseModel.Consumer" />
           <EntitySet Name="SpecialExpenses" EntityType="zExpenseModel.SpecialExpense" />
@@ -300,7 +300,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="zExpenseModelStoreContainer" CdmEntityContainer="zExpenseEntities">
+        <EntityContainerMapping StorageEntityContainer="zExpenseModelStoreContainer" CdmEntityContainer="MvcExpenseDbContext">
           <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="zExpenseModel.Category"><MappingFragment StoreEntitySet="Categories">
             <ScalarProperty Name="rgt" ColumnName="rgt" />
                 <ScalarProperty Name="lft" ColumnName="lft" />

@@ -13,10 +13,10 @@ namespace MvcExpense.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class zExpenseEntities : DbContext
+    public partial class MvcExpenseDbContext : DbContext
     {
-        public zExpenseEntities()
-            : base("name=zExpenseEntities")
+        public MvcExpenseDbContext()
+            : base("name=MvcExpenseDbContext")
         {
         }
     

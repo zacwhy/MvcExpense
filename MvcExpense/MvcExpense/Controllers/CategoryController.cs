@@ -11,7 +11,7 @@ namespace MvcExpense.Controllers
 { 
     public class CategoryController : Controller
     {
-        private zExpenseEntities db = new zExpenseEntities();
+        private MvcExpenseDbContext db = new MvcExpenseDbContext();
 
         //
         // GET: /Category/

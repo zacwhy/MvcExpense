@@ -1,0 +1,5 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\EnhancedMath\bin\Debug\EnhancedMath.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\EnhancedMath\bin\Debug\EnhancedMath.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\EnhancedMath\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\EnhancedMath\obj\Debug\EnhancedMath.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\EnhancedMath\obj\Debug\EnhancedMath.pdb

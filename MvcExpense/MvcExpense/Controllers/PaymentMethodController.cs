@@ -5,6 +5,7 @@ using System.Text;
 using System.Transactions;
 using System.Web.Mvc;
 using AutoMapper;
+using MvcExpense.DAL;
 using MvcExpense.Models;
 using MvcExpense.ViewModels;
 
@@ -12,7 +13,8 @@ namespace MvcExpense.Controllers
 { 
     public class PaymentMethodController : Controller
     {
-        private zExpenseEntities db = new zExpenseEntities();
+        private MvcExpenseUnitOfWork unitOfWork = new MvcExpenseUnitOfWork();
+        private MvcExpenseDbContext db = new MvcExpenseDbContext();
 
         //
         // GET: /PaymentMethod/
@@ -149,6 +151,7 @@ namespace MvcExpense.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            unitOfWork.Dispose();
             db.Dispose();
             base.Dispose(disposing);
         }
@@ -160,7 +163,7 @@ namespace MvcExpense.Controllers
 
         private void RefreshCachedPaymentMethods()
         {
-            ExpenseEntitiesCache.RefreshPaymentMethods( db );
+            ExpenseEntitiesCache.RefreshPaymentMethods( unitOfWork );
         }
 
     }

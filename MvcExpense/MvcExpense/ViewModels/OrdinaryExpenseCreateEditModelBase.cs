@@ -49,7 +49,7 @@ namespace MvcExpense.ViewModels
 
         private static IList<SelectListGroupItem> GetCategoriesGroupSelectList( IList<Category> categories )
         {
-            IEnumerable<IGrouping<string, Category>> leavesQuery =
+            IEnumerable<IGrouping<string, Category>> queryLeaves =
                     from x in categories
                     where x.Children.Count == 0
                     group x by x.Parent.Name into grouping
@@ -57,7 +57,7 @@ namespace MvcExpense.ViewModels
 
             var list = new List<SelectListGroupItem>();
 
-            foreach ( IGrouping<string, Category> group in leavesQuery )
+            foreach ( IGrouping<string, Category> group in queryLeaves )
             {
                 var selectListGroupItem = new SelectListGroupItem { Name = group.Key };
                 selectListGroupItem.Items = new List<SelectListItem>();

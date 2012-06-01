@@ -11,7 +11,7 @@ namespace MvcExpense.Controllers
 { 
     public class ReportController : Controller
     {
-        private zExpenseEntities db = new zExpenseEntities();
+        private MvcExpenseDbContext db = new MvcExpenseDbContext();
 
         public ViewResult Index()
         {

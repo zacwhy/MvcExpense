@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcExpense.Models.OrdinaryExpense>
+﻿@model IEnumerable<MvcExpense.ViewModels.OrdinaryExpenseViewModel>
 
 @{
     ViewBag.Title = "Ordinary Expense";
@@ -6,6 +6,8 @@
 
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.StartDate.ToString( "dd-MMM-yyyy" ) to @ViewBag.EndDate.ToString( "dd-MMM-yyyy" )</h3>
+
+@Html.Flash()
 
 <h3>To do</h3>
 <ol>
@@ -59,16 +61,16 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Consumer.Name)
+                @Html.DisplayFor(modelItem => item.ConsumerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod.Name)
+                @Html.DisplayFor(modelItem => item.PaymentMethodName)
             </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.Remarks)
