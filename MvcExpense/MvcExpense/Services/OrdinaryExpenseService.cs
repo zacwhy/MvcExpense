@@ -33,7 +33,7 @@ namespace MvcExpense.Services
             return sequence + 1;
         }
 
-        public static List<OrdinaryExpense> GetOrdinaryExpenses( IMvcExpenseUnitOfWork unitOfWork, OrdinaryExpenseCreateModel createModel, IList<Category> categories )
+        public static List<OrdinaryExpense> GetOrdinaryExpenses( IMvcExpenseUnitOfWork unitOfWork, OrdinaryExpenseCreateModel createModel, IEnumerable<Category> categories )
         {
             int sequence = NewSequence( unitOfWork, createModel.Date );
             List<OrdinaryExpense> list = GetOrdinaryExpenses( createModel, sequence, categories );

@@ -63,19 +63,19 @@ namespace MvcExpense.Controllers
         // POST: /PaymentMethod/Create
 
         [HttpPost]
-        public ActionResult Create(PaymentMethod paymentmethod)
+        public ActionResult Create( PaymentMethod model )
         {
-            if (ModelState.IsValid)
+            if ( ModelState.IsValid )
             {
-                db.PaymentMethods.Add(paymentmethod);
+                db.PaymentMethods.Add( model );
                 db.SaveChanges();
                 RefreshCachedPaymentMethods();
-                return RedirectToAction( "Index" );  
+                return RedirectToAction( "Index" );
             }
 
-            return View(paymentmethod);
+            return View( model );
         }
-        
+
         //
         // GET: /PaymentMethod/Edit/5
 

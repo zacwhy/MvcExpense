@@ -21,5 +21,22 @@ namespace MvcExpense.DAL
             return query;
         }
 
+        //private StandardRepository<OrdinaryExpense> _internalStandardRepository;
+
+        //public OrdinaryExpenseRepository( DbContext context )
+        //{
+        //    _internalStandardRepository = new StandardRepository<OrdinaryExpense>( context );
+        //}
+
+        //public IQueryable<OrdinaryExpense> GetWithDateRange( DateRange dateRange )
+        //{
+        //    IQueryable<OrdinaryExpense> query =
+        //        from x in _internalStandardRepository.GetQueryable()
+        //        where x.Date >= dateRange.StartDate && x.Date < dateRange.EndDate
+        //        select x;
+
+        //    return query;
+        //}
+
     }
 }

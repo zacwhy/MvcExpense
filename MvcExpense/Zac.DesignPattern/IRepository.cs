@@ -8,7 +8,7 @@ namespace Zac.DesignPattern
     public interface IRepository<TEntity, TId> where TEntity : class
     {
         IQueryable<TEntity> GetQueryable();
-
+        IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,

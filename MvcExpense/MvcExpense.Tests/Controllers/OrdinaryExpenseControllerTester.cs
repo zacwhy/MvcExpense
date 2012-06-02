@@ -40,7 +40,7 @@ namespace MvcExpense.Tests.Controllers
             ViewResult viewResult = controller.Index( 2012, 5, 31 );
 
             // Assert
-            Assert.That( viewResult.ViewName, Is.EqualTo( "" ) );
+            Assert.That( viewResult.ViewName, Is.EqualTo( "a" ) );
             //Assert.That( viewResult.ViewData.Model, Is.EqualTo( "" ) );
         }
 

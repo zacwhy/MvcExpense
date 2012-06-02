@@ -82,6 +82,7 @@ namespace MvcExpense.Controllers
             return View( model );
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Create()
         {
             var createModel = new OrdinaryExpenseCreateModel();
@@ -204,7 +205,7 @@ namespace MvcExpense.Controllers
             base.Dispose( disposing );
         }
 
-        private IList<Category> Categories
+        private IEnumerable<Category> Categories
         {
             get
             {
@@ -224,9 +225,9 @@ namespace MvcExpense.Controllers
 
         private void PopulateModelBase( OrdinaryExpenseCreateEditModelBase modelBase )
         {
-            modelBase.Categories = Categories;
-            modelBase.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( _unitOfWork );
-            modelBase.Consumers = ExpenseEntitiesCache.GetConsumers( _unitOfWork );
+            modelBase.Categories = Categories.ToList();
+            modelBase.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( _unitOfWork ).ToList();
+            modelBase.Consumers = ExpenseEntitiesCache.GetConsumers( _unitOfWork ).ToList();
         }
 
     }

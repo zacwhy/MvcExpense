@@ -32,7 +32,13 @@ namespace Zac.DesignPattern
         // added 2012-06-02
         public IQueryable<TEntity> GetQueryable()
         {
-            return _dbSet.AsQueryable();
+            return _dbSet.AsNoTracking().AsQueryable();
+        }
+
+        // added 2012-06-02
+        public IEnumerable<TEntity> GetAll()
+        {
+            return Get();
         }
 
         public virtual IEnumerable<TEntity> Get(

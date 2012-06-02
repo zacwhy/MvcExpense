@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using MvcExpense.DAL;
 using MvcExpense.Models;
 
@@ -7,11 +6,11 @@ namespace MvcExpense.MvcExpenseHelper
 {
     public static class ExpenseEntitiesCache
     {
-        private static IList<Category> _categories;
-        private static IList<PaymentMethod> _paymentMethods;
-        private static IList<Consumer> _consumers;
+        private static IEnumerable<Category> _categories;
+        private static IEnumerable<PaymentMethod> _paymentMethods;
+        private static IEnumerable<Consumer> _consumers;
 
-        public static IList<Category> GetCategories( IMvcExpenseUnitOfWork unitOfWork )
+        public static IEnumerable<Category> GetCategories( IMvcExpenseUnitOfWork unitOfWork )
         {
             if ( _categories == null )
             {
@@ -20,7 +19,7 @@ namespace MvcExpense.MvcExpenseHelper
             return _categories;
         }
 
-        public static IList<PaymentMethod> GetPaymentMethods( IMvcExpenseUnitOfWork unitOfWork )
+        public static IEnumerable<PaymentMethod> GetPaymentMethods( IMvcExpenseUnitOfWork unitOfWork )
         {
             if ( _paymentMethods == null )
             {
@@ -29,7 +28,7 @@ namespace MvcExpense.MvcExpenseHelper
             return _paymentMethods;
         }
 
-        public static IList<Consumer> GetConsumers( IMvcExpenseUnitOfWork unitOfWork )
+        public static IEnumerable<Consumer> GetConsumers( IMvcExpenseUnitOfWork unitOfWork )
         {
             if ( _consumers == null )
             {
@@ -40,17 +39,17 @@ namespace MvcExpense.MvcExpenseHelper
 
         public static void RefreshCategories( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _categories = unitOfWork.CategoryRepository.GetQueryable().ToList();
+            _categories = unitOfWork.CategoryRepository.GetAll();
         }
 
         public static void RefreshPaymentMethods( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _paymentMethods = unitOfWork.PaymentMethodRepository.GetQueryable().ToList();
+            _paymentMethods = unitOfWork.PaymentMethodRepository.GetAll();
         }
 
         public static void RefreshConsumers( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _consumers = unitOfWork.ConsumerRepository.GetQueryable().ToList();
+            _consumers = unitOfWork.ConsumerRepository.GetAll();
         }
 
     }
