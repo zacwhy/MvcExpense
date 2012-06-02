@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcBaseActionFilter\Zac.MvcBaseActionFilter.csproj">
+    <ProjectReference Include="..\Zac.MvcBaseActionFilter\Zac.MvcBaseActionFilter.csproj">
       <Project>{A8FB4C9B-C085-4F45-8AA6-5DF3F8FC54FE}</Project>
       <Name>Zac.MvcBaseActionFilter</Name>
     </ProjectReference>

@@ -1,0 +1,49 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:MvcExpenseUnitOfWork.cs" caret="252" fromTop="8" />
+    <File id="9FF48F5B-588E-4E66-941B-78F1A57AAC39/f:IRepository.cs" caret="68" fromTop="2" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Services/f:OrdinaryExpenseService.cs" caret="3376" fromTop="6" />
+    <File id="9FF48F5B-588E-4E66-941B-78F1A57AAC39/f:GenericRepository.cs" caret="1830" fromTop="65" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Models/f:OrdinaryExpense.cs" caret="1113" fromTop="11" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:OrdinaryExpenseRepository.cs" caret="462" fromTop="9" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:IOrdinaryExpenseRepository.cs" caret="248" fromTop="9" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:IMvcExpenseUnitOfWork.cs" caret="360" fromTop="10" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="0" fromTop="0" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/f:Global.asax.cs" caret="3705" fromTop="16" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:ViewModels/f:OrdinaryExpenseViewModel.cs" caret="70" fromTop="4" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="798" fromTop="0" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1411" fromTop="15" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="9FF48F5B-588E-4E66-941B-78F1A57AAC39/f:GenericRepository.cs" caret="1452" fromTop="10" />
+    <File id="9FF48F5B-588E-4E66-941B-78F1A57AAC39/f:GenericRepository.cs" caret="960" fromTop="9" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1666" fromTop="12" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:IMvcExpenseUnitOfWork.cs" caret="360" fromTop="10" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1302" fromTop="10" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="1908" fromTop="18" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1019" fromTop="6" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1019" fromTop="7" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="1027" fromTop="10" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:IOrdinaryExpenseRepository.cs" caret="288" fromTop="9" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:DAL/f:OrdinaryExpenseRepository.cs" caret="462" fromTop="9" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="273" fromTop="7" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="570" fromTop="13" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="275" fromTop="11" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="638" fromTop="11" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="945" fromTop="14" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="2499" fromTop="18" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="1906" fromTop="12" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="275" fromTop="3" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="570" fromTop="12" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:HomeControllerTest.cs" caret="105" fromTop="2" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1492" fromTop="12" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="1322" fromTop="9" />
+    <File id="1978E4DC-017E-4E19-9C22-0A677BCA9271/d:Controllers/f:OrdinaryExpenseControllerTester.cs" caret="444" fromTop="4" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="850" fromTop="28" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="850" fromTop="9" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="850" fromTop="20" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="2735" fromTop="23" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="1228" fromTop="17" />
+    <File id="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B/d:Controllers/f:OrdinaryExpenseController.cs" caret="850" fromTop="7" />
+  </RecentEdits>
+</RecentFiles>

@@ -1,5 +1,5 @@
 ﻿
-namespace MvcExpense.Common
+namespace MvcExpense.MvcExpenseHelper
 {
     public class SystemParameters
     {

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="57212d90-6517-489b-a2e9-b9eadc488872" name="KIMLZY2@IN40400042-0 2012-06-02 02:52:43" runUser="KKHAD\KIMLZY2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0c625ff9-47bc-4cec-b089-5b2f9e964c1f">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="KIMLZY2_IN40400042-0 2012-06-02 02_52_43">
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DateRange\bin\Debug\Zac.DateRange.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern\bin\Debug\Zac.DesignPattern.dll" />
+      <DeploymentItem filename="C:\Program Files\NUnit 2.6\bin\framework\nunit.mocks.dll" />
+      <DeploymentItem filename="C:\Program Files\NUnit 2.6\bin\framework\nunit.framework.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense\bin\MvcExpense.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-02T02:52:43.1842497+08:00" queuing="2012-06-02T02:52:46.7094513+08:00" start="2012-06-02T02:52:47.0344699+08:00" finish="2012-06-02T02:53:15.3910918+08:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Index" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="bbf9bb87-0eda-072e-04b9-ca81740367e5">
+      <Execution id="434f2426-419d-4298-bcd3-aa2a4f687121" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.Controllers.HomeControllerTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="bbf9bb87-0eda-072e-04b9-ca81740367e5" executionId="434f2426-419d-4298-bcd3-aa2a4f687121" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="434f2426-419d-4298-bcd3-aa2a4f687121" testId="bbf9bb87-0eda-072e-04b9-ca81740367e5" testName="Index" computerName="IN40400042-0" duration="00:00:26.5689103" startTime="2012-06-02T02:52:47.3644888+08:00" endTime="2012-06-02T02:53:15.1860801+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="434f2426-419d-4298-bcd3-aa2a4f687121">
+    </UnitTestResult>
+  </Results>
+</TestRun>

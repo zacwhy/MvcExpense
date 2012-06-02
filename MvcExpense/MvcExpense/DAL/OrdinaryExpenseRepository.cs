@@ -5,7 +5,7 @@ using Zac.DesignPattern;
 
 namespace MvcExpense.DAL
 {
-    public class OrdinaryExpenseRepository : GenericRepository<OrdinaryExpense>//, IOrdinaryExpenseRepository
+    public class OrdinaryExpenseRepository : GenericRepository<OrdinaryExpense>, IOrdinaryExpenseRepository
     {
         public OrdinaryExpenseRepository( MvcExpenseDbContext context )
             : base( context )
@@ -15,7 +15,7 @@ namespace MvcExpense.DAL
         public IQueryable<OrdinaryExpense> GetWithDateRange( DateRange dateRange )
         {
             IQueryable<OrdinaryExpense> query =
-                from x in DbSet
+                from x in GetQueryable()
                 where x.Date >= dateRange.StartDate && x.Date < dateRange.EndDate
                 select x;
 

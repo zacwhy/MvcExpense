@@ -14,3 +14,5 @@ C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\bin\Debug\Au
 C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\obj\Debug\ResolveAssemblyReference.cache
 C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\obj\Debug\Zac.MvcAutoMapAttribute.dll
 C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\obj\Debug\Zac.MvcAutoMapAttribute.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\bin\Debug\Zac.MvcBaseActionFilter.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcAutoMapAttribute\bin\Debug\Zac.MvcBaseActionFilter.pdb

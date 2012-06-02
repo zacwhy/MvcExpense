@@ -1,0 +1,11 @@
+<Modules>
+  <Module PersistentId="1978E4DC-017E-4E19-9C22-0A677BCA9271" ModuleId="MvcExpense.Tests" />
+  <Module PersistentId="D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B" ModuleId="MvcExpense" />
+  <Module PersistentId="23F51B9E-46DE-4E3C-B3FC-E36D87A53A10" ModuleId="Zac.MvcAutoMapAttribute" />
+  <Module PersistentId="9FF48F5B-588E-4E66-941B-78F1A57AAC39" ModuleId="Zac.DesignPattern" />
+  <Module PersistentId="66A0999F-8497-4722-9EC2-3822472AF0BE" ModuleId="Zac.MvcMultiButtonAttribute" />
+  <Module PersistentId="CA7B0383-8448-4062-BEDC-9EDEFA148762" ModuleId="Zac.DateRange" />
+  <Module PersistentId="E62DB75F-F7A2-4D0D-A824-737096180578" ModuleId="Zac.MvcFlashMessage" />
+  <Module PersistentId="2AFC04D7-184B-49DA-B82F-693493854239" ModuleId="Zac.MvcWhitespaceFilterAttribute" />
+  <Module PersistentId="FE62D070-5DDC-4D07-8029-A4CEBA057674" ModuleId="Zac.MvcGroupSelectHelper" />
+</Modules>

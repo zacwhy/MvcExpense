@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="53e7ab64-3b04-40b9-b97b-4d26433ffe2f" name="KIMLZY2@IN40400042-0 2012-06-02 02:51:25" runUser="KKHAD\KIMLZY2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0c625ff9-47bc-4cec-b089-5b2f9e964c1f">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="KIMLZY2_IN40400042-0 2012-06-02 02_51_25">
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DateRange\bin\Debug\Zac.DateRange.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern\bin\Debug\Zac.DesignPattern.dll" />
+      <DeploymentItem filename="C:\Program Files\NUnit 2.6\bin\framework\nunit.mocks.dll" />
+      <DeploymentItem filename="C:\Program Files\NUnit 2.6\bin\framework\nunit.framework.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense\bin\MvcExpense.dll" />
+      <DeploymentItem filename="C:\git_repository\MvcExpenseGit1\MvcExpense\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-02T02:51:25.0777822+08:00" queuing="2012-06-02T02:51:32.7122189+08:00" start="2012-06-02T02:51:33.0802400+08:00" finish="2012-06-02T02:52:06.2391365+08:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Index" storage="c:\git_repository\mvcexpensegit1\mvcexpense\mvcexpense.tests\bin\debug\mvcexpense.tests.dll" id="bbf9bb87-0eda-072e-04b9-ca81740367e5">
+      <Execution id="a28cb9d9-9a41-4e68-8d89-df1de77f978c" />
+      <TestMethod codeBase="C:/git_repository/MvcExpenseGit1/MvcExpense/MvcExpense.Tests/bin/Debug/MvcExpense.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="MvcExpense.Tests.Controllers.HomeControllerTest, MvcExpense.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="bbf9bb87-0eda-072e-04b9-ca81740367e5" executionId="a28cb9d9-9a41-4e68-8d89-df1de77f978c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a28cb9d9-9a41-4e68-8d89-df1de77f978c" testId="bbf9bb87-0eda-072e-04b9-ca81740367e5" testName="Index" computerName="IN40400042-0" duration="00:00:31.1260745" startTime="2012-06-02T02:51:33.4002583+08:00" endTime="2012-06-02T02:52:05.9711212+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a28cb9d9-9a41-4e68-8d89-df1de77f978c">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method MvcExpense.Tests.Controllers.HomeControllerTest.Index threw exception: 
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source</Message>
+          <StackTrace>    at System.Linq.Queryable.OrderByDescending[TSource,TKey](IQueryable`1 source, Expression`1 keySelector)
+   at MvcExpense.Controllers.OrdinaryExpenseController.Index(Nullable`1 year, Nullable`1 month, Nullable`1 day) in C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense\Controllers\OrdinaryExpenseController.cs:line 42
+   at MvcExpense.Tests.Controllers.HomeControllerTest.Index() in C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Tests\Controllers\HomeControllerTest.cs:line 36
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

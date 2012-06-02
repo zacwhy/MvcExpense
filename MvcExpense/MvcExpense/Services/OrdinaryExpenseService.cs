@@ -7,37 +7,30 @@ using MvcExpense.Models;
 using MvcExpense.ViewModels;
 using Zac.EnhancedMath;
 
-namespace MvcExpense
+namespace MvcExpense.Services
 {
     public static class OrdinaryExpenseService
     {
         public static DateTime GetMostRecentDate( IMvcExpenseUnitOfWork unitOfWork )
         {
-            DateTime date = GetMostRecentDate( unitOfWork.MvcExpenseDbContext );
-            return date;
-        }
+            IQueryable<OrdinaryExpense> query = unitOfWork.OrdinaryExpenseRepository.GetQueryable();
 
-        private static DateTime GetMostRecentDate( MvcExpenseDbContext db )
-        {
-            IQueryable<DateTime> query =
-                from x in db.OrdinaryExpenses
-                where x.Id == db.OrdinaryExpenses.Max( y => y.Id )
+            IQueryable<DateTime> query2 =
+                from x in query
+                where x.Id == query.Max( y => y.Id )
                 select x.Date;
-            DateTime date = query.Single();
+
+            DateTime date = query2.Single();
+
             return date;
         }
 
         private static int NewSequence( IMvcExpenseUnitOfWork unitOfWork, DateTime date )
         {
-            int sequence = NewSequence( unitOfWork.MvcExpenseDbContext, date );
-            return sequence;
-        }
-
-        private static int NewSequence( MvcExpenseDbContext db, DateTime date )
-        {
-            IQueryable<OrdinaryExpense> ordinaryExpenses = db.OrdinaryExpenses.Where( x => x.Date == date );
-            int maxSequence = ordinaryExpenses.Max( x => (int?) x.Sequence ) ?? 0;
-            return maxSequence + 1;
+            IQueryable<OrdinaryExpense> query = unitOfWork.OrdinaryExpenseRepository.GetQueryable();
+            query = query.Where( x => x.Date == date );
+            int sequence = query.Max( x => (int?) x.Sequence ) ?? 0;
+            return sequence + 1;
         }
 
         public static List<OrdinaryExpense> GetOrdinaryExpenses( IMvcExpenseUnitOfWork unitOfWork, OrdinaryExpenseCreateModel createModel, IList<Category> categories )
@@ -47,9 +40,9 @@ namespace MvcExpense
             return list;
         }
 
-        private static List<OrdinaryExpense> GetOrdinaryExpenses( OrdinaryExpenseCreateModel createModel, int sequence, IList<Category> categories )
+        private static List<OrdinaryExpense> GetOrdinaryExpenses( OrdinaryExpenseCreateModel createModel, int sequence, IEnumerable<Category> categories )
         {
-            List<OrdinaryExpense> list = new List<OrdinaryExpense>();
+            var list = new List<OrdinaryExpense>();
 
             OrdinaryExpense ordinaryExpense = Mapper.Map<OrdinaryExpenseCreateModel, OrdinaryExpense>( createModel );
             int consumerCount = createModel.SelectedConsumerIds.Count();
@@ -64,7 +57,7 @@ namespace MvcExpense
             {
                 double averagePrice = EnhancedMath.RoundDown( createModel.Price / consumerCount, 2 );
                 double primaryConsumerPrice = createModel.Price - averagePrice * ( consumerCount - 1 );
-                Category treat = categories.Where( x => x.Name == "Treat" ).Single();
+                Category treat = categories.Single( x => x.Name == "Treat" );
                 int i = 0;
 
                 foreach ( long consumerId in createModel.SelectedConsumerIds )
@@ -91,7 +84,6 @@ namespace MvcExpense
 
             return list;
         }
-
 
     }
 }

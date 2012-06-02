@@ -1,13 +1,12 @@
-﻿using System;
+﻿using System.Linq;
 using MvcExpense.Models;
+using Zac.DateRange;
+using Zac.DesignPattern;
 
 namespace MvcExpense.DAL
 {
-    public interface IOrdinaryExpenseRepository
+    public interface IOrdinaryExpenseRepository : IRepository<OrdinaryExpense>
     {
-        OrdinaryExpense GetById( object id );
-        void Insert( OrdinaryExpense ordinaryExpense );
-        void Delete( object id );
-        void Update( OrdinaryExpense ordinaryExpense );
+        IQueryable<OrdinaryExpense> GetWithDateRange( DateRange dateRange );
     }
 }

@@ -4,30 +4,30 @@ using Zac.DesignPattern;
 
 namespace MvcExpense.DAL
 {
-    public partial class MvcExpenseUnitOfWork : UnitOfWorkBase, IMvcExpenseUnitOfWork
+    public class MvcExpenseUnitOfWork : UnitOfWorkBase, IMvcExpenseUnitOfWork
     {
-        private MvcExpenseDbContext context;// = new MvcExpenseDbContext();
+        private readonly MvcExpenseDbContext _context;
 
-        private GenericRepository<Category> categoryRepository;
-        private GenericRepository<Consumer> consumerRepository;
-        private GenericRepository<PaymentMethod> paymentMethodRepository;
-        private OrdinaryExpenseRepository ordinaryExpenseRepository;
+        private IRepository<Category> _categoryRepository;
+        private IRepository<Consumer> _consumerRepository;
+        private IRepository<PaymentMethod> _paymentMethodRepository;
+        private IOrdinaryExpenseRepository _ordinaryExpenseRepository;
 
         public MvcExpenseUnitOfWork()
         {
-            context = new MvcExpenseDbContext();
+            _context = new MvcExpenseDbContext();
         }
 
         public MvcExpenseUnitOfWork( MvcExpenseDbContext context )
         {
-            this.context = context;
+            _context = context;
         }
 
         protected override DbContext Context
         {
             get
             {
-                return context;
+                return _context;
             }
         }
 
@@ -35,55 +35,55 @@ namespace MvcExpense.DAL
         {
             get
             {
-                return context;
+                return _context;
             }
         }
 
-        public GenericRepository<Category> CategoryRepository
+        public IRepository<Category> CategoryRepository
         {
             get
             {
-                if ( this.categoryRepository == null )
+                if ( _categoryRepository == null )
                 {
-                    this.categoryRepository = new GenericRepository<Category>( context );
+                    _categoryRepository = new GenericRepository<Category>( _context );
                 }
-                return categoryRepository;
+                return _categoryRepository;
             }
         }
 
-        public GenericRepository<Consumer> ConsumerRepository
+        public IRepository<Consumer> ConsumerRepository
         {
             get
             {
-                if ( this.consumerRepository == null )
+                if ( _consumerRepository == null )
                 {
-                    this.consumerRepository = new GenericRepository<Consumer>( context );
+                    _consumerRepository = new GenericRepository<Consumer>( _context );
                 }
-                return consumerRepository;
+                return _consumerRepository;
             }
         }
 
-        public GenericRepository<PaymentMethod> PaymentMethodRepository
+        public IRepository<PaymentMethod> PaymentMethodRepository
         {
             get
             {
-                if ( this.paymentMethodRepository == null )
+                if ( _paymentMethodRepository == null )
                 {
-                    this.paymentMethodRepository = new GenericRepository<PaymentMethod>( context );
+                    _paymentMethodRepository = new GenericRepository<PaymentMethod>( _context );
                 }
-                return paymentMethodRepository;
+                return _paymentMethodRepository;
             }
         }
 
-        public OrdinaryExpenseRepository OrdinaryExpenseRepository
+        public IOrdinaryExpenseRepository OrdinaryExpenseRepository
         {
             get
             {
-                if ( this.ordinaryExpenseRepository == null )
+                if ( _ordinaryExpenseRepository == null )
                 {
-                    this.ordinaryExpenseRepository = new OrdinaryExpenseRepository( context );
+                    _ordinaryExpenseRepository = new OrdinaryExpenseRepository( _context );
                 }
-                return ordinaryExpenseRepository;
+                return _ordinaryExpenseRepository;
             }
         }
 

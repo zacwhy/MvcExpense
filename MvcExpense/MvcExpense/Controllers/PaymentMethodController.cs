@@ -7,21 +7,37 @@ using System.Web.Mvc;
 using AutoMapper;
 using MvcExpense.DAL;
 using MvcExpense.Models;
+using MvcExpense.MvcExpenseHelper;
 using MvcExpense.ViewModels;
 
 namespace MvcExpense.Controllers
 { 
     public class PaymentMethodController : Controller
     {
-        private MvcExpenseUnitOfWork unitOfWork = new MvcExpenseUnitOfWork();
+        private readonly IMvcExpenseUnitOfWork _unitOfWork;// = new MvcExpenseUnitOfWork();
         private MvcExpenseDbContext db = new MvcExpenseDbContext();
+
+        public PaymentMethodController()
+        {
+            _unitOfWork = new MvcExpenseUnitOfWork();
+        }
+
+        public PaymentMethodController( IMvcExpenseUnitOfWork unitOfWork )
+        {
+            _unitOfWork = unitOfWork;
+        }
 
         //
         // GET: /PaymentMethod/
 
         public ViewResult Index()
         {
-            List<PaymentMethod> list = db.PaymentMethods.OrderBy( x => x.Sequence ).ToList();
+            IQueryable<PaymentMethod> query =
+                from x in _unitOfWork.PaymentMethodRepository.GetQueryable()
+                select x;// new { x.Id, x.Name, x.Sequence };
+
+            List<PaymentMethod> list = query.ToList();
+            //List<PaymentMethod> list = db.PaymentMethods.OrderBy( x => x.Sequence ).ToList();
             return View( list );
         }
 
@@ -30,8 +46,9 @@ namespace MvcExpense.Controllers
 
         public ViewResult Details(long id)
         {
-            PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
-            return View(paymentmethod);
+            PaymentMethod model = _unitOfWork.PaymentMethodRepository.GetById( id );
+            //PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
+            return View( model );
         }
 
         //
@@ -151,7 +168,7 @@ namespace MvcExpense.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            unitOfWork.Dispose();
+            _unitOfWork.Dispose();
             db.Dispose();
             base.Dispose(disposing);
         }
@@ -163,7 +180,7 @@ namespace MvcExpense.Controllers
 
         private void RefreshCachedPaymentMethods()
         {
-            ExpenseEntitiesCache.RefreshPaymentMethods( unitOfWork );
+            ExpenseEntitiesCache.RefreshPaymentMethods( _unitOfWork );
         }
 
     }

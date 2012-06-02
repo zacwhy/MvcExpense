@@ -3,7 +3,7 @@ using System.Linq;
 using MvcExpense.DAL;
 using MvcExpense.Models;
 
-namespace MvcExpense
+namespace MvcExpense.MvcExpenseHelper
 {
     public static class ExpenseEntitiesCache
     {
@@ -40,17 +40,17 @@ namespace MvcExpense
 
         public static void RefreshCategories( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _categories = unitOfWork.CategoryRepository.Get().ToList();
+            _categories = unitOfWork.CategoryRepository.GetQueryable().ToList();
         }
 
         public static void RefreshPaymentMethods( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _paymentMethods = unitOfWork.PaymentMethodRepository.Get().ToList();
+            _paymentMethods = unitOfWork.PaymentMethodRepository.GetQueryable().ToList();
         }
 
-        private static void RefreshConsumers( IMvcExpenseUnitOfWork unitOfWork )
+        public static void RefreshConsumers( IMvcExpenseUnitOfWork unitOfWork )
         {
-            _consumers = unitOfWork.ConsumerRepository.Get().ToList();
+            _consumers = unitOfWork.ConsumerRepository.GetQueryable().ToList();
         }
 
     }

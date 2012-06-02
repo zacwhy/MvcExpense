@@ -47,18 +47,9 @@
     <Reference Include="EntityFramework.Extended">
       <HintPath>..\packages\EntityFramework.Extended.1.0.0.20\lib\net40\EntityFramework.Extended.dll</HintPath>
     </Reference>
-    <Reference Include="Ext.Net">
-      <HintPath>..\packages\Ext.NET.2.0.0-beta\lib\Ext.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Ext.Net.Utilities">
-      <HintPath>..\packages\Ext.NET.Utilities.2.0.0\lib\Ext.Net.Utilities.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\packages\MvcSiteMapProvider.3.2.1.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -91,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\IMvcExpenseUnitOfWork.cs" />
+    <Compile Include="DAL\IOrdinaryExpenseRepository.cs" />
     <Compile Include="DAL\OrdinaryExpenseRepository.cs" />
     <Compile Include="DAL\MvcExpenseUnitOfWork.cs" />
     <Compile Include="MvcExpenseHelper\SystemParameters.cs" />
@@ -154,9 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
-    <Content Include="App_Readme\Ext.NET.LICENSE.txt" />
     <Content Include="App_Readme\Ext.NET.README.txt" />
-    <Content Include="App_Readme\Ext.NET.Utilities.LICENSE.txt" />
     <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
     <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET.README.txt" />
