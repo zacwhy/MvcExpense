@@ -8,9 +8,9 @@ namespace MvcExpense.DAL
     {
         private readonly MvcExpenseDbContext _context;
 
-        private IRepository<Category> _categoryRepository;
-        private IRepository<Consumer> _consumerRepository;
-        private IRepository<PaymentMethod> _paymentMethodRepository;
+        private IStandardRepository<Category> _categoryRepository;
+        private IStandardRepository<Consumer> _consumerRepository;
+        private IStandardRepository<PaymentMethod> _paymentMethodRepository;
         private IOrdinaryExpenseRepository _ordinaryExpenseRepository;
 
         public MvcExpenseUnitOfWork()
@@ -39,37 +39,37 @@ namespace MvcExpense.DAL
             }
         }
 
-        public IRepository<Category> CategoryRepository
+        public IStandardRepository<Category> CategoryRepository
         {
             get
             {
                 if ( _categoryRepository == null )
                 {
-                    _categoryRepository = new GenericRepository<Category>( _context );
+                    _categoryRepository = new StandardRepository<Category>( _context );
                 }
                 return _categoryRepository;
             }
         }
 
-        public IRepository<Consumer> ConsumerRepository
+        public IStandardRepository<Consumer> ConsumerRepository
         {
             get
             {
                 if ( _consumerRepository == null )
                 {
-                    _consumerRepository = new GenericRepository<Consumer>( _context );
+                    _consumerRepository = new StandardRepository<Consumer>( _context );
                 }
                 return _consumerRepository;
             }
         }
 
-        public IRepository<PaymentMethod> PaymentMethodRepository
+        public IStandardRepository<PaymentMethod> PaymentMethodRepository
         {
             get
             {
                 if ( _paymentMethodRepository == null )
                 {
-                    _paymentMethodRepository = new GenericRepository<PaymentMethod>( _context );
+                    _paymentMethodRepository = new StandardRepository<PaymentMethod>( _context );
                 }
                 return _paymentMethodRepository;
             }

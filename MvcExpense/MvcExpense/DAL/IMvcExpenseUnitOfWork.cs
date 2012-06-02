@@ -5,9 +5,9 @@ namespace MvcExpense.DAL
 {
     public interface IMvcExpenseUnitOfWork : IUnitOfWork
     {
-        IRepository<Category> CategoryRepository { get; }
-        IRepository<Consumer> ConsumerRepository { get; }
-        IRepository<PaymentMethod> PaymentMethodRepository { get; }
+        IStandardRepository<Category> CategoryRepository { get; }
+        IStandardRepository<Consumer> ConsumerRepository { get; }
+        IStandardRepository<PaymentMethod> PaymentMethodRepository { get; }
         IOrdinaryExpenseRepository OrdinaryExpenseRepository { get; }
     }
 }

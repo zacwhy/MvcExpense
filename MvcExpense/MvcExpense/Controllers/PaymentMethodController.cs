@@ -44,7 +44,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /PaymentMethod/Details/5
 
-        public ViewResult Details(long id)
+        public ViewResult Details( long id )
         {
             PaymentMethod model = _unitOfWork.PaymentMethodRepository.GetById( id );
             //PaymentMethod paymentmethod = db.PaymentMethods.Find(id);

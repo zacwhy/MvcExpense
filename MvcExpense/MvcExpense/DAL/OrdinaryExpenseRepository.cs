@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using MvcExpense.Models;
 using Zac.DateRange;
-using Zac.DesignPattern;
 
 namespace MvcExpense.DAL
 {
-    public class OrdinaryExpenseRepository : GenericRepository<OrdinaryExpense>, IOrdinaryExpenseRepository
+    public class OrdinaryExpenseRepository : StandardRepository<OrdinaryExpense>, IOrdinaryExpenseRepository
     {
         public OrdinaryExpenseRepository( MvcExpenseDbContext context )
             : base( context )

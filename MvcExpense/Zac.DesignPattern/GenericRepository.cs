@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Zac.DesignPattern
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity, TId> : IRepository<TEntity, TId> where TEntity : class
     {
         private readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
@@ -63,7 +63,7 @@ namespace Zac.DesignPattern
             return query.ToList();
         }
 
-        public virtual TEntity GetById( object id )
+        public virtual TEntity GetById( TId id )
         {
             return _dbSet.Find( id );
         }
@@ -73,7 +73,7 @@ namespace Zac.DesignPattern
             _dbSet.Add( entity );
         }
 
-        public virtual void Delete( object id )
+        public virtual void Delete( TId id )
         {
             TEntity entityToDelete = _dbSet.Find( id );
             Delete( entityToDelete );

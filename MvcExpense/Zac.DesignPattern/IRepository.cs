@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Zac.DesignPattern
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity, TId> where TEntity : class
     {
         IQueryable<TEntity> GetQueryable();
 
@@ -14,9 +14,9 @@ namespace Zac.DesignPattern
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
             string includeProperties);
 
-        TEntity GetById( object id );
+        TEntity GetById( TId id );
         void Insert( TEntity ordinaryExpense );
-        void Delete( object id );
+        void Delete( TId id );
         void Update( TEntity ordinaryExpense );
     }
 }
