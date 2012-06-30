@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="zExpenseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="zExpenseModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="zExpenseModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Consumers" EntityType="zExpenseModel.Store.Consumers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrdinaryExpenses" EntityType="zExpenseModel.Store.OrdinaryExpenses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentMethods" EntityType="zExpenseModel.Store.PaymentMethods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpecialExpenses" EntityType="zExpenseModel.Store.SpecialExpenses" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Categories_Categories" Association="zExpenseModel.Store.FK_Categories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdinaryExpenses_Categories" Association="zExpenseModel.Store.FK_OrdinaryExpenses_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="OrdinaryExpenses" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdinaryExpenses_Consumers" Association="zExpenseModel.Store.FK_OrdinaryExpenses_Consumers">
+            <End Role="Consumers" EntitySet="Consumers" />
+            <End Role="OrdinaryExpenses" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdinaryExpenses_PaymentMethods" Association="zExpenseModel.Store.FK_OrdinaryExpenses_PaymentMethods">
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+            <End Role="OrdinaryExpenses" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialExpenses_Consumers" Association="zExpenseModel.Store.FK_SpecialExpenses_Consumers">
+            <End Role="Consumers" EntitySet="Consumers" />
+            <End Role="SpecialExpenses" EntitySet="SpecialExpenses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="lft" Type="bigint" Nullable="false" />
+          <Property Name="rgt" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consumers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrdinaryExpenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="ConsumerId" Type="bigint" Nullable="false" />
+          <Property Name="CategoryId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PaymentMethodId" Type="bigint" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialExpenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="ConsumerId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_Categories_Categories">
+          <End Role="Categories" Type="zExpenseModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="zExpenseModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdinaryExpenses_Categories">
+          <End Role="Categories" Type="zExpenseModel.Store.Categories" Multiplicity="1" />
+          <End Role="OrdinaryExpenses" Type="zExpenseModel.Store.OrdinaryExpenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpenses">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdinaryExpenses_Consumers">
+          <End Role="Consumers" Type="zExpenseModel.Store.Consumers" Multiplicity="1" />
+          <End Role="OrdinaryExpenses" Type="zExpenseModel.Store.OrdinaryExpenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpenses">
+              <PropertyRef Name="ConsumerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdinaryExpenses_PaymentMethods">
+          <End Role="PaymentMethods" Type="zExpenseModel.Store.PaymentMethods" Multiplicity="0..1" />
+          <End Role="OrdinaryExpenses" Type="zExpenseModel.Store.OrdinaryExpenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpenses">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialExpenses_Consumers">
+          <End Role="Consumers" Type="zExpenseModel.Store.Consumers" Multiplicity="1" />
+          <End Role="SpecialExpenses" Type="zExpenseModel.Store.SpecialExpenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialExpenses">
+              <PropertyRef Name="ConsumerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zExpenseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MvcExpenseDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="zExpenseModel.Category" />
+          <EntitySet Name="Consumers" EntityType="zExpenseModel.Consumer" />
+          <EntitySet Name="SpecialExpenses" EntityType="zExpenseModel.SpecialExpense" />
+          <AssociationSet Name="FK_Categories_Categories" Association="zExpenseModel.FK_Categories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialExpenses_Consumers" Association="zExpenseModel.FK_SpecialExpenses_Consumers">
+            <End Role="Consumers" EntitySet="Consumers" />
+            <End Role="SpecialExpenses" EntitySet="SpecialExpenses" />
+          </AssociationSet>
+          <EntitySet Name="OrdinaryExpenses" EntityType="zExpenseModel.OrdinaryExpense" />
+          <AssociationSet Name="FK_OrdinaryExpenses_Categories" Association="zExpenseModel.FK_OrdinaryExpenses_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="OrdinaryExpens" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdinaryExpenses_Consumers" Association="zExpenseModel.FK_OrdinaryExpenses_Consumers">
+            <End Role="Consumer" EntitySet="Consumers" />
+            <End Role="OrdinaryExpens" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+          <EntitySet Name="PaymentMethods" EntityType="zExpenseModel.PaymentMethod" />
+          <AssociationSet Name="FK_OrdinaryExpenses_PaymentMethods" Association="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="OrdinaryExpense" EntitySet="OrdinaryExpenses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <NavigationProperty Name="Children" Relationship="zExpenseModel.FK_Categories_Categories" FromRole="Categories" ToRole="Categories1" />
+          <NavigationProperty Name="Parent" Relationship="zExpenseModel.FK_Categories_Categories" FromRole="Categories1" ToRole="Categories" />
+          <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_Categories" FromRole="Category" ToRole="OrdinaryExpens" />
+          <Property Type="Int64" Name="lft" Nullable="false" />
+          <Property Type="Int64" Name="rgt" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consumer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SpecialExpenses" Relationship="zExpenseModel.FK_SpecialExpenses_Consumers" FromRole="Consumers" ToRole="SpecialExpenses" />
+          <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_Consumers" FromRole="Consumer" ToRole="OrdinaryExpens" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialExpense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="ConsumerId" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Consumer" Relationship="zExpenseModel.FK_SpecialExpenses_Consumers" FromRole="SpecialExpenses" ToRole="Consumers" />
+        </EntityType>
+        <Association Name="FK_Categories_Categories">
+          <End Role="Categories" Type="zExpenseModel.Category" Multiplicity="0..1" />
+          <End Role="Categories1" Type="zExpenseModel.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialExpenses_Consumers">
+          <End Role="Consumers" Type="zExpenseModel.Consumer" Multiplicity="1" />
+          <End Role="SpecialExpenses" Type="zExpenseModel.SpecialExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialExpenses">
+              <PropertyRef Name="ConsumerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrdinaryExpense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int64" Name="ConsumerId" Nullable="false" />
+          <Property Type="Int64" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remarks" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="zExpenseModel.FK_OrdinaryExpenses_Categories" FromRole="OrdinaryExpens" ToRole="Category" />
+          <NavigationProperty Name="Consumer" Relationship="zExpenseModel.FK_OrdinaryExpenses_Consumers" FromRole="OrdinaryExpens" ToRole="Consumer" />
+          <Property Type="Int64" Name="PaymentMethodId" />
+          <NavigationProperty Name="PaymentMethod" Relationship="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods" FromRole="OrdinaryExpense" ToRole="PaymentMethod" />
+        </EntityType>
+        <Association Name="FK_OrdinaryExpenses_Categories">
+          <End Type="zExpenseModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="zExpenseModel.OrdinaryExpense" Role="OrdinaryExpens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpens">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdinaryExpenses_Consumers">
+          <End Type="zExpenseModel.Consumer" Role="Consumer" Multiplicity="1" />
+          <End Type="zExpenseModel.OrdinaryExpense" Role="OrdinaryExpens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpens">
+              <PropertyRef Name="ConsumerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrdinaryExpenses" Relationship="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods" FromRole="PaymentMethod" ToRole="OrdinaryExpense" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrdinaryExpenses_PaymentMethods">
+          <End Type="zExpenseModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="zExpenseModel.OrdinaryExpense" Role="OrdinaryExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdinaryExpense">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zExpenseModelStoreContainer" CdmEntityContainer="MvcExpenseDbContext">
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="zExpenseModel.Category"><MappingFragment StoreEntitySet="Categories">
+            <ScalarProperty Name="rgt" ColumnName="rgt" />
+                <ScalarProperty Name="lft" ColumnName="lft" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Consumers"><EntityTypeMapping TypeName="zExpenseModel.Consumer"><MappingFragment StoreEntitySet="Consumers">
+            <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SpecialExpenses"><EntityTypeMapping TypeName="zExpenseModel.SpecialExpense"><MappingFragment StoreEntitySet="SpecialExpenses">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OrdinaryExpenses">
+            <EntityTypeMapping TypeName="zExpenseModel.OrdinaryExpense">
+              <MappingFragment StoreEntitySet="OrdinaryExpenses">
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="zExpenseModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="zExpenseModel.Category" Width="1.5" PointX="4.75" PointY="0.625" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="zExpenseModel.Consumer" Width="1.5" PointX="0.625" PointY="3.25" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="zExpenseModel.SpecialExpense" Width="1.5" PointX="2.75" PointY="4.125" Height="2.3648893229166656" IsExpanded="true" />
+        <AssociationConnector Association="zExpenseModel.FK_Categories_Categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.2819230769230767" PointY="3.1821907552083331" />
+          <ConnectorPoint PointX="5.2819230769230767" PointY="3.4321907552083326" />
+          <ConnectorPoint PointX="5.7284615384615378" PointY="3.4321907552083326" />
+          <ConnectorPoint PointX="5.7284615384615378" PointY="3.1821907552083331" />
+        </AssociationConnector>
+        <AssociationConnector Association="zExpenseModel.FK_SpecialExpenses_Consumers" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="4.5814925130208328" />
+          <ConnectorPoint PointX="2.75" PointY="4.5814925130208328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="zExpenseModel.OrdinaryExpense" Width="1.5" PointX="2.75" PointY="0.625" Height="2.9417936197916656" />
+        <AssociationConnector Association="zExpenseModel.FK_OrdinaryExpenses_Categories" >
+          <ConnectorPoint PointX="4.75" PointY="1.7112939453125002" />
+          <ConnectorPoint PointX="4.25" PointY="1.7112939453125002" />
+        </AssociationConnector>
+        <AssociationConnector Association="zExpenseModel.FK_OrdinaryExpenses_Consumers" >
+          <ConnectorPoint PointX="2.125" PointY="3.6006982421875" />
+          <ConnectorPoint PointX="2.75" PointY="3.6006982421875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="zExpenseModel.PaymentMethod" Width="1.5" PointX="4.75" PointY="3.625" Height="1.7879850260416665" />
+        <AssociationConnector Association="zExpenseModel.FK_OrdinaryExpenses_PaymentMethods" >
+          <ConnectorPoint PointX="4.75" PointY="3.7881982421875" />
+          <ConnectorPoint PointX="4.25" PointY="3.7881982421875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,41 @@
+﻿@using Zac.Tree;
+
+@model TreeNode<Zac.StandardCore.Models.SiteMapNode>
+
+<h2>Site Map Node</h2>
+
+<p>
+    @Html.ActionLink( "Create New", MVC.SiteMapNode.Create() )
+    @Html.ActionLink( "Refresh", MVC.SiteMapNode.Refresh() )
+</p>
+
+<ul>
+    @PrintNode( Model, null )
+</ul>
+
+@helper PrintNode( TreeNode<Zac.StandardCore.Models.SiteMapNode> node, TreeNode<Zac.StandardCore.Models.SiteMapNode> parent )
+    {
+    <li>
+        @PrintNodeContent( node )
+
+        @if ( node.HasChildren )
+        {
+            <ul>
+                @foreach ( var child in node.Children )
+                {
+                    @PrintNode( child, node )
+                }
+            </ul>
+        }
+    </li>
+}
+
+@helper PrintNodeContent( TreeNode<Zac.StandardCore.Models.SiteMapNode> node )
+    {
+    <span style="margin-right:2em;">
+        @Html.ActionLink( node.Data.Title, MVC.SiteMapNode.Edit( node.Data.Id ) )
+    </span>
+    <text>[ </text>
+    @Html.ActionLink( "Delete", MVC.SiteMapNode.Delete( node.Data.Id ) )
+    <text> ]</text>
+}

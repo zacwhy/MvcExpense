@@ -1,0 +1,13 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\MvcExpense.Core.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\MvcExpense.Core.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\obj\Debug\MvcExpense.Core.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\obj\Debug\MvcExpense.Core.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.DateRange.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.DesignPattern.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.StandardCore.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\EntityFramework.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.DateRange.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.DesignPattern.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\Zac.StandardCore.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\MvcExpense.Core\bin\Debug\EntityFramework.xml

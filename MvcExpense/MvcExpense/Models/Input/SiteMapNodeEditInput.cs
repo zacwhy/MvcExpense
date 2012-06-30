@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MvcExpense.UI.Models.Input
+{
+    public class SiteMapNodeEditInput
+    {
+        public long Id { get; set; }
+
+        [Required]
+        public string Url { get; set; }
+
+        [Required]
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        [Required]
+        public long ParentId { get; set; }
+
+        public long? PreviousSibling { get; set; }
+    }
+}

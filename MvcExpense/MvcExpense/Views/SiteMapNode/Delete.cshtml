@@ -1,0 +1,20 @@
+﻿@model Zac.StandardCore.Models.SiteMapNode
+
+@{
+    Layout = "~/Views/Shared/_DeleteLayout.cshtml";
+    ViewBag.Legend = "Site Map Node";
+}
+
+<div class="display-label">Title</div>
+<div class="display-field">
+    @Html.DisplayFor( model => model.Title )
+</div>
+
+<div class="display-label">Description</div>
+<div class="display-field">
+    @Html.DisplayFor( model => model.Description )
+</div>
+
+<div>
+    Children?
+</div>

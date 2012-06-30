@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcExpense.UI</RootNamespace>
+    <AssemblyName>MvcExpense.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentSecurity">
+      <HintPath>..\packages\FluentSecurity.1.4.0\lib\FluentSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages_manual\Mvc3Futures\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib">
+      <HintPath>..\packages_manual\MVCContrib.release\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.3.2.1.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="CategoryController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsumerController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SiteMapNodeController.cs" />
+    <Compile Include="Controllers\AbstractStandardController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
+    <Compile Include="Extensions\SiteMapNodeExtensions.cs" />
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Display\SiteMapNodeChangeChildrenOrderDisplay.cs" />
+    <Compile Include="Models\Display\SiteMapNodeCreateDisplay.cs" />
+    <Compile Include="Models\Display\CreateOrdinaryExpenseDisplay.cs" />
+    <Compile Include="Models\Display\EditOrdinaryExpenseDisplay.cs" />
+    <Compile Include="Models\Display\SiteMapNodeEditDisplay.cs" />
+    <Compile Include="Models\Input\SiteMapNodeChangeChildrenOrderInput.cs" />
+    <Compile Include="Models\Input\SiteMapNodeEditInput.cs" />
+    <Compile Include="Models\Input\SiteMapNodeCreateInput.cs" />
+    <Compile Include="Models\Input\CreateOrdinaryExpenseInput.cs" />
+    <Compile Include="Models\Input\EditOrdinaryExpenseInput.cs" />
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="MvcExpenseHelper\CustomRoleProvider.cs" />
+    <Compile Include="MvcExpenseHelper\HtmlHelperExtensions.cs" />
+    <Compile Include="MvcExpenseHelper\MembershipProviderBase.cs" />
+    <Compile Include="MvcExpenseHelper\CustomMembershipProvider.cs" />
+    <Compile Include="Controllers\AbstractMvcExpenseController.cs" />
+    <Compile Include="MvcExpenseHelper\MvcExpenseFactory.cs" />
+    <Compile Include="MvcExpenseHelper\Role.cs" />
+    <Compile Include="MvcExpenseHelper\RoleProviderBase.cs" />
+    <Compile Include="MvcExpenseHelper\SystemParameters.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ConsumerController.cs" />
+    <Compile Include="Controllers\PaymentMethodController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdinaryExpenseController.cs" />
+    <Compile Include="Controllers\TestEditorController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MvcExpenseHelper\ExpenseEntitiesCache.cs" />
+    <Compile Include="MvcExpenseHelper\SiteMapNodeRepository.cs" />
+    <Compile Include="MvcExpenseHelper\OrdinaryExpenseService.cs" />
+    <Compile Include="Models\_HelperModels\CategoryBreakdownRecord.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="OrdinaryExpenseController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\_HelperModels\GiveAndTakeRecord.cs" />
+    <Compile Include="ReportController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteMapNodeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TestEditorController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\_ViewModels\PaymentMethodEditModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportCategoryBreakdown3ViewModel.cs" />
+    <Compile Include="Models\_ViewModels\OrdinaryExpenseViewModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportGiveAndTakeViewModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportViewModel.cs" />
+    <Compile Include="Models\_ViewModels\TestEditorViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
+    <Content Include="App_Readme\Ext.NET.README.txt" />
+    <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
+    <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
+    <Content Include="App_Readme\Transformer.NET.README.txt" />
+    <Content Include="Content\Flash.css" />
+    <Content Include="Content\icons\currency_dollar_yellow.ico" />
+    <Content Include="Content\icons\emblem_money.ico" />
+    <Content Include="Content\Menu\arrowsub.png" />
+    <Content Include="Content\Menu\icon\create.png" />
+    <Content Include="Content\Menu\icon\index.png" />
+    <Content Include="Content\Menu\icon\ordinary_expense.png" />
+    <Content Include="Content\Menu\icon\report.png" />
+    <Content Include="Content\Menu\icon\home.png" />
+    <Content Include="Content\Menu\hsep.png" />
+    <Content Include="Content\Menu\mainbk.png" />
+    <Content Include="Content\Menu\icon\administrator.png" />
+    <Content Include="Content\Menu\style.css" />
+    <Content Include="Content\Site2.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\TreeTable\_index.html" />
+    <Content Include="Content\TreeTable\javascripts\jquery-1.7.1.js" />
+    <Content Include="Content\TreeTable\javascripts\jquery-1.7.1.min.js" />
+    <Content Include="Content\TreeTable\javascripts\jquery.js" />
+    <Content Include="Content\TreeTable\javascripts\jquery.ui.js" />
+    <Content Include="Content\TreeTable\stylesheets\jquery.treeTable.css" />
+    <Content Include="Content\TreeTable\javascripts\jquery.treeTable.js" />
+    <Content Include="Content\TreeTable\javascripts\jquery.treeTable.min.js" />
+    <Content Include="Content\TreeTable\images\toggle-collapse-dark.png" />
+    <Content Include="Content\TreeTable\images\toggle-collapse-light.png" />
+    <Content Include="Content\TreeTable\images\toggle-expand-dark.png" />
+    <Content Include="Content\TreeTable\images\toggle-expand-light.png" />
+    <Content Include="Content\TreeTable\stylesheets\_master.css" />
+    <Content Include="Content\TreeTable\_test.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\EditorHookup.js" />
+    <Content Include="Scripts\Jit\Extras\excanvas.js" />
+    <Content Include="Scripts\Jit\jit-yc.js" />
+    <Content Include="Scripts\Jit\jit.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\Views\SiteMapNode\Edit.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Consumer\Index.cshtml" />
+    <Content Include="Views\Consumer\Details.cshtml" />
+    <Content Include="Views\Consumer\Create.cshtml" />
+    <Content Include="Views\Consumer\Edit.cshtml" />
+    <Content Include="Views\Consumer\Delete.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\OrdinaryExpense\Index.cshtml" />
+    <Content Include="Views\OrdinaryExpense\Details.cshtml" />
+    <Content Include="Views\OrdinaryExpense\Create.cshtml" />
+    <Content Include="Views\OrdinaryExpense\Edit.cshtml" />
+    <Content Include="Views\OrdinaryExpense\Delete.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\PaymentMethod\Index.cshtml" />
+    <Content Include="Views\PaymentMethod\Details.cshtml" />
+    <Content Include="Views\PaymentMethod\Create.cshtml" />
+    <Content Include="Views\PaymentMethod\Edit.cshtml" />
+    <Content Include="Views\PaymentMethod\Delete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Report\GiveAndTake.cshtml" />
+    <Content Include="Views\Report\CategoryBreakdown.cshtml" />
+    <Content Include="Views\TestEditor\Create.cshtml" />
+    <Content Include="Views\Category\Tree2.cshtml" />
+    <Content Include="Views\Category\Tree.cshtml" />
+    <Content Include="Views\SiteMapNode\List.cshtml" />
+    <Content Include="Views\SiteMapNode\Tree.cshtml" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="T4MVC.tt.settings.t4" />
+    <Content Include="Views\SiteMapNode\Create.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SiteMapNode\Edit.cshtml" />
+    <Content Include="Views\Shared\_FormLayout.cshtml" />
+    <Content Include="Views\Shared\_CreateFormLayout.cshtml" />
+    <Content Include="Views\Shared\_EditFormLayout.cshtml" />
+    <Content Include="Views\SiteMapNode\Delete.cshtml" />
+    <Content Include="Views\Shared\_DeleteLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj">
+      <Project>{4A652B3D-8206-49D0-ADD7-8D5D1E110BF5}</Project>
+      <Name>Infrastructure.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcExpense.Core\Core.csproj">
+      <Project>{C1F7E92B-CADA-438F-9116-F1813B7A4A37}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.DateRange\Zac.DateRange.csproj">
+      <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
+      <Name>Zac.DateRange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj">
+      <Project>{6CD0307C-C7C1-4BD0-8725-CC9003D57920}</Project>
+      <Name>Zac.DesignPattern.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">
+      <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
+      <Name>Zac.DesignPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.EnhancedMath\Zac.EnhancedMath.csproj">
+      <Project>{BEFF9125-6995-4326-BAF1-DA225FD41DE8}</Project>
+      <Name>Zac.EnhancedMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj">
+      <Project>{CBF838CB-92E4-432E-B1B8-6A969011FD82}</Project>
+      <Name>Zac.MvcAssetsHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj">
+      <Project>{23F51B9E-46DE-4E3C-B3FC-E36D87A53A10}</Project>
+      <Name>Zac.MvcAutoMapAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
+      <Project>{E62DB75F-F7A2-4D0D-A824-737096180578}</Project>
+      <Name>Zac.MvcFlashMessage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj">
+      <Project>{FE62D070-5DDC-4D07-8029-A4CEBA057674}</Project>
+      <Name>Zac.MvcGroupSelectHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj">
+      <Project>{66A0999F-8497-4722-9EC2-3822472AF0BE}</Project>
+      <Name>Zac.MvcMultiButtonAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj">
+      <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
+      <Name>Zac.MvcWhitespaceFilterAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
+      <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>
+      <Name>Zac.RepositorySiteMapProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.StandardCore\Zac.StandardCore.csproj">
+      <Project>{32F8C69A-8013-4E14-8991-F96188B07A26}</Project>
+      <Name>Zac.StandardCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj">
+      <Project>{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}</Project>
+      <Name>Zac.StandardInfrastructure.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.Tree\Zac.Tree.csproj">
+      <Project>{0F981A02-CD06-4686-911B-1A0EF12BDD82}</Project>
+      <Name>Zac.Tree</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59178</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

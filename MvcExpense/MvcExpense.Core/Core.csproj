@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1F7E92B-CADA-438F-9116-F1813B7A4A37}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcExpense.Core</RootNamespace>
+    <AssemblyName>MvcExpense.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IMvcExpenseUnitOfWork.cs" />
+    <Compile Include="Repositories\IOrdinaryExpenseRepository.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Consumer.cs" />
+    <Compile Include="Models\OrdinaryExpense.cs" />
+    <Compile Include="Models\OrdinaryExpense2.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\SpecialExpense.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Zac.DateRange\Zac.DateRange.csproj">
+      <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
+      <Name>Zac.DateRange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">
+      <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
+      <Name>Zac.DesignPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.StandardCore\Zac.StandardCore.csproj">
+      <Project>{32F8C69A-8013-4E14-8991-F96188B07A26}</Project>
+      <Name>Zac.StandardCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

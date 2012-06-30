@@ -1,0 +1,9 @@
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\obj\Debug\ResolveAssemblyReference.cache
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\Zac.DesignPattern.EntityFramework.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\Zac.DesignPattern.EntityFramework.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\EntityFramework.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\Zac.DesignPattern.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\Zac.DesignPattern.pdb
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\bin\Debug\EntityFramework.xml
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\obj\Debug\Zac.DesignPattern.EntityFramework.dll
+C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.DesignPattern.EntityFramework\obj\Debug\Zac.DesignPattern.EntityFramework.pdb
