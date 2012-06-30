@@ -1,4 +1,4 @@
-﻿@model MvcExpense.ViewModels.OrdinaryExpenseCreateModel
+﻿@model MvcExpense.UI.Models.Display.CreateOrdinaryExpenseDisplay
 @using MvcExpense.MvcExpenseHelper
 
 @{
@@ -60,7 +60,6 @@
         </div>
         <div class="editor-field">
             @Html.GroupDropDownListFor( model => model.CategoryId, Model.CategoriesGroupSelectList, SystemParameters.DropDownListNullDisplay )
-            @*@Html.DropDownListFor( model => model.CategoryId, Model.CategoriesSelectList, SystemParameters.DropDownListNullDisplay )*@
             @Html.ValidationMessageFor( model => model.CategoryId )
         </div>
                 

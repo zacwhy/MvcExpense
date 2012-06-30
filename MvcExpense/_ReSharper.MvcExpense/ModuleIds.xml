@@ -8,4 +8,15 @@
   <Module PersistentId="E62DB75F-F7A2-4D0D-A824-737096180578" ModuleId="Zac.MvcFlashMessage" />
   <Module PersistentId="2AFC04D7-184B-49DA-B82F-693493854239" ModuleId="Zac.MvcWhitespaceFilterAttribute" />
   <Module PersistentId="FE62D070-5DDC-4D07-8029-A4CEBA057674" ModuleId="Zac.MvcGroupSelectHelper" />
+  <Module PersistentId="CBF838CB-92E4-432E-B1B8-6A969011FD82" ModuleId="Zac.MvcAssetsHelper" />
+  <Module PersistentId="C1F7E92B-CADA-438F-9116-F1813B7A4A37" ModuleId="MvcExpense.Core" />
+  <Module PersistentId="32F8C69A-8013-4E14-8991-F96188B07A26" ModuleId="Zac.StandardCore" />
+  <Module PersistentId="4A652B3D-8206-49D0-ADD7-8D5D1E110BF5" ModuleId="Infrastructure.EntityFramework" />
+  <Module PersistentId="DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9" ModuleId="Zac.StandardInfrastructure.EntityFramework" />
+  <Module PersistentId="6CD0307C-C7C1-4BD0-8725-CC9003D57920" ModuleId="Zac.DesignPattern.EntityFramework" />
+  <Module PersistentId="A8FB4C9B-C085-4F45-8AA6-5DF3F8FC54FE" ModuleId="Zac.MvcBaseActionFilter" />
+  <Module PersistentId="3AF9181C-39DA-41A7-AEC1-D1F009FE544C" ModuleId="Zac.EnhancedMath.Tests" />
+  <Module PersistentId="BEFF9125-6995-4326-BAF1-DA225FD41DE8" ModuleId="Zac.EnhancedMath" />
+  <Module PersistentId="D5B188E8-3D47-45C2-8093-307A8B21E0FA" ModuleId="Zac.RepositorySiteMapProvider" />
+  <Module PersistentId="0F981A02-CD06-4686-911B-1A0EF12BDD82" ModuleId="Zac.Tree" />
 </Modules>

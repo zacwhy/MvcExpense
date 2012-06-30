@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using MvcExpense.DAL;
-using MvcExpense.Models;
+using MvcExpense.Core;
+using MvcExpense.Core.Models;
 
 namespace MvcExpense.MvcExpenseHelper
 {

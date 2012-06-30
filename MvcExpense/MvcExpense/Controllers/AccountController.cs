@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
 using MvcExpense.Models;
 
-namespace MvcExpense.Controllers
+namespace MvcExpense.UI.Controllers
 {
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
 
         //
         // GET: /Account/LogOn
 
-        public ActionResult LogOn()
+        public virtual ActionResult LogOn()
         {
             return View();
         }
@@ -24,7 +20,7 @@ namespace MvcExpense.Controllers
         // POST: /Account/LogOn
 
         [HttpPost]
-        public ActionResult LogOn( LogOnModel model, string returnUrl )
+        public virtual ActionResult LogOn( LogOnModel model, string returnUrl )
         {
             if ( ModelState.IsValid )
             {
@@ -54,7 +50,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Account/LogOff
 
-        public ActionResult LogOff()
+        public virtual ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
 
@@ -64,7 +60,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Account/Register
 
-        public ActionResult Register()
+        public virtual ActionResult Register()
         {
             return View();
         }
@@ -73,7 +69,7 @@ namespace MvcExpense.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        public ActionResult Register( RegisterModel model )
+        public virtual ActionResult Register( RegisterModel model )
         {
             if ( ModelState.IsValid )
             {
@@ -100,7 +96,7 @@ namespace MvcExpense.Controllers
         // GET: /Account/ChangePassword
 
         [Authorize]
-        public ActionResult ChangePassword()
+        public virtual ActionResult ChangePassword()
         {
             return View();
         }
@@ -110,7 +106,7 @@ namespace MvcExpense.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ChangePassword( ChangePasswordModel model )
+        public virtual ActionResult ChangePassword( ChangePasswordModel model )
         {
             if ( ModelState.IsValid )
             {
@@ -145,7 +141,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Account/ChangePasswordSuccess
 
-        public ActionResult ChangePasswordSuccess()
+        public virtual ActionResult ChangePasswordSuccess()
         {
             return View();
         }

@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MvcExpense.Models;
+using MvcExpense.Core.Models;
+using MvcExpense.Infrastructure.EntityFramework;
+using MvcExpense.MvcExpenseHelper;
 
-namespace MvcExpense.Controllers
-{ 
-    public class ConsumerController : Controller
+namespace MvcExpense.UI.Controllers
+{
+    public partial class ConsumerController : Controller
     {
-        private MvcExpenseDbContext db = new MvcExpenseDbContext();
+        private MvcExpenseDbContext db = MvcExpenseFactory.NewDbContext();// new MvcExpenseDbContext();
 
         //
         // GET: /Consumer/
 
-        public ViewResult Index()
+        public virtual ViewResult Index()
         {
             return View(db.Consumers.ToList());
         }
@@ -24,7 +22,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Consumer/Details/5
 
-        public ViewResult Details(long id)
+        public virtual ViewResult Details( long id )
         {
             Consumer consumer = db.Consumers.Find(id);
             return View(consumer);
@@ -33,7 +31,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Consumer/Create
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         } 
@@ -42,7 +40,7 @@ namespace MvcExpense.Controllers
         // POST: /Consumer/Create
 
         [HttpPost]
-        public ActionResult Create(Consumer consumer)
+        public virtual ActionResult Create( Consumer consumer )
         {
             if (ModelState.IsValid)
             {
@@ -56,8 +54,8 @@ namespace MvcExpense.Controllers
         
         //
         // GET: /Consumer/Edit/5
- 
-        public ActionResult Edit(long id)
+
+        public virtual ActionResult Edit( long id )
         {
             Consumer consumer = db.Consumers.Find(id);
             return View(consumer);
@@ -67,7 +65,7 @@ namespace MvcExpense.Controllers
         // POST: /Consumer/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Consumer consumer)
+        public virtual ActionResult Edit( Consumer consumer )
         {
             if (ModelState.IsValid)
             {
@@ -80,8 +78,8 @@ namespace MvcExpense.Controllers
 
         //
         // GET: /Consumer/Delete/5
- 
-        public ActionResult Delete(long id)
+
+        public virtual ActionResult Delete( long id )
         {
             Consumer consumer = db.Consumers.Find(id);
             return View(consumer);
@@ -91,7 +89,7 @@ namespace MvcExpense.Controllers
         // POST: /Consumer/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public virtual ActionResult DeleteConfirmed( long id )
         {            
             Consumer consumer = db.Consumers.Find(id);
             db.Consumers.Remove(consumer);

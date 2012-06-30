@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MvcExpense.ViewModels;
 
-namespace MvcExpense.Controllers
+namespace MvcExpense.UI.Controllers
 {
-    public class TestEditorController : Controller
+    public partial class TestEditorController : Controller
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             var model = new TestEditorViewModel();
             model.SampleDate = DateTime.Now;
@@ -22,7 +19,7 @@ namespace MvcExpense.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create( TestEditorViewModel model )
+        public virtual ActionResult Create( TestEditorViewModel model )
         {
             return RedirectToAction( "Create" );
         }

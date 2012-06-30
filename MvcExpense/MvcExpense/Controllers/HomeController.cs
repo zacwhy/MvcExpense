@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace MvcExpense.Controllers
+namespace MvcExpense.UI.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             //return RedirectToAction( "index", "Report" );
 
@@ -17,7 +13,7 @@ namespace MvcExpense.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public virtual ActionResult About()
         {
             return View();
         }

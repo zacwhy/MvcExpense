@@ -5,21 +5,23 @@ using System.Text;
 using System.Transactions;
 using System.Web.Mvc;
 using AutoMapper;
-using MvcExpense.DAL;
-using MvcExpense.Models;
+using MvcExpense.Core;
+using MvcExpense.Core.Models;
+using MvcExpense.Infrastructure.EntityFramework;
 using MvcExpense.MvcExpenseHelper;
 using MvcExpense.ViewModels;
 
-namespace MvcExpense.Controllers
-{ 
-    public class PaymentMethodController : Controller
+namespace MvcExpense.UI.Controllers
+{
+    //[Authorize( Roles = Role.ApplicationAdministrator )]
+    public partial class PaymentMethodController : Controller
     {
-        private readonly IMvcExpenseUnitOfWork _unitOfWork;// = new MvcExpenseUnitOfWork();
-        private MvcExpenseDbContext db = new MvcExpenseDbContext();
+        private readonly IMvcExpenseUnitOfWork _unitOfWork;
+        private MvcExpenseDbContext db = MvcExpenseFactory.NewDbContext();// MvcExpenseDbContext.GetInstance();// new MvcExpenseDbContext();
 
         public PaymentMethodController()
         {
-            _unitOfWork = new MvcExpenseUnitOfWork();
+            _unitOfWork = MvcExpenseFactory.NewUnitOfWork();// new MvcExpenseUnitOfWork();
         }
 
         public PaymentMethodController( IMvcExpenseUnitOfWork unitOfWork )
@@ -30,11 +32,11 @@ namespace MvcExpense.Controllers
         //
         // GET: /PaymentMethod/
 
-        public ViewResult Index()
+        public virtual ViewResult Index()
         {
             IQueryable<PaymentMethod> query =
                 from x in _unitOfWork.PaymentMethodRepository.GetQueryable()
-                select x;// new { x.Id, x.Name, x.Sequence };
+                select x; // new { x.Id, x.Name, x.Sequence };
 
             List<PaymentMethod> list = query.ToList();
             //List<PaymentMethod> list = db.PaymentMethods.OrderBy( x => x.Sequence ).ToList();
@@ -44,7 +46,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /PaymentMethod/Details/5
 
-        public ViewResult Details( long id )
+        public virtual ViewResult Details( long id )
         {
             PaymentMethod model = _unitOfWork.PaymentMethodRepository.GetById( id );
             //PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
@@ -54,7 +56,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /PaymentMethod/Create
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         } 
@@ -63,10 +65,11 @@ namespace MvcExpense.Controllers
         // POST: /PaymentMethod/Create
 
         [HttpPost]
-        public ActionResult Create( PaymentMethod model )
+        public virtual ActionResult Create( PaymentMethod model )
         {
             if ( ModelState.IsValid )
             {
+                model.Sequence = 10;
                 db.PaymentMethods.Add( model );
                 db.SaveChanges();
                 RefreshCachedPaymentMethods();
@@ -79,7 +82,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /PaymentMethod/Edit/5
 
-        public ActionResult Edit( long id )
+        public virtual ActionResult Edit( long id )
         {
             PaymentMethod paymentMethod = db.PaymentMethods.Find( id );
             PaymentMethodEditModel editModel = Mapper.Map<PaymentMethod, PaymentMethodEditModel>( paymentMethod );
@@ -92,7 +95,7 @@ namespace MvcExpense.Controllers
         // POST: /PaymentMethod/Edit/5
 
         [HttpPost]
-        public ActionResult Edit( PaymentMethodEditModel editModel )
+        public virtual ActionResult Edit( PaymentMethodEditModel editModel )
         {
             if ( ModelState.IsValid )
             {
@@ -146,8 +149,8 @@ namespace MvcExpense.Controllers
 
         //
         // GET: /PaymentMethod/Delete/5
- 
-        public ActionResult Delete(long id)
+
+        public virtual ActionResult Delete( long id )
         {
             PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
             return View(paymentmethod);
@@ -157,7 +160,7 @@ namespace MvcExpense.Controllers
         // POST: /PaymentMethod/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public virtual ActionResult DeleteConfirmed( long id )
         {            
             PaymentMethod paymentmethod = db.PaymentMethods.Find(id);
             db.PaymentMethods.Remove(paymentmethod);

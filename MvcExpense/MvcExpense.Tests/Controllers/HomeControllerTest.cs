@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MvcExpense.Controllers;
+using MvcExpense.UI.Controllers;
 
-namespace MvcExpense.Tests.Controllers
+namespace MvcExpense.UnitTests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

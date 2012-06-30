@@ -25,10 +25,15 @@ namespace Zac.MvcWhitespaceFilterAttribute
 
             //Thanks to Qtax
             //http://stackoverflow.com/questions/8762993/remove-white-space-from-entire-html-but-inside-pre-with-regular-expressions
-            var reg = new Regex( @"(?<=\s)\s+(?![^<>]*</pre>)" );
+            //var reg = new Regex( @"(?<=\s)\s+(?![^<>]*</pre>)" ); // todo put this back - to ignore inside <pre> tags
+            //html = reg.Replace( html, string.Empty );
+
+            // by zy
+            var reg = new Regex( @"(?<=\s)\s+(?![^<>]*</script>)" );
             html = reg.Replace( html, string.Empty );
 
-            html = Regex.Replace( html, @"\r\n?|\n", string.Empty );
+            // by zy - remove line feed
+            //html = Regex.Replace( html, @"\r\n?|\n", string.Empty ); // todo put this back
 
             buffer = Encoding.UTF8.GetBytes( html );
             this.Base.Write( buffer, 0, buffer.Length );

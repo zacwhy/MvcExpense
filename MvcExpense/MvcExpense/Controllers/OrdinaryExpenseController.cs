@@ -2,41 +2,43 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
 using AutoMapper;
-using MvcExpense.DAL;
-using MvcExpense.Models;
+using Microsoft.Web.Mvc;
+using MvcExpense.Core;
+using MvcExpense.Core.Models;
 using MvcExpense.MvcExpenseHelper;
 using MvcExpense.Services;
+using MvcExpense.UI.Models.Display;
+using MvcExpense.UI.Models.Input;
 using MvcExpense.ViewModels;
-using MvcSiteMapProvider;
 using Zac.DateRange;
 using Zac.MvcAutoMapAttribute;
 using Zac.MvcFlashMessage;
 using Zac.MvcMultiButtonAttribute;
 
-namespace MvcExpense.Controllers
+namespace MvcExpense.UI.Controllers
 {
-    public class OrdinaryExpenseController : Controller
+    public partial class OrdinaryExpenseController : AbstractMvcExpenseController
     {
-        private readonly IMvcExpenseUnitOfWork _unitOfWork;
-
-        public OrdinaryExpenseController()
-        {
-            _unitOfWork = new MvcExpenseUnitOfWork();
-        }
-
         public OrdinaryExpenseController( IMvcExpenseUnitOfWork unitOfWork )
+            : base( unitOfWork )
         {
-            _unitOfWork = unitOfWork;
         }
 
-        public ViewResult Index( int? year, int? month, int? day )
+        // todo make this work
+        //public ViewResult Index()
+        //{
+        //    return Index( null, null, null );
+        //}
+
+        public virtual ViewResult Index( int? year, int? month, int? day )
         {
             DateRange dateRange = DateRange.CreateDateRange( year, month, day, DateTime.Now );
 
-            IQueryable<OrdinaryExpense> query = _unitOfWork.OrdinaryExpenseRepository.GetWithDateRange( dateRange );
+            IQueryable<OrdinaryExpense> query = UnitOfWork.OrdinaryExpenseRepository.GetWithDateRange( dateRange );
             query = query.OrderByDescending( x => new { x.Date, x.Sequence } );
 
             IQueryable<OrdinaryExpenseViewModel> queryWithProjection =
@@ -47,25 +49,11 @@ namespace MvcExpense.Controllers
                     Date = x.Date,
                     Sequence = x.Sequence,
                     Price = x.Price,
-                    ConsumerName = x.Consumer != null ? x.Consumer.Name : string.Empty,
-                    CategoryName = x.Category != null ? x.Category.Name : string.Empty,
+                    ConsumerName = x.Consumer != null ? x.Consumer.Name : string.Empty, // todo remove null check
+                    CategoryName = x.Category != null ? x.Category.Name : string.Empty, // todo remove null check
                     Description = x.Description,
-                    PaymentMethodName = x.PaymentMethod != null ? x.PaymentMethod.Name : string.Empty
+                    PaymentMethodName = x.PaymentMethod != null ? x.PaymentMethod.Name : string.Empty // todo remove null check
                 };
-
-            //IQueryable<OrdinaryExpenseViewModel> queryWithProjection =
-            //    from x in query
-            //    select new OrdinaryExpenseViewModel
-            //    {
-            //        Id = x.Id,
-            //        Date = x.Date,
-            //        Sequence = x.Sequence,
-            //        Price = x.Price,
-            //        ConsumerName = x.Consumer.Name,
-            //        CategoryName = x.Category.Name,
-            //        Description = x.Description,
-            //        PaymentMethodName = x.PaymentMethod.Name
-            //    };
 
             List<OrdinaryExpenseViewModel> list = queryWithProjection.ToList();
 
@@ -76,52 +64,54 @@ namespace MvcExpense.Controllers
         }
 
         [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseViewModel ) )]
-        public ViewResult Details( long id )
+        public virtual ViewResult Details( long id )
         {
-            OrdinaryExpense model = _unitOfWork.OrdinaryExpenseRepository.GetById( id );
+            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
             return View( model );
         }
 
-        [Authorize(Roles = "user")]
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
-            var createModel = new OrdinaryExpenseCreateModel();
-            createModel.Date = OrdinaryExpenseService.GetMostRecentDate( _unitOfWork );
-            createModel.SelectedConsumerIds = new long[] { 1 }; // todo remove hardcode
-            PopulateCreateModel( createModel );
-            return View( createModel );
+            var display = new CreateOrdinaryExpenseDisplay
+            {
+                Date = UnitOfWork.OrdinaryExpenseRepository.GetMostRecentDate(),
+                SelectedConsumerIds = new long[] { 1 } // todo remove hardcode
+            };
+            PopulateDisplay( display );
+            return View( display );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create" )]
-        public ActionResult Create( OrdinaryExpenseCreateModel createModel )
+        public virtual ActionResult Create( CreateOrdinaryExpenseInput input )
         {
-            return CreateAndRedirect( createModel, "Index" );
+            return CreateAndRedirect<OrdinaryExpenseController>( input, x => x.Index( null, null, null ) );
         }
 
         [HttpPost]
         [MultiButton( MatchFormKey = "action", MatchFormValue = "Create and New" )]
-        public ActionResult CreateAndNew( OrdinaryExpenseCreateModel createModel )
+        public virtual ActionResult CreateAndNew( CreateOrdinaryExpenseInput input )
         {
-            return CreateAndRedirect( createModel, "Create" );
+            return CreateAndRedirect<OrdinaryExpenseController>( input, x => x.Create() );
         }
 
-        private ActionResult CreateAndRedirect( OrdinaryExpenseCreateModel createModel, string actionNameToRedirectTo )
+        private ActionResult CreateAndRedirect<TController>( CreateOrdinaryExpenseInput input, Expression<Action<TController>> actionExpression ) where TController : Controller
         {
             if ( ModelState.IsValid )
             {
-                List<OrdinaryExpense> list = OrdinaryExpenseService.GetOrdinaryExpenses( _unitOfWork, createModel, Categories );
+                IEnumerable<Category> categories = ExpenseEntitiesCache.GetCategories( UnitOfWork );
+                List<OrdinaryExpense> list = OrdinaryExpenseService.GetOrdinaryExpenses( UnitOfWork, input, categories );
 
                 foreach ( OrdinaryExpense item in list )
                 {
-                    _unitOfWork.OrdinaryExpenseRepository.Insert( item );
+                    UnitOfWork.OrdinaryExpenseRepository.Insert( item );
                 }
 
                 object flashArguments;
 
                 try
                 {
-                    _unitOfWork.Save();
+                    UnitOfWork.Save();
 
                     string flashMessage;
 
@@ -137,98 +127,123 @@ namespace MvcExpense.Controllers
 
                     flashArguments = new { notice = flashMessage };
                 }
-                catch ( DbEntityValidationException ex )
+                catch ( DbEntityValidationException dbEntityValidationException )
                 {
-                    var sb = new StringBuilder("<ol>");
-                    foreach ( DbEntityValidationResult dbEntityValidationResult in ex.EntityValidationErrors )
-                    {
-                        foreach ( DbValidationError dbValidationError in dbEntityValidationResult.ValidationErrors )
-                        {
-                            string errorMessage = dbValidationError.ErrorMessage;
-                            sb.AppendFormat( "<li>{0}</li>", errorMessage );
-                        }
-                    }
-                    sb.AppendLine( "</ol>" );
-                    flashArguments = new { error = "Errors: " + sb };
+                    string flashMessage = GetFlashMessage( dbEntityValidationException );
+                    flashArguments = new { error = "Errors: " + flashMessage };
                     //throw;
                 }
 
-                return RedirectToAction( actionNameToRedirectTo ).WithFlash( flashArguments );
+                return this.RedirectToAction( actionExpression ).WithFlash( flashArguments );
             }
 
-            PopulateCreateModel( createModel );
-            return View( createModel );
+            CreateOrdinaryExpenseDisplay display = input.ToCreateDisplay();
+            PopulateDisplay( display );
+            return View( display );
         }
 
-        [MvcSiteMapNode( Title = "Edit", ParentKey = "OrdinaryExpense" )]
-        public ActionResult Edit( long id )
+        public virtual ActionResult Edit( long id )
         {
-            OrdinaryExpense model = _unitOfWork.OrdinaryExpenseRepository.GetById( id );
-            OrdinaryExpenseEditModel editModel = Mapper.Map<OrdinaryExpense, OrdinaryExpenseEditModel>( model );
-            PopulateEditModel( editModel );
-            return View( editModel );
+            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
+            EditOrdinaryExpenseDisplay display = model.ToEditDisplay();
+            PopulateDisplay( display );
+            return View( display );
         }
 
         [HttpPost]
-        public ActionResult Edit( OrdinaryExpenseEditModel editModel )
+        public virtual ActionResult Edit( EditOrdinaryExpenseInput input )
         {
             if ( ModelState.IsValid )
             {
-                OrdinaryExpense model = Mapper.Map<OrdinaryExpenseEditModel, OrdinaryExpense>( editModel );
-                _unitOfWork.OrdinaryExpenseRepository.Update( model );
-                _unitOfWork.Save();
-                return RedirectToAction( "Index" );
+                OrdinaryExpense model = input.ToModel();
+                UnitOfWork.OrdinaryExpenseRepository.Update( model );
+                UnitOfWork.Save();
+                return this.RedirectToAction( x => x.Index( null, null, null ) );
             }
 
-            PopulateEditModel( editModel );
-            return View( editModel );
+            EditOrdinaryExpenseDisplay display = input.ToEditDisplay();
+            PopulateDisplay( display );
+            return View( display );
         }
 
-        public ActionResult Delete( long id )
+        public virtual ActionResult Delete( long id )
         {
-            OrdinaryExpense model = _unitOfWork.OrdinaryExpenseRepository.GetById( id );
+            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
             return View( model );
         }
 
         [HttpPost, ActionName( "Delete" )]
-        public ActionResult DeleteConfirmed( long id )
+        public virtual ActionResult DeleteConfirmed( long id )
         {
-            _unitOfWork.OrdinaryExpenseRepository.Delete( id );
-            _unitOfWork.Save();
+            UnitOfWork.OrdinaryExpenseRepository.Delete( id );
+            UnitOfWork.Save();
             string flashMessage = string.Format( "Deleted Id {0}.", id );
-            return RedirectToAction( "Index" ).WithFlash( new { notice = flashMessage } );
+            return this.RedirectToAction( x => x.Index( null, null, null ) )
+                .WithFlash( new { notice = flashMessage } );
+            //return RedirectToAction( "Index" ).WithFlash( new { notice = flashMessage } );
         }
 
-        protected override void Dispose( bool disposing )
+        private void PopulateDisplay( CreateOrdinaryExpenseDisplay display )
         {
-            _unitOfWork.Dispose();
-            base.Dispose( disposing );
+            PopulateDisplay( display, UnitOfWork );
         }
 
-        private IEnumerable<Category> Categories
+        private void PopulateDisplay( EditOrdinaryExpenseDisplay display )
         {
-            get
+            PopulateDisplay( display, UnitOfWork );
+        }
+
+        private static void PopulateDisplay( CreateOrdinaryExpenseDisplay display, IMvcExpenseUnitOfWork unitOfWork )
+        {
+            display.Categories = ExpenseEntitiesCache.GetCategories( unitOfWork );
+            display.Consumers = ExpenseEntitiesCache.GetConsumers( unitOfWork );
+            display.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( unitOfWork );
+        }
+
+        private static void PopulateDisplay( EditOrdinaryExpenseDisplay display, IMvcExpenseUnitOfWork unitOfWork )
+        {
+            display.Categories = ExpenseEntitiesCache.GetCategories( unitOfWork );
+            display.Consumers = ExpenseEntitiesCache.GetConsumers( unitOfWork );
+            display.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( unitOfWork );
+        }
+
+        private static string GetFlashMessage( DbEntityValidationException dbEntityValidationException )
+        {
+            var sb = new StringBuilder( "<ol>" );
+            foreach ( DbEntityValidationResult dbEntityValidationResult in dbEntityValidationException.EntityValidationErrors )
             {
-                return ExpenseEntitiesCache.GetCategories( _unitOfWork );
+                foreach ( DbValidationError dbValidationError in dbEntityValidationResult.ValidationErrors )
+                {
+                    string errorMessage = dbValidationError.ErrorMessage;
+                    sb.AppendFormat( "<li>{0}</li>", errorMessage );
+                }
             }
+            sb.AppendLine( "</ol>" );
+            return sb.ToString();
         }
 
-        private void PopulateCreateModel( OrdinaryExpenseCreateModel createModel )
+    }
+
+    static class Helper
+    {
+        public static CreateOrdinaryExpenseDisplay ToCreateDisplay( this CreateOrdinaryExpenseInput input )
         {
-            PopulateModelBase( createModel );
+            return Mapper.Map<CreateOrdinaryExpenseInput, CreateOrdinaryExpenseDisplay>( input );
         }
 
-        private void PopulateEditModel( OrdinaryExpenseEditModel editModel )
+        public static EditOrdinaryExpenseDisplay ToEditDisplay( this OrdinaryExpense model )
         {
-            PopulateModelBase( editModel );
+            return Mapper.Map<OrdinaryExpense, EditOrdinaryExpenseDisplay>( model );
         }
 
-        private void PopulateModelBase( OrdinaryExpenseCreateEditModelBase modelBase )
+        public static EditOrdinaryExpenseDisplay ToEditDisplay( this EditOrdinaryExpenseInput input )
         {
-            modelBase.Categories = Categories.ToList();
-            modelBase.PaymentMethods = ExpenseEntitiesCache.GetPaymentMethods( _unitOfWork ).ToList();
-            modelBase.Consumers = ExpenseEntitiesCache.GetConsumers( _unitOfWork ).ToList();
+            return Mapper.Map<EditOrdinaryExpenseInput, EditOrdinaryExpenseDisplay>( input );
         }
 
+        public static OrdinaryExpense ToModel( this EditOrdinaryExpenseInput input )
+        {
+            return Mapper.Map<EditOrdinaryExpenseInput, OrdinaryExpense>( input );
+        }
     }
 }

@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using MvcExpense.Core.Models;
 using MvcExpense.HelperModels;
-using MvcExpense.Models;
+using MvcExpense.Infrastructure.EntityFramework;
+using MvcExpense.MvcExpenseHelper;
 using MvcExpense.ViewModels;
 
-namespace MvcExpense.Controllers
-{ 
-    public class ReportController : Controller
-    {
-        private MvcExpenseDbContext db = new MvcExpenseDbContext();
+//using OrdinaryExpense = MvcExpense.Core.Models.OrdinaryExpense;
 
-        public ViewResult Index()
+namespace MvcExpense.UI.Controllers
+{
+    public partial class ReportController : Controller
+    {
+        private MvcExpenseDbContext db = MvcExpenseFactory.NewDbContext();// new MvcExpenseDbContext();
+
+        public virtual ViewResult Index()
         {
             DateTime beginOfCurrentYear = new DateTime( DateTime.Now.Year, 1, 1 );
 
@@ -30,7 +34,7 @@ namespace MvcExpense.Controllers
             return View( reportViewModel );
         }
 
-        public ViewResult GiveAndTake()
+        public virtual ViewResult GiveAndTake()
         {
             string consumerNamesString = "i,m,p,r,x,s,other";
             string[] consumerNames = consumerNamesString.Split( ',' );
@@ -126,7 +130,7 @@ namespace MvcExpense.Controllers
         //    }
         //}
 
-        public ViewResult CategoryBreakdown()
+        public virtual ViewResult CategoryBreakdown()
         {
             var startDate = new DateTime( DateTime.Now.Year, 1, 1 );
             List<OrdinaryExpense> expenses = db.OrdinaryExpenses.Where( x => x.Date >= startDate ).ToList();

@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MvcExpense.Models;
+using MvcExpense.Core.Models;
+using MvcExpense.Infrastructure.EntityFramework;
+using MvcExpense.MvcExpenseHelper;
 
-namespace MvcExpense.Controllers
-{ 
-    public class CategoryController : Controller
+namespace MvcExpense.UI.Controllers
+{
+    public partial class CategoryController : Controller
     {
-        private MvcExpenseDbContext db = new MvcExpenseDbContext();
+        private MvcExpenseDbContext db = MvcExpenseFactory.NewDbContext(); // new MvcExpenseDbContext();
 
         //
         // GET: /Category/
 
-        public ViewResult Index()
+        public virtual ViewResult Index()
         {
             var categories = db.Categories.Include(c => c.Parent);
             return View(categories.ToList());
         }
 
-        public ViewResult Tree()
+        public virtual ViewResult Tree()
         {
             List<Category> categories = db.Categories.ToList();
 
@@ -34,7 +34,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Category/Details/5
 
-        public ViewResult Details(long id)
+        public virtual ViewResult Details( long id )
         {
             Category category = db.Categories.Find(id);
             return View(category);
@@ -43,7 +43,7 @@ namespace MvcExpense.Controllers
         //
         // GET: /Category/Create
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name");
             return View();
@@ -53,7 +53,7 @@ namespace MvcExpense.Controllers
         // POST: /Category/Create
 
         [HttpPost]
-        public ActionResult Create(Category category)
+        public virtual ActionResult Create( Category category )
         {
             if (ModelState.IsValid)
             {
@@ -68,8 +68,8 @@ namespace MvcExpense.Controllers
         
         //
         // GET: /Category/Edit/5
- 
-        public ActionResult Edit(long id)
+
+        public virtual ActionResult Edit( long id )
         {
             Category category = db.Categories.Find(id);
             ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name", category.ParentId);
@@ -80,12 +80,13 @@ namespace MvcExpense.Controllers
         // POST: /Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Category category)
+        public virtual ActionResult Edit( Category category )
         {
             if (ModelState.IsValid)
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                ExpenseEntitiesCache.RefreshCategories(MvcExpenseFactory.NewUnitOfWork());
                 return RedirectToAction("Index");
             }
             ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name", category.ParentId);
@@ -94,8 +95,8 @@ namespace MvcExpense.Controllers
 
         //
         // GET: /Category/Delete/5
- 
-        public ActionResult Delete(long id)
+
+        public virtual ActionResult Delete( long id )
         {
             Category category = db.Categories.Find(id);
             return View(category);
@@ -105,7 +106,7 @@ namespace MvcExpense.Controllers
         // POST: /Category/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public virtual ActionResult DeleteConfirmed( long id )
         {            
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);

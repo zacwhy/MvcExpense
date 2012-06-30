@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using MvcExpense.Controllers;
-using MvcExpense.DAL;
-using MvcExpense.Models;
+using MvcExpense.Core;
+using MvcExpense.Core.Models;
+using MvcExpense.Core.Repositories;
+using MvcExpense.UI.Controllers;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Zac.DateRange;
 
-namespace MvcExpense.Tests.Controllers
+namespace MvcExpense.UnitTests.Controllers
 {
     [TestFixture]
     public class OrdinaryExpenseControllerTester
