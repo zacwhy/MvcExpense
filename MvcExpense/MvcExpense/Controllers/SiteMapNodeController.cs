@@ -77,6 +77,23 @@ namespace MvcExpense.UI.Controllers
                 try
                 {
                     SiteMapNode model = ToModel( input );
+
+
+                    // move this away
+                    const long subtreeSize = 2; // left - right + 1
+                    if ( input.PreviousSibling.HasValue )
+                    {
+                        SiteMapNode previousSibiling = Repository.GetById( input.PreviousSibling.Value ); // rgt
+                        model.Lft = previousSibiling.Rgt + 1;
+                    }
+                    else
+                    {
+                        SiteMapNode parent = Repository.GetById( input.ParentId ); // lft
+                        model.Lft = parent.Lft + 1;
+                    }
+                    model.Rgt = model.Lft + subtreeSize - 1;
+
+
                     Repository.Insert( model );
                     UnitOfWork.Save();
                     return this.RedirectToAction( x => x.Index() );

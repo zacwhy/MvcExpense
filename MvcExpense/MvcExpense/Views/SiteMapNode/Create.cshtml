@@ -3,7 +3,13 @@
 
 @{
     Layout = "~/Views/Shared/_CreateFormLayout.cshtml";
+    Html.Assets().Scripts.Add( "/Scripts/Jit/jit.js" );
+    Html.Assets().Scripts.Add( "/Scripts/Views/SiteMapNode/Edit.js" );
 }
+
+<script language="javascript" type="text/javascript">
+    var tree = @Model.TreeJson;
+</script>
 
 @using ( Html.BeginForm() )
 {
@@ -36,20 +42,21 @@
         </div>
         
         <div class="editor-label">
-            @Html.LabelFor( model => model.ParentId )
+            @Html.LabelFor( model => model.ParentId, "Parent" )
         </div>
         <div class="editor-field">
             @Html.DropDownListFor( model => model.ParentId, Model.ParentSelectList, SystemParameters.DropDownListNullDisplay )
             @Html.ValidationMessageFor( model => model.ParentId )
         </div>
 
-        <div class="editor-label">
-            <label>Order</label>
-        </div>
-        <div class="editor-field">
-            <select>
-                <option>First</option>
-            </select>
+        <div id="DivPreviousSibling">
+            <div class="editor-label">
+                @Html.LabelFor( model => model.PreviousSibling, "Place after" )
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor( model => model.PreviousSibling, new List<SelectListItem>() )
+                @*todo SelectListItemCollection.Empty*@
+            </div>
         </div>
         
         <p>

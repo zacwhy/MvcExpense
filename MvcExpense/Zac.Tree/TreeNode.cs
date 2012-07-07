@@ -118,9 +118,6 @@ namespace Zac.Tree
         public void RemoveNode( TreeNode<T> node )
         {
             node.RemoveSelfFromTree();
-            //node.ClearChildren();
-            //node.Siblings.Remove( node );
-            //node.Dispose();
         }
 
     }

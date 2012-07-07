@@ -18,5 +18,10 @@ namespace MvcExpense.UI.Models.Display
             }
         }
 
+        public MvcHtmlString TreeJson
+        {
+            get { return new MvcHtmlString( Tree.ToJson() ); }
+        }
+
     }
 }

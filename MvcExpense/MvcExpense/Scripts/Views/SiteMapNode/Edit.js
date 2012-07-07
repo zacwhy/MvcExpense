@@ -1,9 +1,11 @@
 ﻿
 var parentIdSelectId = '#ParentId';
 var previousSiblingSelectId = '#PreviousSibling';
-var divPreviousSibling = '#DivPreviousSibling';
+var previousSiblingDivId = '#DivPreviousSibling';
 
 $(document).ready(function () {
+    $(previousSiblingDivId).hide();
+    
     populatePreviousSiblingSelectControlWithSelectedParentId();
 
     $(parentIdSelectId).change(function () {
@@ -19,7 +21,10 @@ $(document).ready(function () {
 
 function populatePreviousSiblingSelectControlWithSelectedParentId() {
     var parentId = $(parentIdSelectId).val();
-    populatePreviousSiblingSelectControl(parentId);
+
+    if (parentId != '') {
+        populatePreviousSiblingSelectControl(parentId);
+    }
 }
 
 function populatePreviousSiblingSelectControl(parentId) {
@@ -38,10 +43,13 @@ function populatePreviousSiblingSelectControl(parentId) {
         select.append($("<option>").val(node.id).text(text));
         i++;
     });
-    
-    if (i > 1) {
-        $(divPreviousSibling).show(1000);
+
+    var previousSiblingDiv = $(previousSiblingDivId);
+    var optionCount = select.find('option').length;
+
+    if (optionCount > 1) {
+        previousSiblingDiv.show(1000);
     } else {
-        $(divPreviousSibling).hide(1000);
+        previousSiblingDiv.hide(1000);
     }
 }
