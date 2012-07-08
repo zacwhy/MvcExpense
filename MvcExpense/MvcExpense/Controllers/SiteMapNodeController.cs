@@ -77,28 +77,12 @@ namespace MvcExpense.UI.Controllers
                 try
                 {
                     SiteMapNode model = ToModel( input );
-
-
-                    // move this away
-                    const long subtreeSize = 2; // left - right + 1
-                    if ( input.PreviousSibling.HasValue )
-                    {
-                        SiteMapNode previousSibiling = Repository.GetById( input.PreviousSibling.Value ); // rgt
-                        model.Lft = previousSibiling.Rgt + 1;
-                    }
-                    else
-                    {
-                        SiteMapNode parent = Repository.GetById( input.ParentId ); // lft
-                        model.Lft = parent.Lft + 1;
-                    }
-                    model.Rgt = model.Lft + subtreeSize - 1;
-
-
+                    Repository.InsertNode( model, input.ParentId, input.PreviousSiblingId );
                     Repository.Insert( model );
                     UnitOfWork.Save();
                     return this.RedirectToAction( x => x.Index() );
                 }
-                catch ( Exception ex )
+                catch /*( Exception ex )*/
                 {
                     // todo log and display error and remove throw
                     throw;
@@ -126,11 +110,12 @@ namespace MvcExpense.UI.Controllers
                 try
                 {
                     SiteMapNode model = ToModel( input );
+                    Repository.UpdateNode( model, input.ParentId, input.PreviousSiblingId );
                     Repository.Update( model );
                     UnitOfWork.Save();
                     return this.RedirectToAction( x => x.Index() );
                 }
-                catch ( Exception ex )
+                catch /*( Exception ex )*/
                 {
                     // todo log and display error and remove throw
                     throw;
@@ -151,7 +136,7 @@ namespace MvcExpense.UI.Controllers
         [HttpPost, ActionName( "Delete" )]
         public virtual ActionResult DeleteConfirmed( long id )
         {
-            Repository.Delete( id );
+            Repository.DeleteNode( id );
             UnitOfWork.Save();
             string flashMessage = string.Format( "Deleted Id {0}.", id ); // todo improve message
             return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
@@ -175,7 +160,7 @@ namespace MvcExpense.UI.Controllers
 
             if ( currentNode.PreviousSibling != null )
             {
-                display.PreviousSibling = currentNode.PreviousSibling.Data.Id;
+                display.PreviousSiblingId = currentNode.PreviousSibling.Data.Id;
             }
 
             tree.RemoveNode( currentNode );

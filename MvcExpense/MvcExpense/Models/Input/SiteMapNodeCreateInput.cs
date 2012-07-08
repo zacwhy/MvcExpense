@@ -15,6 +15,6 @@ namespace MvcExpense.UI.Models.Input
         [Required]
         public long ParentId { get; set; }
 
-        public long? PreviousSibling { get; set; }
+        public long? PreviousSiblingId { get; set; }
     }
 }

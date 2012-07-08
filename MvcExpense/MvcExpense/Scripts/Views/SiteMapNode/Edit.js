@@ -1,6 +1,6 @@
 ﻿
 var parentIdSelectId = '#ParentId';
-var previousSiblingSelectId = '#PreviousSibling';
+var previousSiblingSelectId = '#PreviousSiblingId';
 var previousSiblingDivId = '#DivPreviousSibling';
 
 $(document).ready(function () {

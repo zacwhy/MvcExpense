@@ -13,6 +13,11 @@ namespace Zac.DesignPattern.EntityFramework.Repositories
         private readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
+        public DbContext Context
+        {
+            get { return _context; }
+        }
+
         public DbSet<TEntity> DbSet
         {
             get { return _dbSet; }

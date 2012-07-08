@@ -51,10 +51,10 @@
 
         <div id="DivPreviousSibling">
             <div class="editor-label">
-                @Html.LabelFor( model => model.PreviousSibling, "Place after" )
+                @Html.LabelFor( model => model.PreviousSiblingId, "Place after" )
             </div>
             <div class="editor-field">
-                @Html.DropDownListFor( model => model.PreviousSibling, new List<SelectListItem>() )
+                @Html.DropDownListFor( model => model.PreviousSiblingId, new List<SelectListItem>() )
                 @*todo SelectListItemCollection.Empty*@
             </div>
         </div>
