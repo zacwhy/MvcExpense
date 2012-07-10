@@ -110,6 +110,7 @@
     <Compile Include="ConsumerController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\SiteMapNodeController.cs" />
     <Compile Include="Controllers\AbstractStandardController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />

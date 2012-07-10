@@ -57,6 +57,7 @@
     <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\ErrorLogRepository.cs" />
     <Compile Include="Repositories\SiteMapNodeRepository.cs" />
     <Compile Include="Repositories\SystemParameterRepository.cs" />
     <Compile Include="StandardDbContext.cs" />

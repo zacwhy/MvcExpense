@@ -12,6 +12,12 @@ namespace Zac.StandardInfrastructure.EntityFramework
         {
         }
 
+        private IErrorLogRepository _errorLogRepository;
+        public IErrorLogRepository ErrorLogRepository
+        {
+            get { return _errorLogRepository ?? ( _errorLogRepository = new ErrorLogRepository( Context ) ); }
+        }
+
         private ISiteMapNodeRepository _siteMapNodeRepository;
         public ISiteMapNodeRepository SiteMapNodeRepository
         {

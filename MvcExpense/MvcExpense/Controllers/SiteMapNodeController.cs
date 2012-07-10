@@ -166,8 +166,8 @@ namespace MvcExpense.UI.Controllers
 
         private TreeNode<SiteMapNode> GetTree()
         {
-            IEnumerable<SiteMapNode> siteMapNodes = Repository.GetAll();
-            return TreeNodeHelper.CreateTree( siteMapNodes );
+            IEnumerable<SiteMapNode> entities = Repository.GetAll();
+            return TreeNodeHelper.CreateTree( entities );
         }
 
         private void PopulateCreateDisplay( SiteMapNodeCreateDisplay display )
