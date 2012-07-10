@@ -6,7 +6,7 @@ namespace Zac.DesignPattern.EntityFramework.Repositories
     public class StandardRepository<TEntity> : GenericRepository<TEntity, long>, IStandardRepository<TEntity>
         where TEntity : class
     {
-        public StandardRepository( DbContext context )
+        public StandardRepository( EnhancedDbContext context )
             : base( context )
         {
         }

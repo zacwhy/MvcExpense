@@ -10,10 +10,10 @@ namespace Zac.DesignPattern.EntityFramework.Repositories
 {
     public class GenericRepository<TEntity, TId> : IRepository<TEntity, TId> where TEntity : class
     {
-        private readonly DbContext _context;
+        private readonly EnhancedDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public DbContext Context
+        public EnhancedDbContext Context
         {
             get { return _context; }
         }
@@ -23,7 +23,7 @@ namespace Zac.DesignPattern.EntityFramework.Repositories
             get { return _dbSet; }
         }
 
-        public GenericRepository( DbContext context )
+        public GenericRepository( EnhancedDbContext context )
         {
             // added 2012-06-01
             if ( context == null )

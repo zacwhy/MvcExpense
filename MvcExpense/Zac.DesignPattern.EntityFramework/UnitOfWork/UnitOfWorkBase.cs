@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace Zac.DesignPattern.EntityFramework.UnitOfWork
 {
     public abstract class UnitOfWorkBase : IDisposable
     {
-        private readonly DbContext _context;
+        private readonly EnhancedDbContext _context;
 
-        protected UnitOfWorkBase( DbContext context )
+        protected UnitOfWorkBase( EnhancedDbContext context )
         {
             _context = context;
         }
 
-        protected DbContext Context
+        protected EnhancedDbContext Context
         {
             get
             {
@@ -22,6 +23,12 @@ namespace Zac.DesignPattern.EntityFramework.UnitOfWork
 
         public void Save()
         {
+            foreach ( SqlCommand sqlCommand in Context.SqlCommandsBeforeSaveChanges )
+            {
+                object[] parameters = UnitOfWorkBaseHelper.CopyParameters( sqlCommand.Parameters ).ToArray();
+                Context.Database.ExecuteSqlCommand( sqlCommand.CommandText, parameters );
+            }
+
             Context.SaveChanges();
         }
 

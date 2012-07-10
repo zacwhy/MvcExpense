@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using Zac.DesignPattern.EntityFramework;
 using Zac.DesignPattern.EntityFramework.Repositories;
 using Zac.StandardCore.Models;
 using Zac.StandardCore.Repositories;
-using System.Collections;
 
 namespace Zac.StandardInfrastructure.EntityFramework.Repositories
 {
     public class SiteMapNodeRepository : StandardRepository<SiteMapNode>, ISiteMapNodeRepository
     {
-        public SiteMapNodeRepository( DbContext context )
+        public SiteMapNodeRepository( EnhancedDbContext context )
             : base( context )
         {
         }
@@ -155,6 +154,11 @@ namespace Zac.StandardInfrastructure.EntityFramework.Repositories
             object[] parameters = parameterCollection.Cast<object>().ToArray();
             Context.Database.ExecuteSqlCommand( sql, parameters );
 
+            // cannot use this because output parameter cannot be returned immediately
+            //var sqlCommand = new SqlCommand( sql );
+            //sqlCommand.Parameters.AddRange( parameterCollection.ToArray() );
+            //Context.SqlCommandsBeforeSaveChanges.Add( sqlCommand );
+
             entity.Lft = (long) pLeft.Value;
             entity.Rgt = (long) pRight.Value;
         }
@@ -165,14 +169,19 @@ namespace Zac.StandardInfrastructure.EntityFramework.Repositories
             sb.Append( "declare @left bigint, @right bigint, @size bigint;" );
 
             sb.AppendFormat( "select @left = Lft, @right = Rgt, @size = Rgt - Lft + 1 from {0} where Id = @id;", TableName );
-            var pId = new SqlParameter( "id", id );
+            var pId = new SqlParameter( "id", SqlDbType.BigInt ) { SqlValue = id };
 
             sb.AppendFormat( "delete from {0} where Lft >= @left and Rgt <= @right;", TableName );
             sb.AppendFormat( "update {0} set Lft = Lft - @size where Lft >= @left;", TableName );
             sb.AppendFormat( "update {0} set Rgt = Rgt - @size where Rgt >= @left;", TableName );
 
             string sql = sb.ToString();
-            Context.Database.ExecuteSqlCommand( sql, pId );
+
+            //Context.Database.ExecuteSqlCommand( sql, pId );
+
+            var sqlCommand = new SqlCommand( sql );
+            sqlCommand.Parameters.Add( pId );
+            Context.SqlCommandsBeforeSaveChanges.Add( sqlCommand );
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -27,6 +28,7 @@ namespace MvcExpense.UI.Controllers
 
         public virtual ActionResult Refresh()
         {
+            // todo rethink strategy
             var siteMapProvider = SiteMap.Provider as Zac.RepositorySiteMapProvider.RepositorySiteMapProvider;
 
             string flashMessage;
@@ -77,9 +79,15 @@ namespace MvcExpense.UI.Controllers
                 try
                 {
                     SiteMapNode model = ToModel( input );
-                    Repository.InsertNode( model, input.ParentId, input.PreviousSiblingId );
-                    Repository.Insert( model );
-                    UnitOfWork.Save();
+
+                    using ( var scope = new TransactionScope() )
+                    {
+                        Repository.InsertNode( model, input.ParentId, input.PreviousSiblingId );
+                        Repository.Insert( model );
+                        UnitOfWork.Save();
+                        scope.Complete();
+                    }
+
                     return this.RedirectToAction( x => x.Index() );
                 }
                 catch /*( Exception ex )*/
@@ -110,9 +118,15 @@ namespace MvcExpense.UI.Controllers
                 try
                 {
                     SiteMapNode model = ToModel( input );
-                    Repository.UpdateNode( model, input.ParentId, input.PreviousSiblingId );
-                    Repository.Update( model );
-                    UnitOfWork.Save();
+
+                    using ( var scope = new TransactionScope() )
+                    {
+                        Repository.UpdateNode( model, input.ParentId, input.PreviousSiblingId );
+                        Repository.Update( model );
+                        UnitOfWork.Save();
+                        scope.Complete();
+                    }
+
                     return this.RedirectToAction( x => x.Index() );
                 }
                 catch /*( Exception ex )*/
@@ -136,10 +150,18 @@ namespace MvcExpense.UI.Controllers
         [HttpPost, ActionName( "Delete" )]
         public virtual ActionResult DeleteConfirmed( long id )
         {
-            Repository.DeleteNode( id );
-            UnitOfWork.Save();
-            string flashMessage = string.Format( "Deleted Id {0}.", id ); // todo improve message
-            return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
+            try
+            {
+                Repository.DeleteNode( id );
+                UnitOfWork.Save();
+                string flashMessage = string.Format( "Deleted Id {0}.", id ); // todo improve message
+                return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
+            }
+            catch
+            {
+                // todo log and display error and remove throw
+                throw;
+            }
         }
 
         private TreeNode<SiteMapNode> GetTree()

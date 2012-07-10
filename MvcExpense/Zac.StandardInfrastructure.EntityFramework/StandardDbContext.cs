@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
+using Zac.DesignPattern.EntityFramework;
 using Zac.StandardCore.Models;
 
 namespace Zac.StandardInfrastructure.EntityFramework
 {
-    public class StandardDbContext : DbContext
+    public class StandardDbContext : EnhancedDbContext
     {
         public StandardDbContext( string nameOrConnectionString )
             : base( nameOrConnectionString )
