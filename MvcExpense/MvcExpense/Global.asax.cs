@@ -1,7 +1,9 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MvcExpense.MvcExpenseHelper;
+using MvcExpense.UI.DependencyResolution;
+using StructureMap;
+using Zac.Mvc;
 using Zac.MvcWhitespaceFilterAttribute;
 
 namespace MvcExpense.UI
@@ -23,6 +25,9 @@ namespace MvcExpense.UI
 
         protected void Application_Start()
         {
+            IContainer container = IoC.Initialize();
+            ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( container ) );
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters( GlobalFilters.Filters );

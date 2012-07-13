@@ -6,6 +6,7 @@
 /MvcExpense/MvcExpense.Core/obj/
 /MvcExpense/MvcExpense.Tests/bin/
 /MvcExpense/MvcExpense.Tests/obj/
+
 /MvcExpense/Infrastructure.EntityFramework/bin/
 /MvcExpense/Infrastructure.EntityFramework/obj/
 /MvcExpense/Zac.DateRange/bin/
@@ -20,6 +21,8 @@
 /MvcExpense/Zac.EnhancedMath/obj/
 /MvcExpense/Zac.EnhancedMath.Tests/bin/
 /MvcExpense/Zac.EnhancedMath.Tests/obj/
+/MvcExpense/Zac.Mvc/bin/
+/MvcExpense/Zac.Mvc/obj/
 /MvcExpense/Zac.MvcAssetsHelper/bin/
 /MvcExpense/Zac.MvcAssetsHelper/obj/
 /MvcExpense/Zac.MvcAutoMapAttribute/bin/
@@ -38,8 +41,11 @@
 /MvcExpense/Zac.RepositorySiteMapProvider/obj/
 /MvcExpense/Zac.StandardCore/bin/
 /MvcExpense/Zac.StandardCore/obj/
+/MvcExpense/Zac.StandardHelper/bin/
+/MvcExpense/Zac.StandardHelper/obj/
 /MvcExpense/Zac.StandardInfrastructure.EntityFramework/bin/
 /MvcExpense/Zac.StandardInfrastructure.EntityFramework/obj/
 /MvcExpense/Zac.Tree/bin/
 /MvcExpense/Zac.Tree/obj/
+
 /MvcExpense/_ReSharper.MvcExpense/
