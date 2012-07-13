@@ -11,7 +11,7 @@ to fork the 'official' template in order to achieve what they want.
 const string T4MVCNamespace = "T4MVC";
 
 // The prefix used for things like MVC.Dinners.Name and MVC.Dinners.Delete(Model.DinnerID)
-const string HelpersPrefix = "MVC";
+const string HelpersPrefix = "MvcStandard";
 
 // Namespaces to be referenced by the generated code
 readonly string[] ReferencedNamespaces = new string[] {
@@ -54,11 +54,11 @@ const string ActionResultInterfaceName = "IT4MVCActionResult";
 // This can be set to false to omit the generation of the System.Web.Mvc.T4Extensions class, which can be
 // useful if it is already defined in a referenced library
 // See http://stackoverflow.com/questions/5563163/t4mvc-use-extension-methods-in-control-library/5574227
-static bool GenerateMvcT4Extensions = false;
+static bool GenerateMvcT4Extensions = true;
 
 // If true, the T4MVC action result interface will be generated
 // If false, the namespace of the interface must be referenced in the 'ReferencedNamespaces' setting
-static bool GenerateActionResultInterface = false;
+static bool GenerateActionResultInterface = true;
 
 // If true, use lower case tokens in routes for the area, controller and action names
 static bool UseLowercaseRoutes = false;

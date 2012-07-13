@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MvcExpense.UI.Models.Input
+namespace Zac.Mvc.Models.Input
 {
     public class SiteMapNodeEditInput
     {

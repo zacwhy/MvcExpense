@@ -1,28 +1,23 @@
-﻿using System;
-using System.Web.Mvc;
-using MvcExpense.Core;
+﻿using MvcExpense.Core;
+using Zac.Mvc;
 
 namespace MvcExpense.UI.Controllers
 {
-    public abstract partial class AbstractMvcExpenseController : Controller
+    public abstract partial class AbstractMvcExpenseController : AbstractStandardController
     {
-        public IMvcExpenseUnitOfWork UnitOfWork { get; private set; }
-
-        // todo remove. required for T4MVC.
-        protected AbstractMvcExpenseController()
+        public IMvcExpenseUnitOfWork MvcExpenseUnitOfWork
         {
-            //throw new Exception( "todo remove. required for T4MVC." );
+            get { return (IMvcExpenseUnitOfWork) StandardUnitOfWork; }
+        }
+
+        protected AbstractMvcExpenseController()
+            : base()
+        {
         }
 
         protected AbstractMvcExpenseController( IMvcExpenseUnitOfWork unitOfWork )
+            : base( unitOfWork )
         {
-            UnitOfWork = unitOfWork;
-        }
-
-        protected override void Dispose( bool disposing )
-        {
-            UnitOfWork.Dispose();
-            base.Dispose( disposing );
         }
 
     }

@@ -53,7 +53,8 @@ namespace MvcExpense.UI
 
         public static void CreateAutoMapperMaps()
         {
-            SiteMapNodeController.CreateMaps();
+            Zac.Mvc.BootStrapper.CreateAutoMapperMaps();
+            //SiteMapNodeController.CreateMaps();
 
             Mapper.CreateMap<CreateOrdinaryExpenseInput, OrdinaryExpense>();
             Mapper.CreateMap<CreateOrdinaryExpenseInput, CreateOrdinaryExpenseDisplay>();

@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using MvcExpense.UI.Extensions;
-using MvcExpense.UI.Models.Input;
+using Zac.Mvc.Extensions;
+using Zac.Mvc.Models.Input;
 using Zac.StandardCore.Models;
 using Zac.Tree;
 
-namespace MvcExpense.UI.Models.Display
+namespace Zac.Mvc.Models.Display
 {
     public class SiteMapNodeEditDisplay : SiteMapNodeEditInput
     {

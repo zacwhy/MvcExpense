@@ -5,23 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.Web.Mvc;
-using MvcExpense.Core;
-using MvcExpense.UI.Models.Display;
-using MvcExpense.UI.Models.Input;
+using Zac.Mvc.Models.Display;
+using Zac.Mvc.Models.Input;
 using Zac.MvcFlashMessage;
+using Zac.StandardCore;
 using Zac.Tree;
 using SiteMapNode = Zac.StandardCore.Models.SiteMapNode;
 
-namespace MvcExpense.UI.Controllers
+namespace Zac.Mvc.Controllers
 {
-    public partial class SiteMapNodeController : AbstractMvcExpenseController
+    public partial class SiteMapNodeController : AbstractStandardController
     {
         private Zac.StandardCore.Repositories.ISiteMapNodeRepository Repository
         {
-            get { return UnitOfWork.SiteMapNodeRepository; }
+            get { return StandardUnitOfWork.SiteMapNodeRepository; }
         }
 
-        public SiteMapNodeController( IMvcExpenseUnitOfWork unitOfWork )
+        public SiteMapNodeController( IStandardUnitOfWork unitOfWork )
             : base( unitOfWork )
         {
         }
@@ -84,16 +84,17 @@ namespace MvcExpense.UI.Controllers
                     {
                         Repository.InsertNode( model, input.ParentId, input.PreviousSiblingId );
                         Repository.Insert( model );
-                        UnitOfWork.Save();
+                        StandardUnitOfWork.Save();
                         scope.Complete();
                     }
 
                     return this.RedirectToAction( x => x.Index() );
                 }
-                catch /*( Exception ex )*/
+                catch ( Exception ex )
                 {
-                    // todo log and display error and remove throw
-                    throw;
+                    // todo display error
+                    ErrorLogHelper.Log( ex );
+                    throw; // todo remove
                 }
             }
 
@@ -123,7 +124,7 @@ namespace MvcExpense.UI.Controllers
                     {
                         Repository.UpdateNode( model, input.ParentId, input.PreviousSiblingId );
                         Repository.Update( model );
-                        UnitOfWork.Save();
+                        StandardUnitOfWork.Save();
                         scope.Complete();
                     }
 
@@ -153,7 +154,7 @@ namespace MvcExpense.UI.Controllers
             try
             {
                 Repository.DeleteNode( id );
-                UnitOfWork.Save();
+                StandardUnitOfWork.Save();
                 string flashMessage = string.Format( "Deleted Id {0}.", id ); // todo improve message
                 return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
             }

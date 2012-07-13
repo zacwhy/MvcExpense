@@ -38,7 +38,7 @@ namespace MvcExpense.UI.Controllers
         {
             DateRange dateRange = DateRange.CreateDateRange( year, month, day, DateTime.Now );
 
-            IQueryable<OrdinaryExpense> query = UnitOfWork.OrdinaryExpenseRepository.GetWithDateRange( dateRange );
+            IQueryable<OrdinaryExpense> query = MvcExpenseUnitOfWork.OrdinaryExpenseRepository.GetWithDateRange( dateRange );
             query = query.OrderByDescending( x => new { x.Date, x.Sequence } );
 
             IQueryable<OrdinaryExpenseViewModel> queryWithProjection =
@@ -66,7 +66,7 @@ namespace MvcExpense.UI.Controllers
         [AutoMap( typeof( OrdinaryExpense ), typeof( OrdinaryExpenseViewModel ) )]
         public virtual ViewResult Details( long id )
         {
-            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
+            OrdinaryExpense model = MvcExpenseUnitOfWork.OrdinaryExpenseRepository.GetById( id );
             return View( model );
         }
 
@@ -74,7 +74,7 @@ namespace MvcExpense.UI.Controllers
         {
             var display = new CreateOrdinaryExpenseDisplay
             {
-                Date = UnitOfWork.OrdinaryExpenseRepository.GetMostRecentDate(),
+                Date = MvcExpenseUnitOfWork.OrdinaryExpenseRepository.GetMostRecentDate(),
                 SelectedConsumerIds = new long[] { 1 } // todo remove hardcode
             };
             PopulateDisplay( display );
@@ -99,19 +99,19 @@ namespace MvcExpense.UI.Controllers
         {
             if ( ModelState.IsValid )
             {
-                IEnumerable<Category> categories = ExpenseEntitiesCache.GetCategories( UnitOfWork );
-                List<OrdinaryExpense> list = OrdinaryExpenseService.GetOrdinaryExpenses( UnitOfWork, input, categories );
+                IEnumerable<Category> categories = ExpenseEntitiesCache.GetCategories( MvcExpenseUnitOfWork );
+                List<OrdinaryExpense> list = OrdinaryExpenseService.GetOrdinaryExpenses( MvcExpenseUnitOfWork, input, categories );
 
                 foreach ( OrdinaryExpense item in list )
                 {
-                    UnitOfWork.OrdinaryExpenseRepository.Insert( item );
+                    MvcExpenseUnitOfWork.OrdinaryExpenseRepository.Insert( item );
                 }
 
                 object flashArguments;
 
                 try
                 {
-                    UnitOfWork.Save();
+                    MvcExpenseUnitOfWork.Save();
 
                     string flashMessage;
 
@@ -144,7 +144,7 @@ namespace MvcExpense.UI.Controllers
 
         public virtual ActionResult Edit( long id )
         {
-            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
+            OrdinaryExpense model = MvcExpenseUnitOfWork.OrdinaryExpenseRepository.GetById( id );
             EditOrdinaryExpenseDisplay display = model.ToEditDisplay();
             PopulateDisplay( display );
             return View( display );
@@ -156,8 +156,8 @@ namespace MvcExpense.UI.Controllers
             if ( ModelState.IsValid )
             {
                 OrdinaryExpense model = input.ToModel();
-                UnitOfWork.OrdinaryExpenseRepository.Update( model );
-                UnitOfWork.Save();
+                MvcExpenseUnitOfWork.OrdinaryExpenseRepository.Update( model );
+                MvcExpenseUnitOfWork.Save();
                 return this.RedirectToAction( x => x.Index( null, null, null ) );
             }
 
@@ -168,15 +168,15 @@ namespace MvcExpense.UI.Controllers
 
         public virtual ActionResult Delete( long id )
         {
-            OrdinaryExpense model = UnitOfWork.OrdinaryExpenseRepository.GetById( id );
+            OrdinaryExpense model = MvcExpenseUnitOfWork.OrdinaryExpenseRepository.GetById( id );
             return View( model );
         }
 
         [HttpPost, ActionName( "Delete" )]
         public virtual ActionResult DeleteConfirmed( long id )
         {
-            UnitOfWork.OrdinaryExpenseRepository.Delete( id );
-            UnitOfWork.Save();
+            MvcExpenseUnitOfWork.OrdinaryExpenseRepository.Delete( id );
+            MvcExpenseUnitOfWork.Save();
             string flashMessage = string.Format( "Deleted Id {0}.", id );
             return this.RedirectToAction( x => x.Index( null, null, null ) )
                 .WithFlash( new { notice = flashMessage } );
@@ -185,12 +185,12 @@ namespace MvcExpense.UI.Controllers
 
         private void PopulateDisplay( CreateOrdinaryExpenseDisplay display )
         {
-            PopulateDisplay( display, UnitOfWork );
+            PopulateDisplay( display, MvcExpenseUnitOfWork );
         }
 
         private void PopulateDisplay( EditOrdinaryExpenseDisplay display )
         {
-            PopulateDisplay( display, UnitOfWork );
+            PopulateDisplay( display, MvcExpenseUnitOfWork );
         }
 
         private static void PopulateDisplay( CreateOrdinaryExpenseDisplay display, IMvcExpenseUnitOfWork unitOfWork )

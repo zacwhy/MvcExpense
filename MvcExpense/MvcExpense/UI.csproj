@@ -110,23 +110,13 @@
     <Compile Include="ConsumerController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ErrorLogController.cs" />
-    <Compile Include="Controllers\SiteMapNodeController.cs" />
-    <Compile Include="Controllers\AbstractStandardController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
-    <Compile Include="Extensions\SiteMapNodeExtensions.cs" />
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Display\SiteMapNodeChangeChildrenOrderDisplay.cs" />
-    <Compile Include="Models\Display\SiteMapNodeCreateDisplay.cs" />
     <Compile Include="Models\Display\CreateOrdinaryExpenseDisplay.cs" />
     <Compile Include="Models\Display\EditOrdinaryExpenseDisplay.cs" />
-    <Compile Include="Models\Display\SiteMapNodeEditDisplay.cs" />
-    <Compile Include="Models\Input\SiteMapNodeChangeChildrenOrderInput.cs" />
-    <Compile Include="Models\Input\SiteMapNodeEditInput.cs" />
-    <Compile Include="Models\Input\SiteMapNodeCreateInput.cs" />
     <Compile Include="Models\Input\CreateOrdinaryExpenseInput.cs" />
     <Compile Include="Models\Input\EditOrdinaryExpenseInput.cs" />
     <Compile Include="BootStrapper.cs" />
@@ -146,7 +136,6 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdinaryExpenseController.cs" />
-    <Compile Include="Controllers\TestEditorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +152,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\_HelperModels\GiveAndTakeRecord.cs" />
+    <Compile Include="Models\_ViewModels\PaymentMethodEditModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportCategoryBreakdown3ViewModel.cs" />
+    <Compile Include="Models\_ViewModels\OrdinaryExpenseViewModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportGiveAndTakeViewModel.cs" />
+    <Compile Include="Models\_ViewModels\ReportViewModel.cs" />
+    <Compile Include="Models\_ViewModels\TestEditorViewModel.cs" />
     <Compile Include="ReportController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -177,22 +172,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestEditorController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\_ViewModels\PaymentMethodEditModel.cs" />
-    <Compile Include="Models\_ViewModels\ReportCategoryBreakdown3ViewModel.cs" />
-    <Compile Include="Models\_ViewModels\OrdinaryExpenseViewModel.cs" />
-    <Compile Include="Models\_ViewModels\ReportGiveAndTakeViewModel.cs" />
-    <Compile Include="Models\_ViewModels\ReportViewModel.cs" />
-    <Compile Include="Models\_ViewModels\TestEditorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
-    <Content Include="App_Readme\Ext.NET.README.txt" />
-    <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
-    <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
-    <Content Include="App_Readme\Transformer.NET.README.txt" />
     <Content Include="Content\Flash.css" />
     <Content Include="Content\icons\currency_dollar_yellow.ico" />
     <Content Include="Content\icons\emblem_money.ico" />
@@ -334,15 +315,11 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Mvc.sitemap">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Report\GiveAndTake.cshtml" />
     <Content Include="Views\Report\CategoryBreakdown.cshtml" />
-    <Content Include="Views\TestEditor\Create.cshtml" />
     <Content Include="Views\Category\Tree2.cshtml" />
     <Content Include="Views\Category\Tree.cshtml" />
     <Content Include="Views\SiteMapNode\List.cshtml" />
@@ -411,6 +388,10 @@
       <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
       <Name>Zac.MvcWhitespaceFilterAttribute</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Zac.Mvc\Zac.Mvc.csproj">
+      <Project>{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}</Project>
+      <Name>Zac.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
       <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>
       <Name>Zac.RepositorySiteMapProvider</Name>
@@ -418,6 +399,10 @@
     <ProjectReference Include="..\Zac.StandardCore\Zac.StandardCore.csproj">
       <Project>{32F8C69A-8013-4E14-8991-F96188B07A26}</Project>
       <Name>Zac.StandardCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zac.StandardHelper\Zac.StandardHelper.csproj">
+      <Project>{685C0B37-9432-4D77-B8A5-7EF0F894410C}</Project>
+      <Name>Zac.StandardHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj">
       <Project>{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}</Project>

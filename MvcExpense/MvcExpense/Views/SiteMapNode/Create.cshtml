@@ -1,10 +1,12 @@
 ﻿@using MvcExpense.MvcExpenseHelper
-@model MvcExpense.UI.Models.Display.SiteMapNodeCreateDisplay
+@model Zac.Mvc.Models.Display.SiteMapNodeCreateDisplay
 
 @{
     Layout = "~/Views/Shared/_CreateFormLayout.cshtml";
-    Html.Assets().Scripts.Add( "/Scripts/Jit/jit.js" );
-    Html.Assets().Scripts.Add( "/Scripts/Views/SiteMapNode/Edit.js" );
+    Html.Assets().Scripts.Add( Links.Scripts.Jit.jit_js );
+    Html.Assets().Scripts.Add( Links.Scripts.Views.SiteMapNode.Edit_js );
+    //Html.Assets().Scripts.Add( "/Scripts/Jit/jit.js" );
+    //Html.Assets().Scripts.Add( "/Scripts/Views/SiteMapNode/Edit.js" );
 }
 
 <script language="javascript" type="text/javascript">

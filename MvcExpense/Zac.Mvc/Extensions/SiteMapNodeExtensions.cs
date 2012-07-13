@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Zac.StandardCore.Models;
 using Zac.Tree;
 
-namespace MvcExpense.UI.Extensions
+namespace Zac.Mvc.Extensions
 {
     public static class SiteMapNodeExtensions
     {

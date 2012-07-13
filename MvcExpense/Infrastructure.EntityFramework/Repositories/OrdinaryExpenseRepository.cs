@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using MvcExpense.Core.Models;
 using MvcExpense.Core.Repositories;
 using Zac.DateRange;
+using Zac.DesignPattern.EntityFramework;
 using Zac.DesignPattern.EntityFramework.Repositories;
 
 namespace MvcExpense.Infrastructure.EntityFramework.Repositories
 {
     public class OrdinaryExpenseRepository : StandardRepository<OrdinaryExpense>, IOrdinaryExpenseRepository
     {
-        public OrdinaryExpenseRepository( DbContext context )
+        public OrdinaryExpenseRepository( EnhancedDbContext context )
             : base( context )
         {
         }

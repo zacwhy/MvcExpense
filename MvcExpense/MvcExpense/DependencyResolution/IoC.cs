@@ -2,6 +2,8 @@ using MvcExpense.Core;
 using MvcExpense.Infrastructure.EntityFramework;
 using MvcExpense.MvcExpenseHelper;
 using StructureMap;
+using Zac.StandardCore;
+using Zac.StandardInfrastructure.EntityFramework;
 
 namespace MvcExpense.UI.DependencyResolution
 {
@@ -18,6 +20,10 @@ namespace MvcExpense.UI.DependencyResolution
                 } );
 
                 const string nameOrConnectionString = MvcExpenseFactory.CurrentConnectionName;
+
+                x.For<IStandardUnitOfWork>().Use<StandardUnitOfWork>();
+                x.For<StandardDbContext>().Use( () => new StandardDbContext( nameOrConnectionString ) );
+
                 x.For<MvcExpenseDbContext>().Use( () => new MvcExpenseDbContext( nameOrConnectionString ) );
                 x.For<IMvcExpenseUnitOfWork>().Use<MvcExpenseUnitOfWork>();
             } );
