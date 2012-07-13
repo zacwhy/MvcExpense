@@ -1,5 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\FlashMessage\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\FlashMessage\bin\Debug\MvcFlashMessage.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\FlashMessage\bin\Debug\MvcFlashMessage.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\FlashMessage\obj\Debug\MvcFlashMessage.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\FlashMessage\obj\Debug\MvcFlashMessage.pdb

@@ -1,7 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\bin\Debug\Zac.EnhancedMath.Tests.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\bin\Debug\Zac.EnhancedMath.Tests.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\bin\Debug\Zac.EnhancedMath.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\bin\Debug\Zac.EnhancedMath.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\obj\Debug\Zac.EnhancedMath.Tests.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.EnhancedMath.Tests\obj\Debug\Zac.EnhancedMath.Tests.pdb

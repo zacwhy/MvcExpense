@@ -1,5 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\bin\Debug\MvcBaseActionFilter.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\bin\Debug\MvcBaseActionFilter.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\MvcBaseActionFilter.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcBaseActionFilter\obj\Debug\MvcBaseActionFilter.pdb

@@ -1,5 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcGroupSelectHelper\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcGroupSelectHelper\bin\Debug\Zac.MvcGroupSelectHelper.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcGroupSelectHelper\bin\Debug\Zac.MvcGroupSelectHelper.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcGroupSelectHelper\obj\Debug\Zac.MvcGroupSelectHelper.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.MvcGroupSelectHelper\obj\Debug\Zac.MvcGroupSelectHelper.pdb

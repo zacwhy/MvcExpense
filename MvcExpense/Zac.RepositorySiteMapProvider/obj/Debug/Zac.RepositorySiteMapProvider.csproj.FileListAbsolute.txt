@@ -1,5 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.RepositorySiteMapProvider\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.RepositorySiteMapProvider\bin\Debug\Zac.RepositorySiteMapProvider.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.RepositorySiteMapProvider\bin\Debug\Zac.RepositorySiteMapProvider.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.RepositorySiteMapProvider\obj\Debug\Zac.RepositorySiteMapProvider.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\Zac.RepositorySiteMapProvider\obj\Debug\Zac.RepositorySiteMapProvider.pdb

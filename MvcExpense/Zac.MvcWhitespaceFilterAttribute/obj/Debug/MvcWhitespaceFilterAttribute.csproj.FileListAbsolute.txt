@@ -1,5 +1,0 @@
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\bin\Debug\MvcWhitespaceFilterAttribute.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\bin\Debug\MvcWhitespaceFilterAttribute.pdb
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\ResolveAssemblyReference.cache
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\MvcWhitespaceFilterAttribute.dll
-C:\git_repository\MvcExpenseGit1\MvcExpense\MvcWhitespaceFilterAttribute\obj\Debug\MvcWhitespaceFilterAttribute.pdb
