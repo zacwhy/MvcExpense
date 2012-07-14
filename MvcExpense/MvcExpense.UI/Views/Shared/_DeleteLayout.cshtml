@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string legend = ViewBag.Legend;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<fieldset>
+    <legend>@legend</legend>
+    @RenderBody()
+</fieldset>
+
+@using ( Html.BeginForm() )
+{
+    <p>
+        @Html.SubmitButton( "action", "Delete", new { accesskey = "D" } ) |
+        @Html.ActionLink( "Back to List", "Index" )
+    </p>
+}

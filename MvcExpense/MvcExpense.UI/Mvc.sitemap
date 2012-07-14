@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+
+  <mvcSiteMapNode title="Home" controller="Home" action="Index" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/Home.png">
+    <!--<mvcSiteMapNode title="About" controller="Home" action="About"/>-->
+    <mvcSiteMapNode title="Report" controller="Report" action="Index" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/Stats.png">
+      <mvcSiteMapNode title="Give and Take" controller="Report" action="GiveAndTake" />
+      <mvcSiteMapNode title="Category Breakdown" controller="Report" action="CategoryBreakdown" />
+      <mvcSiteMapNode title="Ezlink" controller="Report" action="Ezlink" />
+      <mvcSiteMapNode title="Credit Card Statements" controller="Report" action="CreditCard" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Ordinary Expense" controller="OrdinaryExpense" action="Index" key="OrdinaryExpense" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/Portfolio.png">
+      <mvcSiteMapNode title="Create" controller="OrdinaryExpense" action="Create" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/Write.png" />
+      <mvcSiteMapNode title="List" controller="OrdinaryExpense" action="Index" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/Portfolio.png" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Administrator" clickable="false" imageUrl="~/Content/menu/icon/NIXUS-Tutorial9/32x32/System.png">
+      <mvcSiteMapNode title="Application" clickable="false">
+        <mvcSiteMapNode title="Consumer" controller="Consumer" action="Index" />
+        <mvcSiteMapNode title="Category" controller="Category" action="Index" />
+        <mvcSiteMapNode title="Payment Method" controller="PaymentMethod" action="Index" />
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Security" clickable="false">
+        <mvcSiteMapNode title="User" controller="Home" action="User" />
+        <mvcSiteMapNode title="Role" controller="Home" action="Role" />
+        <mvcSiteMapNode title="Menu" controller="Home" action="Menu" />
+        <mvcSiteMapNode title="Function" controller="Home" action="Function" />
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Configuration" clickable="false">
+        <mvcSiteMapNode title="System Parameter" controller="PaymentMethod" action="SystemParameter" />
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Monitoring" clickable="false">
+        <mvcSiteMapNode title="Audit Log" controller="Home" action="AuditLog" />
+        <mvcSiteMapNode title="Error Log" controller="Home" action="ErrorLog" />
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Menu 1" clickable="false">
+      <mvcSiteMapNode title="Menu 2-1" clickable="false">
+        <mvcSiteMapNode title="Third Level Menu" clickable="false">
+          <mvcSiteMapNode title="Fourth Level Menu" clickable="false">
+            <mvcSiteMapNode title="Fifth Level Menu" clickable="false">
+              <mvcSiteMapNode title="Sixth Level Menu" clickable="false">
+                <mvcSiteMapNode title="Seventh Level Menu" clickable="false">
+                  <mvcSiteMapNode title="Eight Level Menu" clickable="false">
+                    <mvcSiteMapNode title="Ninth Level Menu" clickable="false">
+                      <mvcSiteMapNode title="Tenth Level Menu" clickable="false">
+                        <mvcSiteMapNode title="Leaf Menu" controller="Home" action="LeafMenu" />
+                      </mvcSiteMapNode>
+                    </mvcSiteMapNode>
+                  </mvcSiteMapNode>
+                </mvcSiteMapNode>
+              </mvcSiteMapNode>
+            </mvcSiteMapNode>
+          </mvcSiteMapNode>
+        </mvcSiteMapNode>
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Menu 2-2"  controller="PaymentMethod" action="Index1" />
+    </mvcSiteMapNode>
+
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

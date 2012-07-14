@@ -1,0 +1,50 @@
+﻿@model MvcExpense.ViewModels.ReportGiveAndTakeViewModel
+
+@{
+    ViewBag.Title = "Give And Take";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Party
+            </th>
+            <th>
+                Give
+            </th>
+            <th>
+                Take
+            </th>
+            <th>
+                Owe
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach ( var item in Model.Records )
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor( modelItem => item.Party )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => item.GiveAmount )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => item.TakeAmount )
+            </td>
+            <td style="color:@(item.OweAmount > 0 ? "Red" : "Green")">
+                @Html.DisplayFor( modelItem => item.OweAmount )
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<p>
+    <label>Since</label>
+    <input />
+</p>

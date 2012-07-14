@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "MvcExpense\UI.csproj", "{D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "MvcExpense.UI\UI.csproj", "{D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "MvcExpense.Tests\UnitTests.csproj", "{1978E4DC-017E-4E19-9C22-0A677BCA9271}"
 EndProject
@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardCore", "Framewo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{647F1A8B-4E76-4C3C-B44B-444C1AE9419E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{4A652B3D-8206-49D0-ADD7-8D5D1E110BF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "MvcExpense.Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{4A652B3D-8206-49D0-ADD7-8D5D1E110BF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardInfrastructure.EntityFramework", "Framework\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj", "{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}"
 EndProject

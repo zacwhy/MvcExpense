@@ -1,0 +1,7 @@
+﻿@model DateTime
+@using MvcExpense.MvcExpenseHelper
+
+@Html.TextBox( "Display", Model.ToString( SystemParameters.DateFormat ), new { @class = "datepicker" } )
+@Html.Hidden( "", Model.ToString( "ddd dd MMM yyyy" ) )
+
+@*@Html.TextBox( "", Model.ToString( "ddd dd MMM yyyy" ), new { @readonly = "readonly" } )*@

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Tree</title>
+</head>
+<body>
+    @Html.X().ResourceManager()
+
+    @(Html.X().TreePanel()
+        .Width( 300 )
+        .Height( 450 )
+        .UseArrows( true )
+        .Animate( true )
+        .CustomConfig( customConfig =>
+        {
+            customConfig.Add( new ConfigItem( "viewConfig", "{ plugins : { ptype: 'treeviewdragdrop' } }", ParameterMode.Raw ) );
+        } )
+        //.AddListener( "ItemMove", "moveNode" )
+        .Root( root =>
+        {
+            root.Add( new Node() { NodeID = "root", Text = "Root", Qtip = "Root Tip" } );
+        } )
+    )
+</body>
+</html>

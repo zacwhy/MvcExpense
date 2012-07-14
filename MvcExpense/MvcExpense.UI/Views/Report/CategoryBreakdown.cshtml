@@ -1,0 +1,89 @@
+﻿@using MvcExpense.ViewModels;
+
+@model ReportCategoryBreakdown3ViewModel
+
+@{
+    ViewBag.Title = "Category Breakdown";
+
+    Html.Assets().Styles.Add( "/Content/TreeTable/stylesheets/jquery.treeTable.css" );
+
+    Html.Assets().Scripts.Add( "/Content/TreeTable/javascripts/jquery-1.7.1.min.js" );
+    Html.Assets().Scripts.Add( "/Content/TreeTable/javascripts/jquery.ui.js" );
+    Html.Assets().Scripts.Add( "/Content/TreeTable/javascripts/jquery.treeTable.js" );
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".category-breakdown").treeTable({
+            initialState: "expanded"
+        });
+    });
+
+</script>
+
+<style type="text/css">
+    table.category-breakdown
+    {
+    	width:100%;
+    }
+    table.category-breakdown th
+    {
+    	border:1px solid #ccc;
+    	text-align:center;
+    }
+    table.category-breakdown th.header
+    {
+    	width:100px;
+    }
+    table.category-breakdown td
+    {
+        cursor:default;
+        padding:.3em 1.5em;
+    }
+    table.category-breakdown td.value
+    {
+    	text-align:right;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+<table class="category-breakdown">
+    <thead>
+        <tr>
+            <th rowspan="2">Category</th>
+            @foreach ( string period in Model.Periods )
+            {
+                <th colspan="2">@period</th>
+            }
+        </tr>
+        <tr>
+            @foreach ( var period in Model.Periods )
+            {
+                <th class="header">$</th>
+                <th class="header">%</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ( var record in Model.Dictionary )
+        {
+            string category = record.Key;
+            CategoryBreakdownRecord4 record2 = record.Value;
+            string cssClass = record2.CssClass;
+            <tr id="@category" class="@cssClass">
+                <td>@category</td>
+                @for ( int i = 0; i < Model.Periods.Count; i++ )
+                {
+                    string period = Model.Periods[i];
+                    IDictionary<string, double> totalPrices = Model.Dictionary[category].TotalPrices;
+                    double totalPrice = totalPrices.Keys.Contains( period ) ? totalPrices[period] : 0;
+                    double denominator = Model.Denominator.TotalPrices[period];
+                    <td class="value">@string.Format( "{0:N}", totalPrice )</td>
+                    <td class="value">@string.Format( "{0:P}", totalPrice / denominator )</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

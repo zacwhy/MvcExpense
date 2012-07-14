@@ -1,13 +1,13 @@
 
 /MvcExpense/MvcExpense.suo
-/MvcExpense/MvcExpense/bin/
-/MvcExpense/MvcExpense/obj/
 /MvcExpense/MvcExpense.Core/bin/
 /MvcExpense/MvcExpense.Core/obj/
 /MvcExpense/MvcExpense.Tests/bin/
 /MvcExpense/MvcExpense.Tests/obj/
-/MvcExpense/Infrastructure.EntityFramework/bin/
-/MvcExpense/Infrastructure.EntityFramework/obj/
+/MvcExpense/MvcExpense.Infrastructure.EntityFramework/bin/
+/MvcExpense/MvcExpense.Infrastructure.EntityFramework/obj/
+/MvcExpense/MvcExpense.UI/bin/
+/MvcExpense/MvcExpense.UI/obj/
 
 /MvcExpense/Framework/Zac.DesignPattern/bin/
 /MvcExpense/Framework/Zac.DesignPattern/obj/
