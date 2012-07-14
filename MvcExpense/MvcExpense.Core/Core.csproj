@@ -73,11 +73,11 @@
       <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
       <Name>Zac.DateRange</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">
+    <ProjectReference Include="..\Framework\Zac.DesignPattern\Zac.DesignPattern.csproj">
       <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
       <Name>Zac.DesignPattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.StandardCore\Zac.StandardCore.csproj">
+    <ProjectReference Include="..\Framework\Zac.StandardCore\Zac.StandardCore.csproj">
       <Project>{32F8C69A-8013-4E14-8991-F96188B07A26}</Project>
       <Name>Zac.StandardCore</Name>
     </ProjectReference>

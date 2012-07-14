@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries.Tests", "Libraries.Tests", "{2CACC6A6-AD56-4979-BBC5-E5F0DF250EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern", "Zac.DesignPattern\Zac.DesignPattern.csproj", "{9FF48F5B-588E-4E66-941B-78F1A57AAC39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern", "Framework\Zac.DesignPattern\Zac.DesignPattern.csproj", "{9FF48F5B-588E-4E66-941B-78F1A57AAC39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath", "Libraries\Zac.EnhancedMath\Zac.EnhancedMath.csproj", "{BEFF9125-6995-4326-BAF1-DA225FD41DE8}"
 EndProject
@@ -40,25 +40,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcWhitespaceFilterAttr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "MvcExpense.Core\Core.csproj", "{C1F7E92B-CADA-438F-9116-F1813B7A4A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardCore", "Zac.StandardCore\Zac.StandardCore.csproj", "{32F8C69A-8013-4E14-8991-F96188B07A26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardCore", "Framework\Zac.StandardCore\Zac.StandardCore.csproj", "{32F8C69A-8013-4E14-8991-F96188B07A26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{647F1A8B-4E76-4C3C-B44B-444C1AE9419E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{4A652B3D-8206-49D0-ADD7-8D5D1E110BF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardInfrastructure.EntityFramework", "Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj", "{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardInfrastructure.EntityFramework", "Framework\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj", "{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern.EntityFramework", "Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj", "{6CD0307C-C7C1-4BD0-8725-CC9003D57920}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern.EntityFramework", "Framework\Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj", "{6CD0307C-C7C1-4BD0-8725-CC9003D57920}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath.Tests", "Libraries\Zac.EnhancedMath.Tests\Zac.EnhancedMath.Tests.csproj", "{3AF9181C-39DA-41A7-AEC1-D1F009FE544C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.RepositorySiteMapProvider", "Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj", "{D5B188E8-3D47-45C2-8093-307A8B21E0FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.Tree", "Zac.Tree\Zac.Tree.csproj", "{0F981A02-CD06-4686-911B-1A0EF12BDD82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.Tree", "Framework\Zac.Tree\Zac.Tree.csproj", "{0F981A02-CD06-4686-911B-1A0EF12BDD82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{21F978F7-2DEE-4DC1-AD05-071CC1621DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardHelper", "Zac.StandardHelper\Zac.StandardHelper.csproj", "{685C0B37-9432-4D77-B8A5-7EF0F894410C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardHelper", "Framework\Zac.StandardHelper\Zac.StandardHelper.csproj", "{685C0B37-9432-4D77-B8A5-7EF0F894410C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardMvc", "Framework\Zac.StandardMvc\Zac.StandardMvc.csproj", "{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}"
 EndProject

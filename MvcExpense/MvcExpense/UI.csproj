@@ -352,11 +352,11 @@
       <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
       <Name>Zac.DateRange</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj">
+    <ProjectReference Include="..\Framework\Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj">
       <Project>{6CD0307C-C7C1-4BD0-8725-CC9003D57920}</Project>
       <Name>Zac.DesignPattern.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">
+    <ProjectReference Include="..\Framework\Zac.DesignPattern\Zac.DesignPattern.csproj">
       <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
       <Name>Zac.DesignPattern</Name>
     </ProjectReference>
@@ -388,7 +388,7 @@
       <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
       <Name>Zac.MvcWhitespaceFilterAttribute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.Mvc\Zac.StandardMvc.csproj">
+    <ProjectReference Include="..\Framework\Zac.StandardMvc\Zac.StandardMvc.csproj">
       <Project>{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}</Project>
       <Name>Zac.StandardMvc</Name>
     </ProjectReference>
@@ -396,19 +396,19 @@
       <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>
       <Name>Zac.RepositorySiteMapProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.StandardCore\Zac.StandardCore.csproj">
+    <ProjectReference Include="..\Framework\Zac.StandardCore\Zac.StandardCore.csproj">
       <Project>{32F8C69A-8013-4E14-8991-F96188B07A26}</Project>
       <Name>Zac.StandardCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.StandardHelper\Zac.StandardHelper.csproj">
+    <ProjectReference Include="..\Framework\Zac.StandardHelper\Zac.StandardHelper.csproj">
       <Project>{685C0B37-9432-4D77-B8A5-7EF0F894410C}</Project>
       <Name>Zac.StandardHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj">
+    <ProjectReference Include="..\Framework\Zac.StandardInfrastructure.EntityFramework\Zac.StandardInfrastructure.EntityFramework.csproj">
       <Project>{DE3EFEBB-29B9-48D4-A7B6-FB770EF51FD9}</Project>
       <Name>Zac.StandardInfrastructure.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.Tree\Zac.Tree.csproj">
+    <ProjectReference Include="..\Framework\Zac.Tree\Zac.Tree.csproj">
       <Project>{0F981A02-CD06-4686-911B-1A0EF12BDD82}</Project>
       <Name>Zac.Tree</Name>
     </ProjectReference>
