@@ -364,27 +364,27 @@
       <Project>{BEFF9125-6995-4326-BAF1-DA225FD41DE8}</Project>
       <Name>Zac.EnhancedMath</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj">
       <Project>{CBF838CB-92E4-432E-B1B8-6A969011FD82}</Project>
       <Name>Zac.MvcAssetsHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj">
       <Project>{23F51B9E-46DE-4E3C-B3FC-E36D87A53A10}</Project>
       <Name>Zac.MvcAutoMapAttribute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
       <Project>{E62DB75F-F7A2-4D0D-A824-737096180578}</Project>
       <Name>Zac.MvcFlashMessage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj">
       <Project>{FE62D070-5DDC-4D07-8029-A4CEBA057674}</Project>
       <Name>Zac.MvcGroupSelectHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj">
       <Project>{66A0999F-8497-4722-9EC2-3822472AF0BE}</Project>
       <Name>Zac.MvcMultiButtonAttribute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj">
+    <ProjectReference Include="..\Libraries\Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj">
       <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
       <Name>Zac.MvcWhitespaceFilterAttribute</Name>
     </ProjectReference>
@@ -392,7 +392,7 @@
       <Project>{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}</Project>
       <Name>Zac.StandardMvc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
+    <ProjectReference Include="..\Libraries\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
       <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>
       <Name>Zac.RepositorySiteMapProvider</Name>
     </ProjectReference>

@@ -82,11 +82,11 @@
       <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
       <Name>Zac.DesignPattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
+    <ProjectReference Include="..\..\Libraries\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj">
       <Project>{E62DB75F-F7A2-4D0D-A824-737096180578}</Project>
       <Name>Zac.MvcFlashMessage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
+    <ProjectReference Include="..\..\Libraries\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
       <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>
       <Name>Zac.RepositorySiteMapProvider</Name>
     </ProjectReference>

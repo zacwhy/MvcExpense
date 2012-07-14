@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange", "Libraries\Zac.DateRange\Zac.DateRange.csproj", "{CA7B0383-8448-4062-BEDC-9EDEFA148762}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcGroupSelectHelper", "Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj", "{FE62D070-5DDC-4D07-8029-A4CEBA057674}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcGroupSelectHelper", "Libraries\Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj", "{FE62D070-5DDC-4D07-8029-A4CEBA057674}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange.Tests", "Libraries\Zac.DateRange.Tests\Zac.DateRange.Tests.csproj", "{7A61A51B-CE0B-4515-A849-21D1862905AB}"
 EndProject
@@ -26,17 +26,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern", "Framew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath", "Libraries\Zac.EnhancedMath\Zac.EnhancedMath.csproj", "{BEFF9125-6995-4326-BAF1-DA225FD41DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcAssetsHelper", "Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj", "{CBF838CB-92E4-432E-B1B8-6A969011FD82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcAssetsHelper", "Libraries\Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj", "{CBF838CB-92E4-432E-B1B8-6A969011FD82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcAutoMapAttribute", "Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj", "{23F51B9E-46DE-4E3C-B3FC-E36D87A53A10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcAutoMapAttribute", "Libraries\Zac.MvcAutoMapAttribute\Zac.MvcAutoMapAttribute.csproj", "{23F51B9E-46DE-4E3C-B3FC-E36D87A53A10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcBaseActionFilter", "Zac.MvcBaseActionFilter\Zac.MvcBaseActionFilter.csproj", "{A8FB4C9B-C085-4F45-8AA6-5DF3F8FC54FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcBaseActionFilter", "Libraries\Zac.MvcBaseActionFilter\Zac.MvcBaseActionFilter.csproj", "{A8FB4C9B-C085-4F45-8AA6-5DF3F8FC54FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcFlashMessage", "Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj", "{E62DB75F-F7A2-4D0D-A824-737096180578}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcFlashMessage", "Libraries\Zac.MvcFlashMessage\Zac.MvcFlashMessage.csproj", "{E62DB75F-F7A2-4D0D-A824-737096180578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcMultiButtonAttribute", "Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj", "{66A0999F-8497-4722-9EC2-3822472AF0BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcMultiButtonAttribute", "Libraries\Zac.MvcMultiButtonAttribute\Zac.MvcMultiButtonAttribute.csproj", "{66A0999F-8497-4722-9EC2-3822472AF0BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcWhitespaceFilterAttribute", "Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj", "{2AFC04D7-184B-49DA-B82F-693493854239}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcWhitespaceFilterAttribute", "Libraries\Zac.MvcWhitespaceFilterAttribute\Zac.MvcWhitespaceFilterAttribute.csproj", "{2AFC04D7-184B-49DA-B82F-693493854239}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "MvcExpense.Core\Core.csproj", "{C1F7E92B-CADA-438F-9116-F1813B7A4A37}"
 EndProject
@@ -52,7 +52,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern.EntityFra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath.Tests", "Libraries\Zac.EnhancedMath.Tests\Zac.EnhancedMath.Tests.csproj", "{3AF9181C-39DA-41A7-AEC1-D1F009FE544C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.RepositorySiteMapProvider", "Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj", "{D5B188E8-3D47-45C2-8093-307A8B21E0FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.RepositorySiteMapProvider", "Libraries\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj", "{D5B188E8-3D47-45C2-8093-307A8B21E0FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.Tree", "Framework\Zac.Tree\Zac.Tree.csproj", "{0F981A02-CD06-4686-911B-1A0EF12BDD82}"
 EndProject
