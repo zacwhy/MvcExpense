@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "MvcExpense.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{29362666-F2C4-4C1A-A5E2-6272BE8756A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange", "Zac.DateRange\Zac.DateRange.csproj", "{CA7B0383-8448-4062-BEDC-9EDEFA148762}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange", "Libraries\Zac.DateRange\Zac.DateRange.csproj", "{CA7B0383-8448-4062-BEDC-9EDEFA148762}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcGroupSelectHelper", "Zac.MvcGroupSelectHelper\Zac.MvcGroupSelectHelper.csproj", "{FE62D070-5DDC-4D07-8029-A4CEBA057674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange.Tests", "Zac.DateRange.Tests\Zac.DateRange.Tests.csproj", "{7A61A51B-CE0B-4515-A849-21D1862905AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DateRange.Tests", "Libraries\Zac.DateRange.Tests\Zac.DateRange.Tests.csproj", "{7A61A51B-CE0B-4515-A849-21D1862905AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF452B1A-B8E0-4361-8A33-31730E04A63F}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries.Tests", "Librarie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern", "Zac.DesignPattern\Zac.DesignPattern.csproj", "{9FF48F5B-588E-4E66-941B-78F1A57AAC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath", "Zac.EnhancedMath\Zac.EnhancedMath.csproj", "{BEFF9125-6995-4326-BAF1-DA225FD41DE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath", "Libraries\Zac.EnhancedMath\Zac.EnhancedMath.csproj", "{BEFF9125-6995-4326-BAF1-DA225FD41DE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.MvcAssetsHelper", "Zac.MvcAssetsHelper\Zac.MvcAssetsHelper.csproj", "{CBF838CB-92E4-432E-B1B8-6A969011FD82}"
 EndProject
@@ -50,7 +50,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardInfrastructure.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.DesignPattern.EntityFramework", "Zac.DesignPattern.EntityFramework\Zac.DesignPattern.EntityFramework.csproj", "{6CD0307C-C7C1-4BD0-8725-CC9003D57920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath.Tests", "Zac.EnhancedMath.Tests\Zac.EnhancedMath.Tests.csproj", "{3AF9181C-39DA-41A7-AEC1-D1F009FE544C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.EnhancedMath.Tests", "Libraries\Zac.EnhancedMath.Tests\Zac.EnhancedMath.Tests.csproj", "{3AF9181C-39DA-41A7-AEC1-D1F009FE544C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.RepositorySiteMapProvider", "Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj", "{D5B188E8-3D47-45C2-8093-307A8B21E0FA}"
 EndProject

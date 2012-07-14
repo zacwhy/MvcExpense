@@ -86,7 +86,7 @@
       <Project>{D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B}</Project>
       <Name>UI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.DateRange\Zac.DateRange.csproj">
+    <ProjectReference Include="..\Libraries\Zac.DateRange\Zac.DateRange.csproj">
       <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
       <Name>Zac.DateRange</Name>
     </ProjectReference>

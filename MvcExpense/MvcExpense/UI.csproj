@@ -348,7 +348,7 @@
       <Project>{C1F7E92B-CADA-438F-9116-F1813B7A4A37}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.DateRange\Zac.DateRange.csproj">
+    <ProjectReference Include="..\Libraries\Zac.DateRange\Zac.DateRange.csproj">
       <Project>{CA7B0383-8448-4062-BEDC-9EDEFA148762}</Project>
       <Name>Zac.DateRange</Name>
     </ProjectReference>
@@ -360,7 +360,7 @@
       <Project>{9FF48F5B-588E-4E66-941B-78F1A57AAC39}</Project>
       <Name>Zac.DesignPattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.EnhancedMath\Zac.EnhancedMath.csproj">
+    <ProjectReference Include="..\Libraries\Zac.EnhancedMath\Zac.EnhancedMath.csproj">
       <Project>{BEFF9125-6995-4326-BAF1-DA225FD41DE8}</Project>
       <Name>Zac.EnhancedMath</Name>
     </ProjectReference>
