@@ -60,7 +60,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardHelper", "Zac.StandardHelper\Zac.StandardHelper.csproj", "{685C0B37-9432-4D77-B8A5-7EF0F894410C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.Mvc", "Zac.Mvc\Zac.Mvc.csproj", "{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zac.StandardMvc", "Zac.Mvc\Zac.StandardMvc.csproj", "{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

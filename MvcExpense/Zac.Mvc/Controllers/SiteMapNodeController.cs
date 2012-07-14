@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.Web.Mvc;
-using Zac.Mvc.Models.Display;
-using Zac.Mvc.Models.Input;
+using Zac.StandardMvc.Models.Display;
+using Zac.StandardMvc.Models.Input;
 using Zac.MvcFlashMessage;
 using Zac.StandardCore;
 using Zac.Tree;
 using SiteMapNode = Zac.StandardCore.Models.SiteMapNode;
 
-namespace Zac.Mvc.Controllers
+namespace Zac.StandardMvc.Controllers
 {
     public partial class SiteMapNodeController : AbstractStandardController
     {

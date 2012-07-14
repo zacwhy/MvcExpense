@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using MvcExpense.UI.DependencyResolution;
 using StructureMap;
-using Zac.Mvc;
+using Zac.StandardMvc;
 using Zac.MvcWhitespaceFilterAttribute;
 
 namespace MvcExpense.UI

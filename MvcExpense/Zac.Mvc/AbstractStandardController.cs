@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using Zac.StandardCore;
 using Zac.StandardHelper;
 
-namespace Zac.Mvc
+namespace Zac.StandardMvc
 {
     public abstract class AbstractStandardController : Controller
     {

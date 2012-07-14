@@ -5,9 +5,9 @@ using System.Web.Mvc;
 using Zac.StandardCore.Models;
 using Zac.Tree;
 
-namespace Zac.Mvc.Extensions
+namespace Zac.StandardMvc.Extensions
 {
-    public static class SiteMapNodeExtensions
+    internal static class SiteMapNodeExtensions
     {
         public static string ToJson( this TreeNode<SiteMapNode> node )
         {

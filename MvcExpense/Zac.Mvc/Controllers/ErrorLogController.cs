@@ -5,7 +5,7 @@ using Zac.StandardCore;
 using Zac.StandardCore.Models;
 using Zac.StandardCore.Repositories;
 
-namespace Zac.Mvc.Controllers
+namespace Zac.StandardMvc.Controllers
 {
     public partial class ErrorLogController : AbstractStandardController
     {

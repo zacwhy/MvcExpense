@@ -5,8 +5,8 @@
 <h2>Site Map Node</h2>
 
 <p>
-    @Html.ActionLink( "Create New", MvcStandard.SiteMapNode.Create() )
-    @Html.ActionLink( "Refresh", MvcStandard.SiteMapNode.Refresh() )
+    @Html.ActionLink( "Create New", StandardT4Mvc.SiteMapNode.Create() )
+    @Html.ActionLink( "Refresh", StandardT4Mvc.SiteMapNode.Refresh() )
 </p>
 
 <ul>
@@ -33,9 +33,9 @@
 @helper PrintNodeContent( TreeNode<Zac.StandardCore.Models.SiteMapNode> node )
     {
     <span style="margin-right:2em;">
-        @Html.ActionLink( node.Data.Title, MvcStandard.SiteMapNode.Edit( node.Data.Id ) )
+        @Html.ActionLink( node.Data.Title, StandardT4Mvc.SiteMapNode.Edit( node.Data.Id ) )
     </span>
     <text>[ </text>
-    @Html.ActionLink( "Delete", MvcStandard.SiteMapNode.Delete( node.Data.Id ) )
+    @Html.ActionLink( "Delete", StandardT4Mvc.SiteMapNode.Delete( node.Data.Id ) )
     <text> ]</text>
 }

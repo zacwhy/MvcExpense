@@ -20,7 +20,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace Zac.Mvc.Controllers {
+namespace Zac.StandardMvc.Controllers {
     public partial class ErrorLogController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ErrorLogController(Dummy d) { }
@@ -44,7 +44,7 @@ namespace Zac.Mvc.Controllers {
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ErrorLogController Actions { get { return MvcStandard.ErrorLog; } }
+        public ErrorLogController Actions { get { return StandardT4Mvc.ErrorLog; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
@@ -84,7 +84,7 @@ namespace Zac.Mvc.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_ErrorLogController: Zac.Mvc.Controllers.ErrorLogController {
+    public class T4MVC_ErrorLogController: Zac.StandardMvc.Controllers.ErrorLogController {
         public T4MVC_ErrorLogController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index() {

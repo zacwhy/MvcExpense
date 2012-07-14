@@ -22,9 +22,9 @@ using System.Web.Routing;
 using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public static class MvcStandard {
-    public static Zac.Mvc.Controllers.ErrorLogController ErrorLog = new Zac.Mvc.Controllers.T4MVC_ErrorLogController();
-    public static Zac.Mvc.Controllers.SiteMapNodeController SiteMapNode = new Zac.Mvc.Controllers.T4MVC_SiteMapNodeController();
+public static class StandardT4Mvc {
+    public static Zac.StandardMvc.Controllers.ErrorLogController ErrorLog = new Zac.StandardMvc.Controllers.T4MVC_ErrorLogController();
+    public static Zac.StandardMvc.Controllers.SiteMapNodeController SiteMapNode = new Zac.StandardMvc.Controllers.T4MVC_SiteMapNodeController();
 }
 
 namespace T4MVC {

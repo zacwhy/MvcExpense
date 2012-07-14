@@ -388,9 +388,9 @@
       <Project>{2AFC04D7-184B-49DA-B82F-693493854239}</Project>
       <Name>Zac.MvcWhitespaceFilterAttribute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Zac.Mvc\Zac.Mvc.csproj">
+    <ProjectReference Include="..\Zac.Mvc\Zac.StandardMvc.csproj">
       <Project>{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}</Project>
-      <Name>Zac.Mvc</Name>
+      <Name>Zac.StandardMvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\Zac.RepositorySiteMapProvider\Zac.RepositorySiteMapProvider.csproj">
       <Project>{D5B188E8-3D47-45C2-8093-307A8B21E0FA}</Project>

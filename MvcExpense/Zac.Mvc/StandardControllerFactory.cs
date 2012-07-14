@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using StructureMap;
 
-namespace Zac.Mvc
+namespace Zac.StandardMvc
 {
     public class StandardControllerFactory : DefaultControllerFactory
     {

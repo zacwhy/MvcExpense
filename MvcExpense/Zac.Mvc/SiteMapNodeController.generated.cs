@@ -20,7 +20,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace Zac.Mvc.Controllers {
+namespace Zac.StandardMvc.Controllers {
     public partial class SiteMapNodeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected SiteMapNodeController(Dummy d) { }
@@ -54,7 +54,7 @@ namespace Zac.Mvc.Controllers {
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public SiteMapNodeController Actions { get { return MvcStandard.SiteMapNode; } }
+        public SiteMapNodeController Actions { get { return StandardT4Mvc.SiteMapNode; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
@@ -120,7 +120,7 @@ namespace Zac.Mvc.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_SiteMapNodeController: Zac.Mvc.Controllers.SiteMapNodeController {
+    public class T4MVC_SiteMapNodeController: Zac.StandardMvc.Controllers.SiteMapNodeController {
         public T4MVC_SiteMapNodeController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Refresh() {
@@ -148,7 +148,7 @@ namespace Zac.Mvc.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Create(Zac.Mvc.Models.Input.SiteMapNodeCreateInput input) {
+        public override System.Web.Mvc.ActionResult Create(Zac.StandardMvc.Models.Input.SiteMapNodeCreateInput input) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Create);
             callInfo.RouteValueDictionary.Add("input", input);
             return callInfo;
@@ -160,7 +160,7 @@ namespace Zac.Mvc.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(Zac.Mvc.Models.Input.SiteMapNodeEditInput input) {
+        public override System.Web.Mvc.ActionResult Edit(Zac.StandardMvc.Models.Input.SiteMapNodeEditInput input) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("input", input);
             return callInfo;

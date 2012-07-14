@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using Zac.Mvc.Extensions;
-using Zac.Mvc.Models.Input;
+using Zac.StandardMvc.Extensions;
+using Zac.StandardMvc.Models.Input;
 using Zac.StandardCore.Models;
 using Zac.Tree;
 
-namespace Zac.Mvc.Models.Display
+namespace Zac.StandardMvc.Models.Display
 {
     public class SiteMapNodeCreateDisplay : SiteMapNodeCreateInput
     {

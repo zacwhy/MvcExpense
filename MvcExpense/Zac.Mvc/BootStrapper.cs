@@ -1,6 +1,6 @@
-﻿using Zac.Mvc.Controllers;
+﻿using Zac.StandardMvc.Controllers;
 
-namespace Zac.Mvc
+namespace Zac.StandardMvc
 {
     public static class BootStrapper
     {
