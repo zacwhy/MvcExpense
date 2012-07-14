@@ -7,6 +7,9 @@
 /MvcExpense/MvcExpense.Tests/bin/
 /MvcExpense/MvcExpense.Tests/obj/
 
+/MvcExpense/Framework/Zac.StandardMvc/bin/
+/MvcExpense/Framework/Zac.StandardMvc/obj/
+
 /MvcExpense/Libraries/Zac.DateRange/bin/
 /MvcExpense/Libraries/Zac.DateRange/obj/
 /MvcExpense/Libraries/Zac.DateRange.Tests/bin/
@@ -22,8 +25,6 @@
 /MvcExpense/Zac.DesignPattern/obj/
 /MvcExpense/Zac.DesignPattern.EntityFramework/bin/
 /MvcExpense/Zac.DesignPattern.EntityFramework/obj/
-/MvcExpense/Zac.Mvc/bin/
-/MvcExpense/Zac.Mvc/obj/
 /MvcExpense/Zac.MvcAssetsHelper/bin/
 /MvcExpense/Zac.MvcAssetsHelper/obj/
 /MvcExpense/Zac.MvcAutoMapAttribute/bin/
