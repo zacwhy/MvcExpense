@@ -13,7 +13,7 @@ namespace Zac.DesignPattern.EntityFramework.UnitOfWork
             _context = context;
         }
 
-        protected EnhancedDbContext Context
+        protected EnhancedDbContext EnhancedDbContext
         {
             get
             {
@@ -23,13 +23,13 @@ namespace Zac.DesignPattern.EntityFramework.UnitOfWork
 
         public void Save()
         {
-            foreach ( SqlCommand sqlCommand in Context.SqlCommandsBeforeSaveChanges )
+            foreach ( SqlCommand sqlCommand in EnhancedDbContext.SqlCommandsBeforeSaveChanges )
             {
                 object[] parameters = UnitOfWorkBaseHelper.CopyParameters( sqlCommand.Parameters ).ToArray();
-                Context.Database.ExecuteSqlCommand( sqlCommand.CommandText, parameters );
+                EnhancedDbContext.Database.ExecuteSqlCommand( sqlCommand.CommandText, parameters );
             }
 
-            Context.SaveChanges();
+            EnhancedDbContext.SaveChanges();
         }
 
         private bool _disposed;
@@ -40,7 +40,7 @@ namespace Zac.DesignPattern.EntityFramework.UnitOfWork
             {
                 if ( disposing )
                 {
-                    Context.Dispose();
+                    EnhancedDbContext.Dispose();
                 }
             }
             _disposed = true;

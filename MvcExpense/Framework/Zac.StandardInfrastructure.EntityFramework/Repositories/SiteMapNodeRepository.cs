@@ -12,7 +12,7 @@ namespace Zac.StandardInfrastructure.EntityFramework.Repositories
 {
     public class SiteMapNodeRepository : StandardRepository<SiteMapNode>, ISiteMapNodeRepository
     {
-        public SiteMapNodeRepository( EnhancedDbContext context )
+        public SiteMapNodeRepository( StandardDbContext context )
             : base( context )
         {
         }

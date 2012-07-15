@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 using System.Web.Routing;
 using StructureMap;
@@ -14,7 +15,7 @@ namespace Zac.StandardMvc
             _container = container;
         }
 
-        protected override IController GetControllerInstance( RequestContext requestContext, System.Type controllerType )
+        protected override IController GetControllerInstance( RequestContext requestContext, Type controllerType )
         {
             try
             {

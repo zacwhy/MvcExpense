@@ -12,22 +12,27 @@ namespace Zac.StandardInfrastructure.EntityFramework
         {
         }
 
+        protected StandardDbContext StandardDbContext
+        {
+            get { return (StandardDbContext) EnhancedDbContext; }
+        }
+
         private IErrorLogRepository _errorLogRepository;
         public IErrorLogRepository ErrorLogRepository
         {
-            get { return _errorLogRepository ?? ( _errorLogRepository = new ErrorLogRepository( Context ) ); }
+            get { return _errorLogRepository ?? ( _errorLogRepository = new ErrorLogRepository( StandardDbContext ) ); }
         }
 
         private ISiteMapNodeRepository _siteMapNodeRepository;
         public ISiteMapNodeRepository SiteMapNodeRepository
         {
-            get { return _siteMapNodeRepository ?? ( _siteMapNodeRepository = new SiteMapNodeRepository( Context ) ); }
+            get { return _siteMapNodeRepository ?? ( _siteMapNodeRepository = new SiteMapNodeRepository( StandardDbContext ) ); }
         }
 
         private ISystemParameterRepository _systemParameterRepository;
         public ISystemParameterRepository SystemParameterRepository
         {
-            get { return _systemParameterRepository ?? ( _systemParameterRepository = new SystemParameterRepository( Context ) ); }
+            get { return _systemParameterRepository ?? ( _systemParameterRepository = new SystemParameterRepository( StandardDbContext ) ); }
         }
 
     }

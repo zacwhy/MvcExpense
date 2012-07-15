@@ -61,6 +61,7 @@
     <Compile Include="ErrorLogController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\SiteMapNodeExtensions.cs" />
     <Compile Include="Models\Display\SiteMapNodeCreateDisplay.cs" />
     <Compile Include="Models\Display\SiteMapNodeEditDisplay.cs" />

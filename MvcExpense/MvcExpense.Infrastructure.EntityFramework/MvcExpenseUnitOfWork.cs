@@ -15,16 +15,21 @@ namespace MvcExpense.Infrastructure.EntityFramework
         {
         }
 
+        protected MvcExpenseDbContext MvcExpenseDbContext
+        {
+            get { return (MvcExpenseDbContext) StandardDbContext; }
+        }
+
         private IStandardRepository<Category> _categoryRepository;
         public IStandardRepository<Category> CategoryRepository
         {
-            get { return _categoryRepository ?? ( _categoryRepository = new StandardRepository<Category>( Context ) ); }
+            get { return _categoryRepository ?? ( _categoryRepository = new StandardRepository<Category>( MvcExpenseDbContext ) ); }
         }
 
         private IStandardRepository<Consumer> _consumerRepository;
         public IStandardRepository<Consumer> ConsumerRepository
         {
-            get { return _consumerRepository ?? ( _consumerRepository = new StandardRepository<Consumer>( Context ) ); }
+            get { return _consumerRepository ?? ( _consumerRepository = new StandardRepository<Consumer>( MvcExpenseDbContext ) ); }
         }
 
         private IStandardRepository<PaymentMethod> _paymentMethodRepository;
@@ -32,7 +37,7 @@ namespace MvcExpense.Infrastructure.EntityFramework
         {
             get {
                 return _paymentMethodRepository ??
-                       ( _paymentMethodRepository = new StandardRepository<PaymentMethod>( Context ) );
+                       ( _paymentMethodRepository = new StandardRepository<PaymentMethod>( MvcExpenseDbContext ) );
             }
         }
 
@@ -41,7 +46,7 @@ namespace MvcExpense.Infrastructure.EntityFramework
         {
             get {
                 return _ordinaryExpenseRepository ??
-                       ( _ordinaryExpenseRepository = new OrdinaryExpenseRepository( Context ) );
+                       ( _ordinaryExpenseRepository = new OrdinaryExpenseRepository( MvcExpenseDbContext ) );
             }
         }
 

@@ -9,8 +9,6 @@ using MvcExpense.Infrastructure.EntityFramework;
 using MvcExpense.MvcExpenseHelper;
 using MvcExpense.ViewModels;
 
-//using OrdinaryExpense = MvcExpense.Core.Models.OrdinaryExpense;
-
 namespace MvcExpense.UI.Controllers
 {
     public partial class ReportController : Controller
@@ -25,8 +23,7 @@ namespace MvcExpense.UI.Controllers
 
             var ordinaryexpenses = currentYearOrdinaryExpenses
                 //.OrderByDescending( x => new { x.Date, x.Sequence } )
-                .Include( o => o.Category )
-                .Include( o => o.Consumer );
+                .Include( o => o.Category ).Include( o => o.Consumer );
 
             var reportViewModel = new ReportViewModel();
             reportViewModel.OrdinaryExpenses = ordinaryexpenses.ToList();

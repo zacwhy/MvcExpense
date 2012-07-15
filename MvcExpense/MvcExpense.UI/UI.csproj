@@ -56,10 +56,7 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="FluentSecurity">
       <HintPath>..\packages\FluentSecurity.1.4.0\lib\FluentSecurity.dll</HintPath>
     </Reference>
@@ -121,7 +118,6 @@
     <Compile Include="Models\Input\EditOrdinaryExpenseInput.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="MvcExpenseHelper\CustomRoleProvider.cs" />
-    <Compile Include="MvcExpenseHelper\HtmlHelperExtensions.cs" />
     <Compile Include="MvcExpenseHelper\MembershipProviderBase.cs" />
     <Compile Include="MvcExpenseHelper\CustomMembershipProvider.cs" />
     <Compile Include="Controllers\AbstractMvcExpenseController.cs" />
@@ -340,7 +336,7 @@
     <Content Include="Views\Shared\_DeleteLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj">
+    <ProjectReference Include="..\MvcExpense.Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj">
       <Project>{4A652B3D-8206-49D0-ADD7-8D5D1E110BF5}</Project>
       <Name>Infrastructure.EntityFramework</Name>
     </ProjectReference>

@@ -2,9 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using MvcExpense.UI.DependencyResolution;
-using StructureMap;
-using Zac.StandardMvc;
 using Zac.MvcWhitespaceFilterAttribute;
+using Zac.StandardMvc;
 
 namespace MvcExpense.UI
 {
@@ -19,19 +18,13 @@ namespace MvcExpense.UI
             filters.Add( new WhitespaceFilterAttribute() );
         }
 
-        //public static void RegisterRoutes( RouteCollection routes )
-        //{
-        //}
-
         protected void Application_Start()
         {
-            IContainer container = IoC.Initialize();
-            ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( container ) );
+            ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( IoC.Container ) );
 
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters( GlobalFilters.Filters );
-            //RegisterRoutes( RouteTable.Routes );
 
             BootStrapper.RegisterRoutes( RouteTable.Routes );
             BootStrapper.CreateAutoMapperMaps();

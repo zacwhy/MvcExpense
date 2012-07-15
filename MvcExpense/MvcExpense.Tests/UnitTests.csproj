@@ -86,7 +86,7 @@
       <Project>{C1F7E92B-CADA-438F-9116-F1813B7A4A37}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvcExpense\UI.csproj">
+    <ProjectReference Include="..\MvcExpense.UI\UI.csproj">
       <Project>{D9A00454-EFFC-4B0D-8FEB-6424D3A0BF8B}</Project>
       <Name>UI</Name>
     </ProjectReference>

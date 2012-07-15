@@ -54,7 +54,6 @@ namespace MvcExpense.UI
         public static void CreateAutoMapperMaps()
         {
             Zac.StandardMvc.BootStrapper.CreateAutoMapperMaps();
-            //SiteMapNodeController.CreateMaps();
 
             Mapper.CreateMap<CreateOrdinaryExpenseInput, OrdinaryExpense>();
             Mapper.CreateMap<CreateOrdinaryExpenseInput, CreateOrdinaryExpenseDisplay>();
@@ -64,8 +63,6 @@ namespace MvcExpense.UI
             Mapper.CreateMap<EditOrdinaryExpenseInput, EditOrdinaryExpenseDisplay>();
 
             CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseViewModel>();
-            //CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseCreateModel>();
-            //CreateDuplexMap<OrdinaryExpense, OrdinaryExpenseEditModel>();
             CreateDuplexMap<PaymentMethod, PaymentMethodEditModel>();
         }
 

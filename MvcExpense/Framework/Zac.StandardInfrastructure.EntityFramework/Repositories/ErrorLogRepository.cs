@@ -7,7 +7,7 @@ namespace Zac.StandardInfrastructure.EntityFramework.Repositories
 {
     public class ErrorLogRepository : StandardRepository<ErrorLog>, IErrorLogRepository
     {
-        public ErrorLogRepository( EnhancedDbContext context )
+        public ErrorLogRepository( StandardDbContext context )
             : base( context )
         {
         }
