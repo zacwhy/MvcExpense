@@ -2,7 +2,7 @@
 
 namespace Zac.StandardMvc
 {
-    public static class BootStrapper
+    public static class StandardBootStrapper
     {
         public static void CreateAutoMapperMaps()
         {

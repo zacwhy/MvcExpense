@@ -1,8 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MvcExpense.UI.DependencyResolution;
-using Zac.MvcWhitespaceFilterAttribute;
 using Zac.StandardMvc;
 
 namespace MvcExpense.UI
@@ -12,12 +10,6 @@ namespace MvcExpense.UI
 
     public class MvcApplication : HttpApplication
     {
-        public static void RegisterGlobalFilters( GlobalFilterCollection filters )
-        {
-            filters.Add( new HandleErrorAttribute() );
-            filters.Add( new WhitespaceFilterAttribute() );
-        }
-
         protected void Application_Start()
         {
             StandardIoC.Container = IoC.Container;
@@ -25,8 +17,7 @@ namespace MvcExpense.UI
 
             AreaRegistration.RegisterAllAreas();
 
-            RegisterGlobalFilters( GlobalFilters.Filters );
-
+            BootStrapper.RegisterGlobalFilters( GlobalFilters.Filters );
             BootStrapper.RegisterRoutes( RouteTable.Routes );
             BootStrapper.CreateAutoMapperMaps();
             //BootStrapper.ConfigureSecurity();

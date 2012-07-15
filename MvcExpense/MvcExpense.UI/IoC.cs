@@ -5,7 +5,7 @@ using StructureMap;
 using Zac.StandardCore;
 using Zac.StandardInfrastructure.EntityFramework;
 
-namespace MvcExpense.UI.DependencyResolution
+namespace MvcExpense.UI
 {
     public static class IoC
     {

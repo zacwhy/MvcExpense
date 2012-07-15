@@ -106,7 +106,7 @@
     <Compile Include="ConsumerController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="IoC.cs" />
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -273,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DependencyResolution\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

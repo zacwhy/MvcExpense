@@ -11,11 +11,19 @@ using MvcExpense.UI.Controllers;
 using MvcExpense.UI.Models.Display;
 using MvcExpense.UI.Models.Input;
 using MvcExpense.ViewModels;
+using Zac.MvcWhitespaceFilterAttribute;
+using Zac.StandardMvc;
 
 namespace MvcExpense.UI
 {
     public static class BootStrapper
     {
+        public static void RegisterGlobalFilters( GlobalFilterCollection filters )
+        {
+            filters.Add( new HandleErrorAttribute() );
+            filters.Add( new WhitespaceFilterAttribute() );
+        }
+
         public static void RegisterRoutes( RouteCollection routes )
         {
             routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
@@ -53,7 +61,7 @@ namespace MvcExpense.UI
 
         public static void CreateAutoMapperMaps()
         {
-            Zac.StandardMvc.BootStrapper.CreateAutoMapperMaps();
+            StandardBootStrapper.CreateAutoMapperMaps();
 
             Mapper.CreateMap<CreateOrdinaryExpenseInput, OrdinaryExpense>();
             Mapper.CreateMap<CreateOrdinaryExpenseInput, CreateOrdinaryExpenseDisplay>();
