@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using Zac.DesignPattern.EntityFramework;
 using Zac.DesignPattern.EntityFramework.Repositories;
 using Zac.StandardCore.Models;
 using Zac.StandardCore.Repositories;

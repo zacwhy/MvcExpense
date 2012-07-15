@@ -37,8 +37,10 @@ namespace Zac.StandardHelper
             var errorLog = new ErrorLog
             {
                 ErrorCategory = category,
+                ExceptionType = exception.GetType().FullName,
                 Message = exception.Message,
-                BaseMessage = exception.GetBaseException().Message
+                BaseMessage = exception.GetBaseException().Message,
+                StackTrace = exception.StackTrace
             };
 
             Log( errorLog );

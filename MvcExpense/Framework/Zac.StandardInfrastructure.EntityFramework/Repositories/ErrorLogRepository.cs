@@ -1,5 +1,4 @@
-﻿using Zac.DesignPattern.EntityFramework;
-using Zac.DesignPattern.EntityFramework.Repositories;
+﻿using Zac.DesignPattern.EntityFramework.Repositories;
 using Zac.StandardCore.Models;
 using Zac.StandardCore.Repositories;
 

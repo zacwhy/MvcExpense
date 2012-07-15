@@ -20,6 +20,7 @@ namespace MvcExpense.UI
 
         protected void Application_Start()
         {
+            StandardIoC.Container = IoC.Container;
             ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( IoC.Container ) );
 
             AreaRegistration.RegisterAllAreas();

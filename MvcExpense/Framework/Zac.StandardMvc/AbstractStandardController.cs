@@ -41,8 +41,8 @@ namespace Zac.StandardMvc
                     string hostIP = Dns.GetHostName();
                     string clientIP = Request.UserHostName;
 
-                    // todo should create new db connection
-                    _errorLogHelper = new ErrorLogHelper( StandardUnitOfWork, userId, hostIP, clientIP );
+                    IStandardUnitOfWork standardUnitOfWork = StandardIoC.GetInstance<IStandardUnitOfWork>();
+                    _errorLogHelper = new ErrorLogHelper( standardUnitOfWork, userId, hostIP, clientIP );
                 }
 
                 return _errorLogHelper;

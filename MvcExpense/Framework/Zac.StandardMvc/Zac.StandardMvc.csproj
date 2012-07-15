@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\SiteMapNodeExtensions.cs" />
+    <Compile Include="StandardIoC.cs" />
     <Compile Include="Models\Display\SiteMapNodeCreateDisplay.cs" />
     <Compile Include="Models\Display\SiteMapNodeEditDisplay.cs" />
     <Compile Include="Models\Input\SiteMapNodeCreateInput.cs" />
