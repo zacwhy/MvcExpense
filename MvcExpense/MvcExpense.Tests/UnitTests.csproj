@@ -82,6 +82,10 @@
       <Project>{F6913116-0D5F-4F63-A1D4-D9F8DF4C7995}</Project>
       <Name>Zac.StandardMvc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\Zac.Tree\Zac.Tree.csproj">
+      <Project>{0F981A02-CD06-4686-911B-1A0EF12BDD82}</Project>
+      <Name>Zac.Tree</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvcExpense.Core\Core.csproj">
       <Project>{C1F7E92B-CADA-438F-9116-F1813B7A4A37}</Project>
       <Name>Core</Name>
