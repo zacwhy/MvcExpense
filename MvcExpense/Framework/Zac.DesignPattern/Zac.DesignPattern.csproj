@@ -55,8 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\IService.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IStandardRepository.cs" />
+    <Compile Include="Services\IStandardService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Models\PersistentObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

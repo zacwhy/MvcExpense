@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStandardServices.cs" />
     <Compile Include="IStandardUnitOfWork.cs" />
     <Compile Include="Models\ErrorLog.cs" />
     <Compile Include="Models\SiteMapNode.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="Repositories\IErrorLogRepository.cs" />
     <Compile Include="Repositories\ISiteMapNodeRepository.cs" />
     <Compile Include="Repositories\ISystemParameterRepository.cs" />
+    <Compile Include="Services\IErrorLogService.cs" />
+    <Compile Include="Services\ISiteMapNodeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zac.DesignPattern\Zac.DesignPattern.csproj">

@@ -5,10 +5,10 @@ namespace MvcExpense.UI.Controllers
 {
     public abstract partial class AbstractMvcExpenseController : AbstractStandardController
     {
-        public IMvcExpenseUnitOfWork MvcExpenseUnitOfWork
-        {
-            get { return (IMvcExpenseUnitOfWork) StandardUnitOfWork; }
-        }
+        //public IMvcExpenseUnitOfWork MvcExpenseUnitOfWork
+        //{
+        //    get { return (IMvcExpenseUnitOfWork) StandardUnitOfWork; }
+        //}
 
         protected AbstractMvcExpenseController()
             : base()
@@ -16,7 +16,7 @@ namespace MvcExpense.UI.Controllers
         }
 
         protected AbstractMvcExpenseController( IMvcExpenseUnitOfWork unitOfWork )
-            : base( unitOfWork )
+            //: base( unitOfWork )
         {
         }
 

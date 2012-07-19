@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using StructureMap;
 using Zac.StandardMvc;
 
 namespace MvcExpense.UI
@@ -12,8 +13,9 @@ namespace MvcExpense.UI
     {
         protected void Application_Start()
         {
-            StandardIoC.Container = IoC.Container;
-            ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( IoC.Container ) );
+            IContainer container = IoC.Initialize();
+            StandardIoC.SetContainer( container );
+            ControllerBuilder.Current.SetControllerFactory( new StandardControllerFactory( container ) );
 
             AreaRegistration.RegisterAllAreas();
 

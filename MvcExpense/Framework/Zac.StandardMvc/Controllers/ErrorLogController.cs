@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Zac.StandardCore;
 using Zac.StandardCore.Models;
-using Zac.StandardCore.Repositories;
+using Zac.StandardCore.Services;
 
 namespace Zac.StandardMvc.Controllers
 {
     public partial class ErrorLogController : AbstractStandardController
     {
-        private IErrorLogRepository Repository
-        {
-            get { return StandardUnitOfWork.ErrorLogRepository; }
-        }
-
-        public ErrorLogController( IStandardUnitOfWork unitOfWork )
-            : base( unitOfWork )
+        public ErrorLogController( IStandardServices standardServices )
+            : base( standardServices )
         {
         }
 
         public virtual ActionResult Index()
         {
-            IEnumerable<ErrorLog> entities = Repository.GetAll();
+            IEnumerable<ErrorLog> entities = StandardServices.ErrorLogService.FindAll();
             return View();
         }
 

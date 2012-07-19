@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.Web.Mvc;
+using Zac.MvcFlashMessage;
+using Zac.StandardCore.Services;
 using Zac.StandardMvc.Models.Display;
 using Zac.StandardMvc.Models.Input;
-using Zac.MvcFlashMessage;
-using Zac.StandardCore;
 using Zac.Tree;
 using SiteMapNode = Zac.StandardCore.Models.SiteMapNode;
 
@@ -16,31 +13,26 @@ namespace Zac.StandardMvc.Controllers
 {
     public partial class SiteMapNodeController : AbstractStandardController
     {
-        private Zac.StandardCore.Repositories.ISiteMapNodeRepository Repository
+        private ISiteMapNodeService SiteMapNodeService
         {
-            get { return StandardUnitOfWork.SiteMapNodeRepository; }
+            get { return StandardServices.SiteMapNodeService; }
         }
 
-        public SiteMapNodeController( IStandardUnitOfWork unitOfWork )
-            : base( unitOfWork )
+        public SiteMapNodeController( IStandardServices standardServices )
+            : base( standardServices )
         {
         }
 
         public virtual ActionResult Refresh()
         {
-            // todo rethink strategy
-            var siteMapProvider = SiteMap.Provider as Zac.RepositorySiteMapProvider.RepositorySiteMapProvider;
-
             string flashMessage;
 
-            if ( siteMapProvider != null )
+            if ( SiteMapNodeService.TryRefresh() )
             {
-                siteMapProvider.Refresh();
                 flashMessage = string.Format( "Refreshed at {0}.", DateTime.Now );
             }
             else
             {
-                // todo log SiteMap.Provider is not Zac.RepositorySiteMapProvider.RepositorySiteMapProvider
                 flashMessage = "Could not refresh site map.";
             }
 
@@ -49,7 +41,7 @@ namespace Zac.StandardMvc.Controllers
 
         public virtual ActionResult Tree()
         {
-            TreeNode<SiteMapNode> tree = GetTree();
+            TreeNode<SiteMapNode> tree = SiteMapNodeService.GetTree();
             return View( tree );
         }
 
@@ -60,7 +52,7 @@ namespace Zac.StandardMvc.Controllers
 
         public virtual ActionResult List()
         {
-            var list = Repository.GetAll();
+            var list = SiteMapNodeService.FindAll();
             return View( list );
         }
 
@@ -80,12 +72,13 @@ namespace Zac.StandardMvc.Controllers
                 {
                     SiteMapNode model = ToModel( input );
 
-                    using ( var scope = new TransactionScope() )
+                    if ( input.PreviousSiblingId.HasValue )
                     {
-                        Repository.InsertNode( model, input.ParentId, input.PreviousSiblingId );
-                        Repository.Insert( model );
-                        StandardUnitOfWork.Save();
-                        scope.Complete();
+                        SiteMapNodeService.InsertAfterNode( model, input.PreviousSiblingId.Value );
+                    }
+                    else
+                    {
+                        SiteMapNodeService.InsertUnderNode( model, input.ParentId );
                     }
 
                     return this.RedirectToAction( x => x.Index() );
@@ -105,7 +98,7 @@ namespace Zac.StandardMvc.Controllers
 
         public virtual ActionResult Edit( long id )
         {
-            SiteMapNode model = Repository.GetById( id );
+            SiteMapNode model = SiteMapNodeService.FindById( id );
             SiteMapNodeEditDisplay display = ToEditDisplay( model );
             PopulateEditDisplay( display );
             return View( display );
@@ -120,12 +113,13 @@ namespace Zac.StandardMvc.Controllers
                 {
                     SiteMapNode model = ToModel( input );
 
-                    using ( var scope = new TransactionScope() )
+                    if ( input.PreviousSiblingId.HasValue )
                     {
-                        Repository.UpdateNode( model, input.ParentId, input.PreviousSiblingId );
-                        Repository.Update( model );
-                        StandardUnitOfWork.Save();
-                        scope.Complete();
+                        SiteMapNodeService.UpdateAndPlaceAfterNode( model, input.PreviousSiblingId.Value );
+                    }
+                    else
+                    {
+                        SiteMapNodeService.UpdateAndPlaceUnderNode( model, input.ParentId );
                     }
 
                     return this.RedirectToAction( x => x.Index() );
@@ -144,7 +138,7 @@ namespace Zac.StandardMvc.Controllers
 
         public virtual ActionResult Delete( long id )
         {
-            SiteMapNode model = Repository.GetById( id );
+            SiteMapNode model = SiteMapNodeService.FindById( id );
             return View( model );
         }
 
@@ -153,8 +147,7 @@ namespace Zac.StandardMvc.Controllers
         {
             try
             {
-                Repository.DeleteNode( id );
-                StandardUnitOfWork.Save();
+                SiteMapNodeService.DeleteNode( id );
                 string flashMessage = string.Format( "Deleted Id {0}.", id ); // todo improve message
                 return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
             }
@@ -165,20 +158,14 @@ namespace Zac.StandardMvc.Controllers
             }
         }
 
-        private TreeNode<SiteMapNode> GetTree()
-        {
-            IEnumerable<SiteMapNode> entities = Repository.GetAll();
-            return TreeNodeHelper.CreateTree( entities );
-        }
-
         private void PopulateCreateDisplay( SiteMapNodeCreateDisplay display )
         {
-            display.Tree = GetTree();
+            display.Tree = SiteMapNodeService.GetTree();
         }
 
         private void PopulateEditDisplay( SiteMapNodeEditDisplay display )
         {
-            TreeNode<SiteMapNode> tree = GetTree();
+            TreeNode<SiteMapNode> tree = SiteMapNodeService.GetTree();
             TreeNode<SiteMapNode> currentNode = TreeNodeHelper.FindNodeById( tree, display.Id );
 
             if ( currentNode.PreviousSibling != null )

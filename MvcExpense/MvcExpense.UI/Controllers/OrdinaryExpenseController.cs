@@ -23,9 +23,12 @@ namespace MvcExpense.UI.Controllers
 {
     public partial class OrdinaryExpenseController : AbstractMvcExpenseController
     {
+        private IMvcExpenseUnitOfWork MvcExpenseUnitOfWork;
+
         public OrdinaryExpenseController( IMvcExpenseUnitOfWork unitOfWork )
-            : base( unitOfWork )
+            //: base( unitOfWork )
         {
+            MvcExpenseUnitOfWork = unitOfWork;
         }
 
         // todo make this work

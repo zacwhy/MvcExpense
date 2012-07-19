@@ -1,13 +1,14 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 using Zac.StandardCore;
+using Zac.StandardCore.Services;
 using Zac.StandardHelper;
 
 namespace Zac.StandardMvc
 {
     public abstract class AbstractStandardController : Controller
     {
-        protected IStandardUnitOfWork StandardUnitOfWork { get; private set; }
+        protected IStandardServices StandardServices { get; private set; }
 
         // todo remove. required for T4MVC.
         protected AbstractStandardController()
@@ -15,16 +16,16 @@ namespace Zac.StandardMvc
             //throw new Exception( "todo remove. required for T4MVC." );
         }
 
-        protected AbstractStandardController( IStandardUnitOfWork standardUnitOfWork )
+        protected AbstractStandardController( IStandardServices standardServices )
         {
-            StandardUnitOfWork = standardUnitOfWork;
+            StandardServices = standardServices;
         }
 
         protected override void Dispose( bool disposing )
         {
-            if ( StandardUnitOfWork != null )
+            if ( StandardServices != null )
             {
-                StandardUnitOfWork.Dispose();
+                StandardServices.Dispose();
             }
 
             base.Dispose( disposing );

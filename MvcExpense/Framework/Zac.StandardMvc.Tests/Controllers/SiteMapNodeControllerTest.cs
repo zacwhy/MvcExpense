@@ -2,9 +2,8 @@
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
-using Zac.StandardCore;
 using Zac.StandardCore.Models;
-using Zac.StandardCore.Repositories;
+using Zac.StandardCore.Services;
 using Zac.StandardMvc.Controllers;
 using Zac.Tree;
 
@@ -17,8 +16,8 @@ namespace Zac.StandardMvc.Tests.Controllers
         public void Index()
         {
             // Arrange
-            IStandardUnitOfWork standardUnitOfWork = Stub<IStandardUnitOfWork>();
-            var controller = new SiteMapNodeController( standardUnitOfWork );
+            var standardServices = GenerateStub<IStandardServices>();
+            var controller = new SiteMapNodeController( standardServices );
 
             // Act
             var result = (RedirectToRouteResult) controller.Index();
@@ -36,23 +35,25 @@ namespace Zac.StandardMvc.Tests.Controllers
             var list = new List<SiteMapNode>();
             list.Add( new SiteMapNode { Id = 1, Lft = 1, Rgt = 2 } );
 
-            var siteMapNodeRepository = Stub<ISiteMapNodeRepository>();
-            siteMapNodeRepository.Stub( x => x.GetAll() ).Return( list );
+            TreeNode<SiteMapNode> tree = TreeNodeHelper.CreateTree( list );
 
-            var unitOfWork = Stub<IStandardUnitOfWork>();
-            unitOfWork.Expect( x => x.SiteMapNodeRepository ).Return( siteMapNodeRepository );
+            var siteMapNodeService = GenerateStub<ISiteMapNodeService>();
+            siteMapNodeService.Stub( x => x.GetTree() ).Return( tree );
 
-            var controller = new SiteMapNodeController( unitOfWork );
+            var standardServices = GenerateStub<IStandardServices>();
+            standardServices.Stub( x => x.SiteMapNodeService ).Return( siteMapNodeService );
+
+            var controller = new SiteMapNodeController( standardServices );
 
             // Act
             var result = (ViewResult) controller.Tree();
-            var tree = (TreeNode<SiteMapNode>) result.Model;
+            var resultTree = (TreeNode<SiteMapNode>) result.Model;
 
             // Assert
-            var a = tree.Siblings;
+            Assert.AreEqual( "", result.ViewName );
         }
 
-        private T Stub<T>( params object[] argumentsForConstructor ) where T : class
+        private T GenerateStub<T>( params object[] argumentsForConstructor ) where T : class
         {
             return MockRepository.GenerateStub<T>( argumentsForConstructor );
         }

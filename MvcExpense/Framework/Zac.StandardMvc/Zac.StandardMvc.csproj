@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractStandardController.cs" />
+    <Compile Include="Services\ErrorLogService.cs" />
+    <Compile Include="Services\SiteMapNodeService.cs" />
     <Compile Include="StandardBootStrapper.cs" />
     <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\SiteMapNodeController.cs" />
@@ -73,6 +75,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="StandardControllerFactory.cs" />
+    <Compile Include="StandardServices.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
