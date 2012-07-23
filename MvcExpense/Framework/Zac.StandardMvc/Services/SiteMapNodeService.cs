@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Transactions;
 using Zac.StandardCore;
 using Zac.StandardCore.Models;
@@ -38,6 +39,18 @@ namespace Zac.StandardMvc.Services
             throw new NotImplementedException();
         }
 
+        public SiteMapNode GetParent( SiteMapNode entity )
+        {
+            var query =
+                from x in SiteMapNodeRepository.GetQueryable()
+                where x.Lft < entity.Lft && x.Rgt > entity.Lft
+                orderby x.Lft descending
+                select x;
+
+            SiteMapNode parent = query.FirstOrDefault();
+            return parent;
+        }
+
         public TreeNode<SiteMapNode> GetTree()
         {
             IEnumerable<SiteMapNode> entities = SiteMapNodeRepository.GetAll();
@@ -65,12 +78,12 @@ namespace Zac.StandardMvc.Services
             }
         }
 
-        public void UpdateAndPlaceUnderNode( SiteMapNode entity, long id )
+        public void UpdateAndPositionUnderNode( SiteMapNode entity, long id )
         {
             UpdateNode( entity, id, null );
         }
 
-        public void UpdateAndPlaceAfterNode( SiteMapNode entity, long id )
+        public void UpdateAndPositionAfterNode( SiteMapNode entity, long id )
         {
             UpdateNode( entity, 0, id );
         }

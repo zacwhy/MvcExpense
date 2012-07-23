@@ -16,11 +16,6 @@ namespace Zac.StandardInfrastructure.EntityFramework.Repositories
         {
         }
 
-        public IEnumerable<SiteMapNode> GetChildrenByParentId( long id )
-        {
-            return GetQueryable().Where( x => x.ParentId == id ).AsEnumerable(); // todo don't use GetQueryable()
-        }
-
         const string TableName = "App_SiteMapNode"; // todo remove hardcode
 
         public void InsertNode( SiteMapNode entity, long parentId, long? previousSiblingId )

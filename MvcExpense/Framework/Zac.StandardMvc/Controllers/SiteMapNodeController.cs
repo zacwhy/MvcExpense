@@ -39,12 +39,6 @@ namespace Zac.StandardMvc.Controllers
             return this.RedirectToAction( x => x.Index() ).WithFlash( new { notice = flashMessage } );
         }
 
-        public virtual ActionResult Tree()
-        {
-            TreeNode<SiteMapNode> tree = SiteMapNodeService.GetTree();
-            return View( tree );
-        }
-
         public virtual ActionResult Index()
         {
             return this.RedirectToAction( x => x.Tree() );
@@ -54,6 +48,12 @@ namespace Zac.StandardMvc.Controllers
         {
             var list = SiteMapNodeService.FindAll();
             return View( list );
+        }
+
+        public virtual ActionResult Tree()
+        {
+            TreeNode<SiteMapNode> tree = SiteMapNodeService.GetTree();
+            return View( tree );
         }
 
         public virtual ActionResult Create()
@@ -100,6 +100,13 @@ namespace Zac.StandardMvc.Controllers
         {
             SiteMapNode model = SiteMapNodeService.FindById( id );
             SiteMapNodeEditDisplay display = ToEditDisplay( model );
+
+            SiteMapNode parent = SiteMapNodeService.GetParent( model );
+            if ( parent != null )
+            {
+                display.ParentId = parent.Id;
+            }
+
             PopulateEditDisplay( display );
             return View( display );
         }
@@ -115,11 +122,11 @@ namespace Zac.StandardMvc.Controllers
 
                     if ( input.PreviousSiblingId.HasValue )
                     {
-                        SiteMapNodeService.UpdateAndPlaceAfterNode( model, input.PreviousSiblingId.Value );
+                        SiteMapNodeService.UpdateAndPositionAfterNode( model, input.PreviousSiblingId.Value );
                     }
                     else
                     {
-                        SiteMapNodeService.UpdateAndPlaceUnderNode( model, input.ParentId );
+                        SiteMapNodeService.UpdateAndPositionUnderNode( model, input.ParentId );
                     }
 
                     return this.RedirectToAction( x => x.Index() );
